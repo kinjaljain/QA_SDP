@@ -1,7 +1,7 @@
 from collections import namedtuple
 
-Datum = namedtuple('Datum', 'id ref cite offsets author is_test facet')
+Datum = namedtuple('Datum', 'ref cite offsets author is_test facet year')
 Offsets = namedtuple('Offsets', 'marker cite ref')
-Article = namedtuple('Article', 'content')
+Article = namedtuple('Article', 'xml sentences sections')
 
 
