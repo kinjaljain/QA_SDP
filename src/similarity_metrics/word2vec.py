@@ -19,7 +19,10 @@ def build_model(sentences):
 
 
 def get_similarity_score(sentence1, sentence2):
+    stops = set(stopwords.words("english"))
     sentence1 = re.findall(r'[\w]+', sentence1.lower())
+    sentence1 = [w for w in sentence1 if w not in stops]
     sentence2 = re.findall(r'[\w]+', sentence2.lower())
+    sentence2 = [w for w in sentence2 if w not in stops]
     model = KeyedVectors.load_word2vec_format('sdp_word2vec.bin', binary=True)
     return model.wv.n_similarity(sentence1, sentence2)
