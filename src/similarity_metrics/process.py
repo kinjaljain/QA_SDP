@@ -1,8 +1,13 @@
+import nltk
+nltk.download('stopwords')
 from dataloaders.load_and_parse import load_all
 from similarity_metrics.jaccard import get_similarity_score as j
 from similarity_metrics.dice import get_similarity_score as dc
 from similarity_metrics.word2vec import get_similarity_score as w
+import similarity_metrics.tfidf as t
 from similarity_metrics.word2vec import build_model
+import os.path
+import pickle
 
 DATA_ROOT = '../../data'
 
@@ -23,6 +28,18 @@ if do_wordnet:
         sentences.extend(article.sentences.values())
     build_model(sentences)
 
+# if we want to build the tf-idf matrix over all sentences,
+# set tfidf to True
+tfidf = False
+if tfidf:
+    if os.path.exists("tf.pickle"):
+        tf_vectorizer = pickle.load(open("tf.pickle", 'rb'))
+    else:
+        sentences = []
+        for article in articles:
+            sentences.extend(article.sentences.values())
+        t.build_model(sentences)
+
 for data in dataset:
     ref_article = data.ref
     citing_article = data.cite
@@ -38,7 +55,7 @@ for data in dataset:
         similarity_score = {}
         for ref_id, ref_sentence in ref_article.sentences.items():
             try:
-                similarity_score[ref_id] = w(ref_sentence, complete_citing_sentence)
+                similarity_score[ref_id] = t.get_similarity_score(ref_sentence, complete_citing_sentence)
             except Exception as e:
                 print(e)
         if similarity_score:
@@ -53,6 +70,8 @@ for data in dataset:
     else:
         empty_citations += 1
     total += 1
+    if total % 50 == 0:
+        print("at:", total)
 
 accuracy /= total
 print("Accuracy: {}, Total DataPoints: {}, Num empty references: {}, Num empty citations: {}".format(
