@@ -20,6 +20,8 @@ def correct_text(line):
         # candidate = spell.candidates(word_list[i])
         # print("Candidates for ", word_list[i], ":", candidate)
         # correction = spell.correction(word_list[i])
+        if not word_list[i].isalpha():
+            continue
         hamming_candidates = [word for word in spell.candidates(word_list[i]) if len(word) == len(word_list[i])]
         probability = spell.word_probability(hamming_candidates[0])
         correction = hamming_candidates[0]
