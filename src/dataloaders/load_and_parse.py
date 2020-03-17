@@ -1,12 +1,14 @@
 # Currently only works for 2016 - 2018
 
 import os
+import copy
 import xml.etree.cElementTree as ET
 import logging
 import codecs
 from tqdm import tqdm
 from dto.namedtuples import Article, Datum, Offsets
 import re
+import requests
 
 DATA_ROOT = '../../data'
 sep = os.path.sep
@@ -16,7 +18,7 @@ paper_load_fail = 0
 annotation_load_fail = 0
 
 l = logging.getLogger('load_parse')
-
+replace_count = 0
 
 # Gets names of folders where data is present. ex : "./data/Training-Set-2016/C90-2039_TRAIN"
 def get_folders(data_root):
@@ -26,7 +28,7 @@ def get_folders(data_root):
         year_folder = data_root + sep + year_folder
         for data_folder in os.listdir(year_folder):
             data_folder = year_folder + sep + data_folder
-            if not os.path.isdir(data_folder) or '2019' in data_folder or 'Test-Set-2018' in data_folder:
+            if not os.path.isdir(data_folder) or '2018' not in data_folder or 'Test-Set-2018' in data_folder:
                 continue
                 # readme
             folders.append(data_folder)
@@ -47,18 +49,19 @@ def load_article(filename):
             parent_map = {c: p for p in xml.getroot().iter() for c in p}
             sentence_elements = list(xml.getroot().iter('S'))
             sentence_elements = [(x.text,
-                                  parent_map[x].attrib['title'] if len(parent_map[x].attrib) > 0 else parent_map[x].tag)
+                                  parent_map[x].attrib['title'] if len(parent_map[x].attrib) > 0 else parent_map[x].tag,
+                                  int(x.attrib['sid']) if 'sid' in x.attrib else 99)
                                  for x in
                                  sentence_elements]
             # TODO: Check if this is too memory inefficient. Should mostly be okay
-            sentence_map = {(i + 1): x[0] for i, x in enumerate(sentence_elements)}
-            section_map = {(i + 1): x[1] for i, x in enumerate(sentence_elements)}
-            article = Article(xml, sentence_map, section_map)
+            sentence_map = {x[2]: x[0] for i, x in enumerate(sentence_elements)}
+            section_map = {x[2]: x[1] for i, x in enumerate(sentence_elements)}
+            article = Article("", xml, sentence_map, section_map)
             return article
     except Exception as e:
         l.error("Error with : " + filename + " with ex : " + str(e))
         paper_load_fail += 1
-        return Article(ET.fromstring("<xml></xml>"), {}, {})
+        return Article("", ET.fromstring("<xml></xml>"), {}, {})
 
 
 def newest_file(path):
@@ -67,14 +70,16 @@ def newest_file(path):
     return max(paths, key=os.path.getctime)
 
 
+author_memo = {}
 def load_folder_data(annotation_file, articles, is_test=False):
     global annotation_load_fail
+    global author_memo
     data = []
-    try:
-        year_matches = re.findall(".*Set[-]([0-9]{4}).*", annotation_file)
-        year = int(year_matches[0]) if len(year_matches) > 0 else 2016 # Dev set
-    except:
-        print("kk")
+    # try:
+    #     year_matches = re.findall(".*Set[-]([0-9]{4}).*", annotation_file)
+    #     year = int(year_matches[0]) if len(year_matches) > 0 else 2016 # Dev set
+    # except:
+    #     print("kk")
     with open(annotation_file, 'r') as f:
         for line in f:
             if len(line.strip()) == 0:
@@ -82,7 +87,8 @@ def load_folder_data(annotation_file, articles, is_test=False):
             try:
                 parts = line.split(" | ")
                 parts = [part.strip() for part in parts]
-                ref_article = articles[parts[1].split(":")[1].strip().upper().replace(".XML", "").replace(".TXT", "")]
+                ref_article_name = parts[1].split(":")[1].strip().upper().replace(".XML", "").replace(".TXT", "")
+                ref_article = articles[ref_article_name]
                 cite_article = articles["-".join(
                     parts[2].split(":")[1].strip().upper().replace("_", "-").replace(".XML", "").replace(".TXT",
                                                                                                          "").split("-")[
@@ -98,9 +104,23 @@ def load_folder_data(annotation_file, articles, is_test=False):
                                                                                                                " ").split()]
                 facet = parts[9].split(":")[1].strip()
                 facet = [facet] if '[' not in facet else eval(facet)
-                author = '' if len(parts) < 10 or ":" not in parts[10] else parts[10].split(":")[1].replace("|",
-                                                                                                            "").strip()
-                d = Datum(ref_article, cite_article, Offsets(marker_offset, citation_offsets, ref_offsets), author,
+                if ref_article_name not in author_memo:
+                    url = "https://www.aclweb.org/anthology/{}.bib".format(ref_article_name)
+                    info = requests.get(url=url).text
+                    author_info = info.split('{')[1].split(',')[0].split('-')
+                    author = get_formatted_author_info(author_info)
+                    author_memo[ref_article_name] = author_info
+                else:
+                    print("Hit")
+                    author_info = author_memo[ref_article_name]
+                    author = get_formatted_author_info(author_info)
+                year = author_info[-2]
+                # author = '' if len(parts) < 10 or ":" not in parts[10] else parts[10].split(":")[1].replace("|",
+                #                                                                                             "").strip()
+                # reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
+                #                                          author, year)
+                reference,cite = ref_article, cite_article
+                d = Datum(reference, cite, Offsets(marker_offset, citation_offsets, ref_offsets), author,
                           is_test, facet, year)
                 data.append(d)
             except Exception as e:
@@ -122,6 +142,11 @@ def load_folder(folder_root):
 
     ref_article = load_article(ref_dir)
     articles[ref_name.upper()] = ref_article
+    # Hack
+    for key in articles:
+        if articles[key]:
+            articles[key] = articles[key]._replace(id=key)
+
     annotation_file = newest_file(annotation_folder)
     folder_data = load_folder_data(annotation_file, articles)
     return folder_data
@@ -138,6 +163,77 @@ def load_all(root):
     print("Annotation load fails due to random reasons", annotation_load_fail)
     print("Overall loaded ", len(dataset), " datapoints")
     return dataset
+
+
+def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets, author, year):
+    global replace_count
+    ref = copy.copy(ref_article)
+    cite = copy.copy(cite_article)
+    cite_sentence = " ".join([cite.sentences[c] for c in citation_offsets])
+    cite_sentence = re.sub(r"\D(\d{4})\D", '', cite_sentence)  # regex for removing years
+    cite_sentence = re.sub(r"\[[0-9]{1,3}\]", '', cite_sentence)  # regex for removing citation numbers
+    translation = {ord(')'): None, ord('('): None, ord('.'): None,  ord(','): None, ord('!'): 'l'}
+    cite_sentence = cite_sentence.translate(translation)
+    author_info = author.split(" ")
+    author_2 = None
+    if author_info[-1] in ["et.al.", "etal", "Etal"]:
+        author_1 = " ".join(author_info[:-1]) + " et al"
+        if len(author_info) >= 2:
+            author_2 = author_info[0] + " and " + author_info[1]
+    elif len(author_info) >= 2 and author_info[-2] not in ["And", "and"]:
+        author_1 = author_info[0] + " & " + author_info[1]
+        author_2 = author_info[0] + " and " + author_info[1]
+    else:
+        author_1 = author_info[-1]
+
+    citing_paper_text = author_1
+    old_cite_sentence = cite_sentence
+    cite_sentence = cite_sentence.replace(citing_paper_text, "##CITATION##")
+    if cite_sentence != old_cite_sentence:
+        replace_count += 1
+    elif author_2:
+        citing_paper_text = author_2
+        cite_sentence = cite_sentence.replace(citing_paper_text, "##CITATION##")
+        if cite_sentence != old_cite_sentence:
+            replace_count += 1
+        elif len(author_info) >= 2 and author_info[-2] not in ["And", "and"]:
+            author_info.sort()
+            author_1 = author_info[0] + " & " + author_info[1]
+            author_2 = author_info[0] + " and " + author_info[1]
+            citing_paper_text = author_1
+            old_cite_sentence = cite_sentence
+            cite_sentence = cite_sentence.replace(citing_paper_text, "##CITATION##")
+            if cite_sentence != old_cite_sentence:
+                replace_count += 1
+            elif author_2:
+                citing_paper_text = author_2
+                cite_sentence = cite_sentence.replace(citing_paper_text, "##CITATION##")
+                if cite_sentence != old_cite_sentence:
+                    replace_count += 1
+                else:
+                    print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
+                                                                                          old_cite_sentence, author))
+            else:
+                print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
+                                                                                      old_cite_sentence, author))
+        else:
+            print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
+    else:
+        print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
+
+    cite.sentences[citation_offsets[0]] = cite_sentence
+    if len(citation_offsets) > 1:
+        for offset in citation_offsets[1:]:
+            cite.sentences[offset] = ""
+    print("replace_count: ", replace_count)
+    return ref, cite
+
+
+def get_formatted_author_info(author_info):
+    author_details = " ".join(author_info)
+    author_info = re.sub(r"[0-9]{4}", '_', author_details).split('_')[0].split()
+    author = " ".join([x.capitalize() if x is not "and" else x for x in author_info])
+    return author
 
 
 if __name__ == "__main__":

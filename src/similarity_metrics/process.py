@@ -2,8 +2,8 @@ import nltk
 nltk.download('stopwords')
 from dataloaders.load_and_parse import load_all
 from similarity_metrics.jaccard import get_similarity_score as j
-from similarity_metrics.dice import get_similarity_score as dc
-from similarity_metrics.word2vec import get_similarity_score as w
+# from similarity_metrics.dice import get_similarity_score as dc
+# from similarity_metrics.word2vec import get_similarity_score as w
 import similarity_metrics.tfidf as t
 from similarity_metrics.word2vec import build_model
 import os.path
@@ -55,7 +55,7 @@ for data in dataset:
         similarity_score = {}
         for ref_id, ref_sentence in ref_article.sentences.items():
             try:
-                similarity_score[ref_id] = t.get_similarity_score(ref_sentence, complete_citing_sentence)
+                similarity_score[ref_id] = j(ref_sentence, complete_citing_sentence)
             except Exception as e:
                 print(e)
         if similarity_score:
