@@ -31,17 +31,22 @@ def prepare(dataset, reference_context):
         negatives = ref_article.keys() - set(positives)
         if len(negatives) < 3 or not citing_article:
             continue
+        positive_ids = []
+        for x in positives:
+            positive_ids.extend(
+                [i for i in range(max(1, x - reference_context), min(x + reference_context, len(ref_article) - 1) + 1)])
         complete_citing_sentence = " ".join([citing_article[c] for c in offsets.cite])
+        negatives = set(negatives) - set(positives)
         negatives = sorted(negatives, key=lambda x: j(ref_article[x], complete_citing_sentence), reverse=True)[:3]
         result.extend([(" ".join([ref_article[i] for i in range(max(1, x - reference_context),
-                                                                min(x + reference_context, len(ref_article)-1))]),
-                        complete_citing_sentence, 0, ref_title.strip(), ref_sections[x].strip()) for x in negatives])
+                                                                min(x + reference_context, len(ref_article)-1) + 1)]),
+                        complete_citing_sentence, 0, ref_title.strip(),
+                        ref_sections[x].strip() if any(c.isalpha() for c in ref_sections[x].strip()) else "##other##") for x in negatives])
         try:
             result.extend([(" ".join([ref_article[i] for i in range(max(1, x - reference_context),
-                                                                    min(x + reference_context, len(ref_article)-1))]),
-                            complete_citing_sentence, 1, ref_title.strip(), ref_sections[x].strip()) for x in positives])
-            # result.extend([(ref_article[max(0, x - reference_context): max(x + reference_context, len(ref_article))],
-            #                 complete_citing_sentence, 1, ref_title, ref_sections[x]) for x in positives])
+                                                                    min(x + reference_context, len(ref_article)-1) + 1)]),
+                            complete_citing_sentence, 1, ref_title.strip(),
+                            ref_sections[x].strip() if any(c.isalpha() for c in ref_sections[x].strip()) else "##other##") for x in positives])
         except:
             print("hello")
     return result
