@@ -117,9 +117,9 @@ def load_folder_data(annotation_file, articles, is_test=False):
                 year = author_info[-2]
                 # author = '' if len(parts) < 10 or ":" not in parts[10] else parts[10].split(":")[1].replace("|",
                 #                                                                                             "").strip()
-                # reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
-                #                                          author, year)
-                reference,cite = ref_article, cite_article
+                reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
+                                                         author, year)
+                # reference, cite = ref_article, cite_article
                 d = Datum(reference, cite, Offsets(marker_offset, citation_offsets, ref_offsets), author,
                           is_test, facet, year)
                 data.append(d)
@@ -169,6 +169,11 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
     global replace_count
     ref = copy.copy(ref_article)
     cite = copy.copy(cite_article)
+
+    # remove cites in ref
+    for key, sentence in ref.sentences.items():
+        ref.sentences[key] = get_cites(sentence)
+
     cite_sentence = " ".join([cite.sentences[c] for c in citation_offsets])
     cite_sentence = re.sub(r"\D(\d{4})\D", '', cite_sentence)  # regex for removing years
     cite_sentence = re.sub(r"\[[0-9]{1,3}\]", '', cite_sentence)  # regex for removing citation numbers
@@ -221,7 +226,11 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
     else:
         print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
 
+    # remove all other cites in cite
     cite.sentences[citation_offsets[0]] = cite_sentence
+    for key, sentence in cite.sentences.items():
+        cite.sentences[key] = get_cites(sentence)
+
     if len(citation_offsets) > 1:
         for offset in citation_offsets[1:]:
             cite.sentences[offset] = ""
@@ -235,6 +244,10 @@ def get_formatted_author_info(author_info):
     author = " ".join([x.capitalize() if x is not "and" else x for x in author_info])
     return author
 
+def get_cites(sentence):
+    regex = r"\(\D*\d{4}(;\D*\d{4})*\)"
+    sentence = re.sub(regex, " ", sentence)
+    return sentence
 
 if __name__ == "__main__":
     logging.basicConfig(filename='example.log', level=logging.ERROR, filemode='w')

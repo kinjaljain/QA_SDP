@@ -53,6 +53,6 @@ def prepare(dataset, reference_context):
 
 reference_context = 2
 result = prepare(dataset, reference_context)
-with open("prepared_data_with_context_title_section.json", "w") as f:
+with open("prepared_data_with_context_title_section_without_extra_cites.json", "w") as f:
     json.dump(result, f)
 
