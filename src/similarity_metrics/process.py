@@ -55,7 +55,7 @@ for data in dataset:
         similarity_score = {}
         for ref_id, ref_sentence in ref_article.sentences.items():
             try:
-                similarity_score[ref_id] = j(ref_sentence, complete_citing_sentence)
+                similarity_score[ref_id] = j(ref_sentence, complete_citing_sentence, 1)
             except Exception as e:
                 print(e)
         if similarity_score:
