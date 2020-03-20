@@ -1,5 +1,5 @@
 <PAPER>
-	<ABSTRACT>
+	<ABSTRACT></ABSTRACT>
 	<SECTION title="Introduction and related work. " number = "1">
 			<S sid ="1" ssid = "1">Sentence compression is a paraphrasing task where the goal is to generate sentences shorter than given while preserving the essential content.</S>
 			<S sid ="2" ssid = "2">A robust compression system would be useful for mobile devices as well as a module in an extractive sum- marization system (Mani, 2001).</S>

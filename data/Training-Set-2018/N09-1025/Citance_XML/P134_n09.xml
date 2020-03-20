@@ -1,5 +1,6 @@
 <PAPER>
 	<ABSTRACT>
+	</ABSTRACT>
 	<SECTION title="Initial System Development. " number = "1">
 			<S sid ="1" ssid = "1">We start with systems (Haddow and Koehn, 2012) that we developed for the 2012 Workshop on Statistical Machine Translation (CallisonBurch et al., 2012).</S>
 			<S sid ="2" ssid = "2">The notable features of these systems are: • Moses phrase-based models with mostly de­ fault settings • training on all available parallel data, includ­ ing the large UN parallel data, the French­ English 109 parallel data and the LDC Giga­ worddata • very large tuning set consisting of the test sets from 20082010, with a total of 7,567 sen­ tences per language • GermanEnglish with syntactic pre­ reordering (Collins et al., 2005), compound splitting (Koehn and Knight, 2003) and use of factored representation for a POS target sequence model (Koehn and Hoang, 2007) • EnglishGerman with morphological target sequence model Note that while our final 2012 systems in­ cluded subsarnpling of training data with modified MooreLewis filtering (Axelrod et al., 2011), we did not use such filtering at the slatting point of our development.</S>

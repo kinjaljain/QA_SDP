@@ -50,7 +50,7 @@ def load_article(filename):
             sentence_elements = list(xml.getroot().iter('S'))
             sentence_elements = [(x.text,
                                   parent_map[x].attrib['title'] if len(parent_map[x].attrib) > 0 else parent_map[x].tag,
-                                  int(x.attrib['sid']) if 'sid' in x.attrib else 99)
+                                  int(x.attrib['sid']) if 'sid' in x.attrib and x.attrib['sid'].isdigit() else 9999)
                                  for x in
                                  sentence_elements]
             # TODO: Check if this is too memory inefficient. Should mostly be okay
@@ -215,16 +215,16 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
                 cite_sentence = cite_sentence.replace(citing_paper_text, "##CITATION##")
                 if cite_sentence != old_cite_sentence:
                     replace_count += 1
-                else:
-                    print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
-                                                                                          old_cite_sentence, author))
-            else:
-                print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
-                                                                                      old_cite_sentence, author))
-        else:
-            print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
-    else:
-        print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
+    #             else:
+    #                 print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
+    #                                                                                       old_cite_sentence, author))
+    #         else:
+    #             print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
+    #                                                                                   old_cite_sentence, author))
+    #     else:
+    #         print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
+    # else:
+    #     print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
 
     # remove all other cites in cite
     cite.sentences[citation_offsets[0]] = cite_sentence
@@ -244,10 +244,12 @@ def get_formatted_author_info(author_info):
     author = " ".join([x.capitalize() if x is not "and" else x for x in author_info])
     return author
 
+
 def get_cites(sentence):
     regex = r"\(\D*\d{4}(;\D*\d{4})*\)"
     sentence = re.sub(regex, " ", sentence)
     return sentence
+
 
 if __name__ == "__main__":
     logging.basicConfig(filename='example.log', level=logging.ERROR, filemode='w')

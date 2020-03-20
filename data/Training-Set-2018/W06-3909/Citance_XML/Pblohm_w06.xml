@@ -129,7 +129,6 @@
 			<S sid ="117" ssid = "5">Focusing on pattern evaluation we demonstrated the impact of different evaluation strategies on extraction quality.</S>
 			<S sid ="118" ssid = "6">At the workshop we will be able to present evaluation results that have higher statistical validity and cover a larger number of relations as a fully automatic evaluation system is currently under development.</S>
 			<S sid ="119" ssid = "7">The results will probably allow to identify features of evaluation functions that are crucial for the success of the extraction.</S>
-	</SECTION>
 			<S sid ="120" ssid = "8">1.</S>
 			<S sid ="121" ssid = "9">M. A. Hearst, “Automatic acquisition of hyponyms from large text corpora,” in Proceedings of the 14th conference on Computational linguistics.</S>
 			<S sid ="122" ssid = "10">Morristown, NJ, USA: Association for Computational Linguistics, 1992, pp.</S>
@@ -154,4 +153,5 @@
 			<S sid ="141" ssid = "29">18–25.</S>
 	</SECTION>
 	<SECTION title="Acknowledgements">
+	</SECTION>
 </PAPER>

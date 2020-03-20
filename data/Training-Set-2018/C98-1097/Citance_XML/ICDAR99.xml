@@ -172,7 +172,6 @@
 			<S sid ="162" ssid = "106">Web-based CNN news summaries, for instance, include the section headers “World News” and “U.S. News.” These headers indicate the start of a new section and hence the beginning of a news story; they could be used to cue segment boundaries.</S>
 			<S sid ="163" ssid = "107">However, such cues are likely to be document specific.</S>
 			<S sid ="164" ssid = "108">A set of boundary cues would have to be identified for every document type processed by the segmenter.</S>
-	</SECTION>
 			<S sid ="165" ssid = "109">1.</S>
 			<S sid ="166" ssid = "110">M.A. Hearst (1994) Multi-paragraph segmentation of expository texts, Report No.</S>
 			<S sid ="167" ssid = "111">UCB/CSD 94/790, University of California, Berkeley 2.</S>
@@ -211,4 +210,5 @@
 			<S sid ="184" ssid = "2">7683</S>
 	</SECTION>
 	<SECTION title="A.C. Jobbins and L.J. Evett (1995) Automatic identification " number = "13">
+	</SECTION>
 </PAPER>

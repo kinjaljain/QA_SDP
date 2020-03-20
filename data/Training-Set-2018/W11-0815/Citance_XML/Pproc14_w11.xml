@@ -1,5 +1,6 @@
 <PAPER>
 	<ABSTRACT>
+	</ABSTRACT>
 	<SECTION title="Compositionality of MWEs. " number = "1">
 			<S sid ="1" ssid = "1">Multiword expressions (hereafter MWEs) are combinations of words which are lexically, syntac­ tically, semantically or statistically idiosyncratic (Sag et al., 2002; Baldwin and Kim, 2009).</S>
 			<S sid ="2" ssid = "2">Much research has been carried out on the extraction and identification of MWEs1 in English (Schone and Jurafsky, 2001; Pecina, 2008; Fazly et al., 2009) and other languages (Dias, 2003; Evert and Krenn, 2005; Salehi et al., 2012).</S>

@@ -1,5 +1,6 @@
 <PAPER>
 	<ABSTRACT>
+	</ABSTRACT>
 	<SECTION title="Compositionality of MWEs. " number = "1">
 			<S sid ="1" ssid = "1">A multiword expression (MWE) is any combination of words with lexical, syntactic or semantic idiosyncrasy (Sag et al., 2002; Baldwin and Kim, 2009), in that the properties of the MWE are not predictable from the component words.</S>
 			<S sid ="2" ssid = "2">For example, with ad hoc, the fact that neither ad nor hoc are standalone English words, makes ad hoc a lexically- idiosyncratic MWE; with shoot the breeze, on the other hand, we have semantic idiosyncrasy, as the meaning of “to chat” in usages such as It was good to shoot the breeze with you1 cannot be predicted from the meanings of the component words shoot and breeze.</S>

@@ -333,7 +333,6 @@
 			<S sid ="323" ssid = "147">On the other hand, we have achieved a 75% level of correctness by applying the Entropy Method.</S>
 			<S sid ="324" ssid = "148">Several advantages of the Successor Variety Algorithm can be observed; the most important one is the ability to find a stem without the need to use a dictionary.</S>
 			<S sid ="325" ssid = "149">Another advantage is that it can be used in several domains; it is basically (domain independent).</S>
-	</SECTION>
 			<S sid ="326" ssid = "150">1.</S>
 			<S sid ="327" ssid = "151">Frakes, W., 1992.</S>
 			<S sid ="328" ssid = "152">Stemming Techniques.</S>
@@ -422,4 +421,5 @@
 			<S sid ="381" ssid = "4">Manage., 36: 809840.</S>
 	</SECTION>
 	<SECTION title="Harman,  D., 1991.   How  effective is  suffixing?  J.. " number = "20">
+	</SECTION>
 </PAPER>
