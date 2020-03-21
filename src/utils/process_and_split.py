@@ -16,7 +16,7 @@ def split_citing_sentence(sentence_ids, sentences):
     for id in sentence_ids:
         sentence = sentences[id]
         if len(sentence) > 10:
-            # conjuctions = re.compile('\sand\s|\sor\s|\sbut\s|\showever\s|\sif\s|\swhile\s|\salthough\s')
+            # conjuctions = re.compile('\sbut\s|\showever\s|\sif\s|\swhile\s|\salthough\s|,|;|\s\s+')
             # conjuctions = re.compile('\sand\s|\sor\s')
             conjuctions = re.compile(',|;|\s\s+')
             s = conjuctions.split(sentence)
@@ -93,15 +93,15 @@ for data in pbar:
 
     if citing_article.sentences:
 
-        new_ids = [c for c in citing_sentence_ids]
-        for c in citing_sentence_ids:
-            # If additional context is reqd
-            to_add = 0
-            extra = range(max(1, c - to_add), c)
-            new_ids.extend(extra)
-            extra = range(c + 1, min(len(citing_article.sentences), c + to_add + 1))
-            new_ids.extend(extra)
-        citing_sentence_ids = new_ids
+        # new_ids = [c for c in citing_sentence_ids]
+        # for c in citing_sentence_ids:
+        #     # If additional context is reqd
+        #     to_add = 0
+        #     extra = range(max(1, c - to_add), c)
+        #     new_ids.extend(extra)
+        #     extra = range(c + 1, min(len(citing_article.sentences), c + to_add + 1))
+        #     new_ids.extend(extra)
+        # citing_sentence_ids = new_ids
 
         # joining the entire set of citing sentences into one big sentence
         complete_citing_sentence = " ".join([citing_article.sentences[c] for c in citing_sentence_ids])
@@ -125,21 +125,22 @@ for data in pbar:
 
             top_n = {}
             current_ids = {key: -1 for key in similarity_score.keys()}
-            while len(top_n) < 20:
+            while len(top_n) < 5:
                 find_next(similarity_score, current_ids)
 
             top_n = sorted(top_n.items(), key=lambda item: -item[1])
-            for i in range(len(top_n)):
-                print(ref_article.sentences[top_n[i][0]])
-            print("\n")
-            for x in true_ref_sentence_ids:
-                print(ref_article.sentences[x])
-            print("\n\n")
+            # for i in range(len(top_n)):
+            #     print(ref_article.sentences[top_n[i][0]])
+            # print("\n")
+            # for x in true_ref_sentence_ids:
+            #     print(ref_article.sentences[x])
+            # print("\n\n")
             fp += len(top_n)
+            top_n_ids = {x[0]: x[1] for x in top_n}
             for x in true_ref_sentence_ids:
-                if x in top_n:
-                    avg_score = (tp * avg_score + top_n[x]) / (max(tp, 1))
-                    all_scores.append(top_n[x])
+                if x in top_n_ids:
+                    avg_score = (tp * avg_score + top_n_ids[x]) / (max(tp, 1))
+                    all_scores.append(top_n_ids[x])
                     fp -= 1
                     tp += 1
                 else:
