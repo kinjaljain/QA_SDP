@@ -1,0 +1,523 @@
+While possible to utilize the feature-based log-linear approach described in Berg-Kirkpatrick et al.
+Mo del Hy per par am . E n g li s h1 1 m-1 D a n i s h1 1 m-1 D u t c h1 1 m-1 G er m a n1 1 m-1 Por tug ues e1 1 m-1 S p a ni s h1 1 m-1 S w e di s h1 1 m-1 1T W be st me dia n 45.
+2 62.6 45.
+1 61.7 37.
+2 56.2 32.
+1 53.8 47.
+4 53.7 43.
+9 61.0 44.
+2 62.2 39.
+3 68.4 49.
+0 68.4 48.
+5 68.1 34.
+3 54.4 33.
+36.
+0 55.3 34.
+9 50.2 +P RI OR be st me dia n 47.
+9 65.5 46.
+5 64.7 42.
+3 58.3 40.
+0 57.3 51.
+4 65.9 48.
+3 60.7 50.
+41.
+7 68.3 56.
+2 70.7 52.
+0 70.9 42.
+37.
+1 55.8 38.
+36.
+8 57.3 +F EA TS be st me dia n 50.
+9 66.4 47.
+8 66.4 52.
+1 61.2 43.
+2 60.7 56.
+4 69.0 51.
+5 67.3 55.
+4 70.4 46.
+2 61.7 64.
+1 74.5 56.
+5 70.1 58.
+3 68.9 50.
+0 57.2 43.
+3 61.7 38.
+For each language and setting, we report one-to-one (11) and many- to-one (m-1) accuracies.
+5.2 Setup.
+Comparison with state-of-the-art taggers For comparison we consider two unsupervised tag- gers: the HMM with log-linear features of Berg- Kirkpatrick et al.
+  and the posterior regular- ization HMM of Grac¸a et al.
+The system of Berg-Kirkpatrick et al.
+We consider two variants of Berg-Kirkpatrick et al.
+While Berg-Kirkpatrick et al.
+We can only compare with Grac¸a et al.
+  on Portuguese (Grac¸a et al.
+2.1 Clustering.
+Another 3,123 headlines remain unclustered.
+This approach significantly outperforms the multi-class perceptron on the same dataset based on WORDNET 1.6 and 1.7.1.
+Ciaramita and Johnson   call the noun lex-file classes supersenses.
+Ciaramita   has produced a mini- WORDNET by manually reducing the WORDNET hierarchy to 106 broad categories.
+Ciaramita et al.
+This inconsis L min(wgt(w1 , ∗r , ∗wI ), wgt(w2 , ∗r , ∗wI )) L max(wgt(w1 , ∗r , ∗wI ), wgt(w2 , ∗r , ∗wI )) (1) tency is problematic when using morphological analysis to smooth vector-space models.
+Qc 2007 Association for Computational Linguistics potheses in  .
+3.1 Discussion.
+BiTAM: Bilingual Topic AdMixture Models forWord Alignment
+This include knowledge-based   and interlingua-based   approaches.
+2.1 Baseline: IBM Model-1.
+For each sentence-pair (fn , en ) in the dtth doc-pair ,.
+3.2 BiTAM2: Monolingual Admixture.
+4.1 Variational Approximation.
+3.3 BiTAM3: Word-level Admixture.
+(13) As in Eqn.
+#S ent . #T ok en s En gli sh Ch ine se Tr ee b a n k F B IS . B J Si n or a m a Xi nH ua 31 6 6,1 11 2,3 73 19, 14 0 41 72 10 5K 10 3K 11 5K 13 3K 4.1 8M 3.8 1M 3.8 5M 10 5K 3.5 4M 3.6 0M 3.9 3M Tes t 95 62 7 25, 50 0 19, 72 6 We have two training data settings with different sizes (see Table 1).
+The small one consists of 316 document-pairs from Tree- bank (LDC2002E17).
+There are 27,940 document-pairs, containing 327K sentence-pairs or 12 million (12M) English tokens and 11M Chinese tokens.
+To evaluate word alignment, we hand-labeled 627 sentence-pairs from 95 document-pairs sampled from TIDES’01 dryrun data.
+It contains 14,769 alignment-links.
+To pics Le xic ons To pic1 To pic2 To pic3 Co oc.
+06 12 0.
+21 38 0.
+22 54 3 8 0.2 19 8 0.2 15 7 0.2 10 4 p( Ha nG uo (li!
+83 79 0.
+61 16 0.
+5.2 Variational Inference.
+EM Iterations 41 40 39 38 37 36 35 BiTam−1, Topic #=3 34 BiTam−1, Topic #=2.
+5.3 Topic-Specific Translation.
+Inter takes the intersection of the two directions and generates high-precision alignments; the SE T TI N G IBM 1 H M M IBM 4 B I T A M 1 U D A BDA B I T A M 2 U D A BDA B I T A M 3 U D A BDA C E ( % ) E C ( % ) 36 .2 7 32 .9 4 43 .0 0 44 .2 6 45 .0 0 45 .9 6 40 .13 48.26 36 .52 46.61 40 .26 48.63 37 .35 46.30 40 .47 49.02 37 .54 46.62 R E FI N E D ( % ) U N I O N ( % ) IN TE R (% ) 41 .7 1 32 .1 8 39 .8 6 44 .4 0 42 .9 4 44 .8 7 48 .4 2 43 .7 5 48 .6 5 45 .06 49.02 35 .87 48.66 43 .65 43.85 47 .20 47.61 36 .07 48.99 44 .91 45.18 47 .46 48.18 36 .26 49.35 45 .13 45.48 N I S T B L E U 6.
+93 7 6.954 17 .93 18.14 6.
+90 4 6.976 18 .13 18.05 6.
+5.5 Boosting BiTAM Models.
+For the small-data track, the baseline Bleu scores for IBM1, HMM and IBM4 are 15.70, 17.70 and 18.25, respectively.
+ing IBM4 as the seed lexicon, outperform the Refined IBM4: from 23.18 to 24.07 on Bleu score, and from 7.83 to 8.23 on NIST.
+In  , we introducedthe LexRank method and successfully applied it togeneric, multi-document summarization.
+3.1 The LexRank method.
+0 0.28454242157110576 Officials said the plane was carryin...
+3 0.28454242157110576 Rescue officials said that at least th...
+3.4 Experiments with topic-sensitive LexRank.
+4.1 Corpus.
+5.1 Development/testing phase.
+3.1.
+3.2.
+For example: “Because/IN HF/NNP is/VBZ a/DT weak/JJ acid/NN and/CC x is/VBZ a/DT y” is generalized as: “Because/IN TR is/VBZ a/DT TR and/CC x is/VBZ a/DT y” All substrings linking terms x and y are then extracted from the set SGx,y, and overall frequencies are computed.
+3.4.
+3.5.
+4.1.
+4.1.1.
+4.1.2.
+4.1.3.
+4.2.
+SYSTEM INSTANCES PRECISION* REL RECALL† RH02 197 57.5% 0.80 ESP 196 72.5% 1.00 * Precision estimated from 20 randomly sampled instances.
+4.3.
+VBD she added VP PUNC “ SBAR IN NP 0 NN.
+3.2 Inter-annotator Agreement.
+Maamouri et al.
+As a result, Habash et al.
+The 95% confidence intervals for type-level errors are (5580, 9440) for the ATB and (1400, 4610) for the WSJ.
+markBaseNP indicates these non-recursive nominal phrases.
+), and thosethat begin with a verb (� ub..i �u _..
+In MSA, SVO usually appears in non-matrix clauses.
+able at http://nlp.stanford.edu/projects/arabic.shtml.
+6. 3) all G o l d P O S 7 0 0.7 91 0.825 358 0.7 73 0.818 358 0.8 02 0.836 452 80.
+37 79.
+36 79.
+86 78.
+92 77.
+72 78.
+32 81.
+07 80.
+27 80.
+67 95.
+58 95.
+49 99.
+92 76.
+00 76.
+95 76.
+96 75.
+01 75.
+97 78.
+35 76.
+72 77.
+52 77.
+31 75.
+64 76.
+47 78.
+83 77.
+18 77.
+99 94.
+64 94.
+63 95.
+68 95.
+68 96.
+40 75.
+30 75.
+85 82.
+32 81.
+63 81.
+97 81.
+43 80.
+73 81.
+08 84.
+37 84.
+21 84.
+29 — 95.
+07 95.
+02 99.
+Maamouri et al.
+F1 85 Berkeley 80 Stanford.
+We use the log-linear tagger of Toutanova et al.
+5.2 Discussion.
+pre-processing.
+Mikheev et al.
+On the MUC6 data, Bikel et al.
+We have used the Java-based opennlp maximum entropy package1.
+However, 1 http://maxent.sourceforge.net 3.2 Testing.
+ICOC and CSPP contributed the greatest im provements.
+IdentiFinder ' 99' s results are considerably better than IdentiFinder ' 97' s. IdentiFinder' s performance in MUC7 is published in  .
+Bikel et al.
+Mikheev et al.
+Finite-State Non-Concatenative Morphotactics
+2.2 Morphotactics and Alternations.
+gle one using the crossproduct operation.
+3.1 Reduplication.
+3.2 Semitic Stem Interdigitation.
+versial issue.
+7 http://www.x rce.xerox.com /research/mlt t/arabic/ morphotactic problems we have discussed.
+That is, we redefine L as "^[" "[" L XX "]" "^" 2 "^]", and apply the compile-replace operation.
+Two current approaches to English verb classi­ fications are WordNet   and Levin classes  .
+2.1 Ambiguities in Levin classes.
+, Cn} of se-.
+3.1 Using intersective Levin classes to.
+Nora pushed at/against the package..
+Thus they cannot take the conative al­ ternation.
+3.2 Comparisons to WordNet.
+Derivar is usually said as "estar a deriva" ("to be adrift"), showing its non-controllable action more explic­ itly.
+We selected the slide/roll/run, meander/roll and roll/run intersective classes.
+cor e£.
+inv ers.
+Calzolari et al.
+3.2 Multiword Expression as Single Terms.
+<TERM ID="GH950102000000-126" LEMA="underworld" POS="NN"> <WF>underworld</WF> <SYNSET SCORE="0.5" CODE="06120171-n"/> <SYNSET SCORE="0.5" CODE="06327598-n"/> </TERM> Original Topic: - What was the role of the Hubble telescope in proving the existence of black holes?
+The 12,782 bi tionary, called D5.
+The linguist selection of MWEs formed D7 with 178 bigrams.
+D1.
+Best CN (BCN) - with 7,500 MWEs of D2..
+D5.
+Manual 1 (M1) - with 254 MWEs of D6..
+Manual 2 (M2) - with 178 MWEs of D7..
+The indices CN and BCN had a similar result, and knowing that a dictionary used to create BCN is a subset of the dictionary CN, we can conclude that the gain values, choosing the best MWE candidates, <TERM ID="GH950102000000-126" LEMA="underworld" POS="NN"> <WF>underworld</WF> <SYNSET SCORE="0.5" CODE="06120171-n"/> <SYNSET SCORE="0.5" CODE="06327598-n"/> </TERM> Original Topic: - What was the role of the Hubble telescope in proving the existence of black holes?
+47 09 00 P 2 G H9 50 823 00 01 05 0.
+45 99 94 P 3 G H9 51 120 00 01 82 0.
+43 95 36 P 4 G H9 50 610 00 01 64 0.
+43 07 84 P 5 G H9 50 614 00 01 22 0.
+42 87 66 P 6 L A 09 18 94 04 25 0.
+42 84 29 P 7 G H9 50 829 00 00 82 0.
+42 29 41 P 8 G H9 50 220 00 01 62 0.
+41 19 68 P 9 G H9 50 318 00 01 31 0.
+40 60 06 P 1 0 G H9 50 829 00 00 37 0.
+45 79 50 P 2 G H9 50 614 00 01 22 0.
+43 67 53 P 3 G H9 50 823 00 01 05 0.
+42 39 38 P 4 L A 04 30 94 02 30 0.
+42 17 57 P 5 G H9 51 120 00 01 82 0.
+40 01 23 P 6 G H9 50 829 00 00 82 0.
+39 31 95 P 7 L A 09 18 94 04 25 0.
+38 66 13 P 8 G H9 50 705 00 01 00 0.
+38 41 16 P 9 G H9 50 220 00 01 62 0.
+38 21 57 P 1 0 G H9 50 318 00 01 31 0.
+ Speech Technology and Research Laboratory, SRI International, 333 Ravenswood Ave., Menlo Park, CA 94025, 1650-8592544.
+Email: stolcke@speech.sri.com.
+Tag STATEMENT BACKCHANNEL/ACKNOWLEDGE OPINION ABANDONED/UNINTERPRETABLE AGREEMENT/ACCEPT APPRECIATION YEs-No-QUESTION NONVERBAL YES ANSWERS CONVENTIONAL-CLOSING WH-QUESTION NO ANSWERS RESPONSE ACKNOWLEDGMENT HEDGE DECLARATIVE YES-No-QuESTION OTHER BACKCHANNEL-QUESTION QUOTATION SUMMARIZE/REFORMULATE AFFIRMATIVE NON-YES ANSWERS ACTION-DIRECTIVE COLLABORATIVE COMPLETION REPEAT-PHRASE OPEN-QUESTION RHETORICAL-QUESTIONS HOLD BEFORE ANSWER/AGREEMENT REJECT NEGATIVE NON-NO ANSWERS SIGNAL-NON-UNDERSTANDING OTHER ANSWERS CONVENTIONAL-OPENING OR-CLAUSE DISPREFERRED ANSWERS 3RD-PARTY-TALK OFFERS, OPTIONS ~ COMMITS SELF-TALK D OWNPLAYER MAYBE/AcCEPT-PART TAG-QUESTION DECLARATIVE WH-QUESTION APOLOGY THANKING Example % Me, I'm in the legal department.
+36% Uh-huh.
+.1% I'I1 have to check that out .1% What's the word I'm looking for .1% That's all right.
+Backchannels.
+We use Ui for the ith DA label in the sequence U, i.e., U = (U1 .....
+Decomposability of the likelihood means that P(EIU) = P(E11 U1).....
+Discourse Grammar P(U) P(U, T) P(UIT ) None 42 84 42 Unigram 11.0 18.5 9.0 Bigram 7.9 10.4 5.1 Trigram 7.5 9.8 4.8 4.1 N-gram Discourse Models A computationally convenient type of discourse grammar is an n-gram model based on DA tags, as it allows efficient decoding in the HMM framework.
+For example, 92.4% of the uh-huh's occur in BACKCHANNELS,and 88.4% of the trigrams "<start> do you" occur in YES-NO-QUESTIONS.
+Table 2..
+A1 T wl Ai T wi An w. <start> ~ T U1 ~ ....
+Discourse Grammar True Recognized Relative Error Increase None 54.3 42.8 25.2% Unigram 68.2 61.8 20.1% Bigram 70.6 64.3 21.4% Trigram 71.0 64.8 21.4% 5.1.3 Results.
+5.2.1 Prosodic Features.
+~ 23.403 an utt < 0.3"/~U >= 0.3"/17 ~ Figure 3 Decision tree for the classification of BACKCHANNELS (B) and AGREEMENTS (A).
+5.2.2 Prosodic Decision Trees.
+Discourse Grammar Accuracy (%) Prosody Recognizer Combined None 38.9 42.8 56.5 Unigram 48.3 61.8 62.4 Bigram 49.7 64.3 65.0 Table 10 Accuracy (in %) for individual and combined models for two subtasks, using uniform priors (chance = 50%).
+Classification Task True Words Recognized Words Knowledge Source QUESTIONS/STATEMENTS prosody only 76.0 76.0 words only 85.9 75.4 words+prosody 87.6 79.8 AGREEMENTS / BACKCHANNELS prosody only 72.9 72.9 words only 81.0 78.2 words+prosody 84.7 81.7 5.3.1 Results.
+Model WER (%) Perplexity Baseline 41.2 76.8 1-best LM 41.0 69.3 Mixture-of-posteriors 41.0 n/a Mixture-of-LMs 40.9 66.9 Oracle LM 40.3 66.8 We see that the second equation reduces to the first under the crude approximation P(Ai] Ui) ~ P(Ai).
+the DA-specific LMs.
+A number of the DA m6deling algorithms described below were developed for VERBMOBIL, including those of Mast et al.  , Warnke et al.  , Reithinger et al.  , Reithinger and Klesen  , and Samuel, Carberry, and VijayShanker  .
+Researchers using this corpus include Nagata  , Nagata and Morimoto (1993, 1994), and Kita et al.  .
+VERBMOBIL.
+These 18 high-level DAs used in VERBMOBIL1 are abstracted over a total of 43 more specific DAs; most experiments on VERBMOBIL DAs use the set of 18 rather than 43.
+Examples are from Jekat et al.  .
+The 12 DAs or "move types" used in Map Task.
+Warnke et al.   and Ohler, Harbeck, and Niemann   use related discriminative training algorithms for language models.
+edu/ling/jurafsky/ws97/.
+(8~fl)ea ~(B --~/3) = ~=lf(B --~/3;cai) (3) c~ s.t. H <B-~)e~ ~i=lf(B ---+o4cai) The maximum-likelihood estimator is the natural, "relative frequency," estimator.
+1973.
+1977.
+277
+2.1 Combinatory Categorial Grammar.
+Underspecified DRSs (DRSs + merge + alfa).
+3.1 Preprocessing.
+3.3 Resolution.
+The conditional got correctly anal- ysed.
+Correct pred icate argument structure overall.
+Das ART.Def.Nom.Sg.Neut zu PART.Zu versteuernde ADJA.Pos.Nom.Sg.Neut Einkommen N.Reg.Nom.Sg.Neut p(tN , wN ) = n 1 1 i=1 p(ti|ti−1 ) i−k p(wi|ti) le .
+Qc 2008.
+Licensed under the Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported license (http://creativecommons.org/licenses/by-nc-sa/3.0/).
+This problem 2:N.Reg p=0.999 0:N.Name 0:N.Name yes no p=0.571 p=0.938 yes no p=0.948 p=0.998 .... is solved by renormalizing the probabilities.
+The entropy of D is −2/3 log22/3 − 1/3 log21/3 = 0.92, the entropy of D1 is −1/2 log21/2−1/2 log21/2 = 1, and the entropy of D2 is −6/7 log26/7 − 1/7 log21/7 = 0.59.
+The resulting score is 75 ∗ 0.11 = 8.25.
+The accuracy of a baseline tagger which chooses the most probable tag9 ignoring the context is 67.3% without and 69.4% with the supple 92.3 92.2 92.1 92 91.9 91.8 91.7 91.6 91.5 91.4 2 3 4 5 6 7 8 9 10 mentary lexicon.
+Ferri et al.
+89.53% for our tagger and 88.88% for the TnT tag- ger.
+Spoustov et al.
+ble of pinyin, api is the ith sylla li is the English letter sequence estimation.
+5.1 Resources.
+5.4 Evaluation.
+Prec.
+Our method is not able to find 43 (329 + 205) × 4499 = 362words in all 12 pe these translations.
+A Stochastic Finite-State Word-Segmentation Algorithm for Chinese
+Email: rlls@bell-labs.
+Email: cls@bell-labs.
+att.
+Personal names such as 00, 3R; zhoulenl-lai2 'Zhou Enlai.'
+(See Sproat and Shih 1995.)
+Nonstochastic lexical-knowledge-based approaches have been much more numer­ ous.
+(1991}, Gu and Mao  , and Nie, Jin, and Hannan  .
+nan2gual 'pumpkin.'
+yu2 'fish.'
+I • JAPANS :rl4 .·········"\)··········"o·'·······"\:J········· ·········'\; . '.:: ..........0 6.51 9.51 : jj / JAPANESE OCTOPUS 10·28i£ :_nc HOW SAY f B :rl4 :il: :wen2 t '- • :zhang!
+7.96 5.55 1 l...................................................................................................................................................................................................J..
+na me =>1 ha nzi fa mi ly 2 ha nzi gi ve n 3.
+na me =>1 ha nzi fa mi ly 1 ha nzi gi ve n 4.
+na me =>2 ha nzi fa mi ly 2 ha nzi gi ve n 5.
+98 15.
+52 15.
+76 16.
+25 16.
+30 16.
+For instance, the common "suffixes," -nia (e.g.,.
+ni2ya3 and @5:2 xilya3, respectively.
+The method being described-henceforth ST..
+Jud ges A G G R ST M 1 M 2 M 3 T1 T2 T3 AG 0.7 0 0.7 0 0 . 4 3 0.4 2 0.6 0 0.6 0 0.6 2 0.5 9 GR 0.9 9 0 . 6 2 0.6 4 0.7 9 0.8 2 0.8 1 0.7 2 ST 0 . 6 4 0.6 7 0.8 0 0.8 4 0.8 2 0.7 4 M1 0.7 7 0.6 9 0.7 1 0.6 9 0.7 0 M2 0.7 2 0.7 3 0.7 1 0.7 0 M3 0.8 9 0.8 7 0.8 0 T1 0.8 8 0.8 2 T2 0.7 8 respectively, the recall and precision.
+i..f,..
+Word type N % Dic tion ary entr ies 2 , 5 4 3 9 7 . 4 7 Mor pho logi call y deri ved wor ds 3 0 . 1 1 Fore ign tran slite rati ons 9 0 . 3 4 Per son al na mes 5 4 2 . 0 7 cases.
+Proper-Name Identification.
+tai2du2 'Taiwan Independence.'
+Our System Wang, Li, and Chang a. 1\!f!IP Eflltii /1\!f!J:P $1til I b. agm: I a m: c. 5 Bf is Bf 1 d. "*:t: w _t ff 1 "* :t: w_tff 1 g., , Transliteration/Translation chen2zhongl-shenl qu3 'music by Chen Zhongshen ' huang2rong2 youlyoul de dao4 'Huang Rong said soberly' zhangl qun2 Zhang Qun xian4zhang3 you2qingl shang4ren2 hou4 'after the county president You Qing had assumed the position' lin2 quan2 'Lin Quan' wang2jian4 'Wang Jian' oulyang2-ke4 'Ouyang Ke' yinl qi2 bu4 ke2neng2 rong2xu3 tai2du2 er2 'because it cannot permit Taiwan Independence so' silfa3-yuan4zhang3 lin2yang2-gang3 'president of the Judicial Yuan, Lin Yanggang' lin2zhangl-hu2 jiangl zuo4 xian4chang3 jie3shuol 'Lin Zhanghu will give an ex­ planation live' jin4/iang3 nian2 nei4 sa3 xia4 de jinlqian2 hui4 ting2zhi3 'in two years the distributed money will stop' gaoltangl da4chi2 ye1zi0 fen3 'chicken stock, a tablespoon of coconut flakes' you2qingl ru4zhu3 xian4fu3 lwu4 'after You Qing headed the county government' Table 5 Performance on morphological analysis.
+lla/llb and 14a/14b respectively).
+(a) I f f fi * fi :1 }'l ij 1§: {1M m m s h e n 3 m e 0 shi2 ho u4 wo 3 cai2 ne ng 2 ke4 fu 2 zh e4 ge 4 ku n4 w h a t ti m e I just be abl e ov er co m e thi s C L dif fic 'When will I be able to overcome this difficulty?'
+JI!
+gaolxing4 'happy'=> F.i'JF.i'JJI!JI!
+We further thank Dr. J.-S.
+It achieves 52.8 F- measure on the 24 ACE relation subtypes.
+Tree kernel-based approaches proposed by Zelenko et al   and Culotta et al   are able to explore the implicit feature space without much feature engineering.
+In this paper, we use the binary-class SVMLight2 deleveloped by Joachims  .
+For details about SVMLight, please see http://svmlight.joachims.org/
+4.1 Words.
+Therefore, they are HM12+M1>M2; 4) HM12+M1<M2.
+It increases the precision/recall/F-measure by 4.1%/5.6%/ 5.2 respectively.
+8 66 .7 74 .7 77 .2 60 .7 68 .0 6 3.
+5 55 .5 Ka mb hat la (20 04) :fe ature bas ed 6 3.
+2 52 .8 Cu lott a et al (20 04) :tre e ker nel 8 1.
+In Dietterich T.G., Becker S. and Ghahramani Z. editors.
+Culotta A. and Sorensen J.
+Various kinds of grammatical formalisms without t,ranstormation were proposed from the late 1970s I;hrough the 1980s l(]azder eL al 85, l(aplan and Bresnan 82, Kay 1~5, Pollm'd and Sag 871.
+affiliation: Infi)rmation Science Research 1,aboratory, NTT Basic Research i.aboratories.
+lh'esenl, address: 9 11, Midori cho 3-theme, Musashinoshi, Tokyo 180, Japan.
+Several FS unificatioa methods were proposed in IKarttunen 86, l'ereira 85, Wroblewski 871.
+In Kasper's disjunctive feature description unification [Kasper 861, such cases occur very h'equently in unifying definite and disjunct's definite parts.
+Lis~ ust I I I I NonEmpty Emply I I i I Sign Sign I I/ / List List 5/ /5 ....
+TypeSym bol/~ feo~.,o/ I TypeSymboll ~ [.
+IF Eq?(nodel, node2) THEN Return(node1).
+ELSE outnode = GetOutNode(nodel, node2, meet).
+FOR ALL (sharedt, shared2) IN (sharedsl, shareds2) DO arcnode = Unify(sharedl.value, shared2.value).
+ELSE AddArc(outnode, sharedl.label, arcnode).
+ENDIF IF Eq?(outnode, node1) THEN coi'nplements = complement2.
+ENDIF FORALL complement IN complements DO newnode = CopyNode(complement.value).
+node.copy = newnode.
+FOR ALL arc IN node.arcs DO IF NotNIL?(newarc = FindArc(arc.label, newarcs)) THEN AddArc(newnode, newarc.label, newarc.value}.
+ELSE AddArc(newnode, arc.label, arc.value).
+ENDIF Returo(newnode).
+ENDIF ENDPROCEDURE CopyArcs PROCEDURE AlcsCopied(node) newarcs = O- FOR ALL arc IN node.arcs DO newnode = CopyNode(arc.value, arc, node).
+IF NotNIL?(newnode) THEN newarc = CreateArc(arc.label, newnode).
+ENDIF Return(newarcs).
+By these techniques we achieved higher F-scores in CITYU, PKU and MSR corpora than the best results from Sighan Bakeoff 2005.
+2.1 Subword-based IOB tagging using CRFs.
+There are several steps to train a subword-based IOB tag- ger.
+The types of unigram features used in our experiments included the following types: w0 , w−1 , w1 , w−2 , w2 , w0 w−1 , w0 w1 , w−1 w1 , w−2 w−1 , w2 w0 where w stands for word.
+2.2 Confidence-dependent word segmentation.
+Tri- gram LMs were generated using the SRI LM toolkit for disambiguation.
+R P FR oo vR iv A S 0.9 51 0.9 53 0.9 42 0.9 40 0.9 47 0.9 47 0.
+64 7 0.9 64 0.9 67 CI TY U 0.9 39 0.9 50 0.9 43 0.9 42 0.9 41 0.9 46 0.
+73 6 0.9 58 0.9 67 P K U 0.9 40 0.9 43 0.9 50 0.9 46 0.9 45 0.9 45 0.
+75 4 0.9 49 0.9 55 M S R 0.9 57 0.9 65 0.9 60 0.9 63 0.9 59 0.9 64 0.
+We found that the proposed subword-based approaches were effective in CITYU and MSR corpora, raising the F-scores from 0.941 to 0.946 for CITYU corpus, 0.959 to 0.964 for MSR corpus.
+The act of confidence measure made a tradeoff between R-ivs and R- oovs, yielding higher R-oovs than Table 1 and higher R R P FR oo vR iv A S 0.9 53 0.9 56 0.9 44 0.9 47 0.9 48 0.9 51 0.
+64 9 0.9 69 0.9 69 CI TY U 0.9 43 0.9 52 0.9 48 0.9 49 0.9 46 0.9 51 0.
+74 1 0.9 64 0.9 69 P K U 0.9 42 0.9 47 0.9 57 0.9 55 0.9 49 0.9 51 0.
+74 8 0.9 52 0.9 59 M S R 0.9 60 0.9 72 0.9 66 0.9 69 0.9 63 0.9 71 0.
+We achieved the highest F-scores in CITYU, PKU and MSR corpora.
+On a large-scale ChineseEnglish translation task, we obtain statistically significant improvements of +1.5 B and+1.1 B, respectively.
+We add more than 250 features to improve a syntax- based MT system—already the highest-scoring single system in the NIST 2008 ChineseEnglish common-data track—by +1.1 B. We also add more than 10,000 features to Hiero   and obtain a +1.5 B improvement.
+3.2 Syntax-based system.
+We follow Galley et al.
+Following Chiang et al.
+ture for each nonterminal.
+4.2 Source-side features.
+To remedy this problem, Chiang et al.
+38.
+39.
+Scores are case-insensitive IBM B scores.
+The system rewards insertion of forms of be; examples −0.16 PRN −0.15 NPB −0.13 RB −0.12 SBAR-C −0.12 VP-C-BAR−0.11RRB . +0.14 NML +0.13 comma +0.12 VBD +0.12 NNPS +0.12 PRP +0.11 SG . 1–3 in Figure 1 show typical improved translations that result.
+To interpret them further, it helps to look at gross Bonus −0.73 SBAR-C −0.54 VBZ −0.54 IN −0.52 NN −0.51 PP-C −0.47 right double quote −0.39 ADJP −0.34 POS −0.31 ADVP −0.30 RP −0.29 PRT −0.27 SG-C −0.22 S-C −0.21 NNPS −0.21 VP-BAR −0.20 PRP −0.20 NPB-BAR . Penalty +1.30 comma +0.80 DT +0.58 PP +0.44 TO +0.33 NNP +0.30 NNS +0.30 NML +0.22 CD +0.18 PRN +0.16 SYM +0.15 ADJP-BAR +0.15 NP +0.15 MD +0.15 HYPH +0.14 PRN-BAR +0.14 NP-C +0.11 ADJP-C . changes in the system’s behavior.
+lation.
+The problematic rules can even be non-lexical, e.g.: S(x0:NP-C x1:VP x2:, x3:NP-C x4:VP x5:.)
+However, when we apply MIRA with the features already listed, these translation errors all disappear, as demon 38.5 38 37.5 37 36.5 36 35.5 35 Tune Test 0 5 10 15 20 25 Epoch strated by examples 4–5 in Figure 1.
+since un inspectors expelled by north korea . . ..
+reopened in january , yoon said ..
+2.1 Part-of-speech tags.
+2.4 Underspecified rhetorical structure.
+2.6 Co-reference.
+3.4 Salience-based text generation.
+41=0 441=P .4161.
+e.g.
+In Eq.
+Kollege.
+kann 7.nicht 8.
+Sie.
+10.
+am 11.
+vierten 12.
+13.
+3.1 Word ReOrdering with Verbgroup.
+Search CPU time mWER SSER Method [sec] [%] [%] MonS 0:9 42:0 30:5 QmS 10:6 34:4 23:8 IbmS 28:6 38:2 26:2 4.2 Performance Measures.
+Search t0 CPU time #search mWER Method [sec] error [%] QmS 0.0 0.07 108 42:6 1.0 0.13 85 37:8 2.5 0.35 44 36:6 5.0 1.92 4 34:6 10.0 10.6 0 34:5 IbmS 0.0 0.14 108 43:4 1.0 0.3 84 39:5 2.5 0.8 45 39:1 5.0 4.99 7 38:3 10.0 28.52 0 38:2 Table 6 shows example translations obtained by the three different approaches.
+Input: Ja , wunderbar . Konnen wir machen . MonS: Yes, wonderful.
+2.2 Dice Coecient.
+C on fu si on se t No.
+== max(10/11, 1/11) = 10/11 = 0.909.
+49 population.
+80
+0 . 7 . 5 4 0.869 0.8.52 0.8.52 0 . 7 2 6 0.932 0.914 0.916 0 . 2 9 0 0.812 0.812 0.812 0 . 4 . 5 . 0.8 73 0.9 85 0.9 65 0.9 55 0.7 80 0.9 78 0.9 75 0.9 58 0.6 36 0.6 51 0.5 74 0..
+At the word level Takamura et al.
+3.3 Formulation of Semi-supervised Mincuts.
+3.2 Why might Semi-supervised Minimum.
+Such 3 See Kamps et al.
+81 De riv ed fro m 4, 63 0 94 7 0.
+83 Dir ect Hy pe rn y m 71 ,9 15 8, 60 0 0.
+89 Dir ect Hy po ny m 71 ,9 15 8, 60 0 0.
+89 Att rib ut e 35 0 10 9 0.
+75 Ex ten ded An ton ym 6, 91 7 1, 65 1 0.
+4.1 Datasets.
+http://www.cs.pitt.edu/mpq a subjective 0.24 0.83 religio us similar-to 0.81 scrupulo us 0.76 0.17 objective baseline.8 Three different feature types are used.
+It includes 298 words with 703 objective and 358 subjective WordNet senses.
+markert/data.
+pubs/papers/goldstandard.total.acl06.
+9 Available at http://www.d.umn.edu/˜tpederse/.
+similarity.html.
+4.4 Semi-supervised Graph Mincuts.
+Our F-score is 0.63 (vs. 0.52).
+van Halteren 1996).
+edu/pub/brill/Programs/ RULE_BASED_TAGGER_V.
+2Ratnaparkhi's Java implementation of this system is available at ftp://ftp.cis.upenn.edu/ pub/adwait/jmx/
+Dorr and Jones, 1996; Schulte im Walde and Brew, 2002).
+I cheated...
+I stole...
+Wipe... the dust/the dust from the table/the table.
+Steal... the money/the money from the bank/*the bank.
+I filled...
+Dorr and Jones, 1996).
+Ve rb Cl as s C la ss N u m b er # Ve rbs Be ne fa cti ve 26.
+3.2 7 9 So un d E mi ssi on 43.
+4.1 , 10.
+4.2 3 5 Sp ra y/ Lo ad 9.7 3 6 Fi ll 9.8 6 3 Ot he r V. of Pu tti ng 9.1 –6 4 8 C ha ng e of St at e 45.
+1.4 1.2 1 0.8 0.6 0.4 0.2 0.6 0.5 0.4 0.3 0.2 0.1 0 Ling: mean Sil = 0.33 Seed: meanS il = 0.89
+W e re p or t he re th e re su lt s of a n u m be r of cl us te ri n g ex - pe ri m en ts, us in g fe at ur e se ts as fo ll o w s: (1 ) th e fu ll fe at ur e sp ac e; (2 ) a m an ua ll y se le ct ed su bs et of fe at ur es ; (3 ) u n- su pe rv is ed se le ct io n of fe at ur es ; an d (4 ) se mi su p er vi se d se le ct io n, us in g a su pe rv is ed le ar ne r ap pl ie d to se ed ve rb s to se le ct th e fe at ur es . F or ea ch ty pe of fe at ur e se t, w e pe rf or m ed th e sa m e te n cl us te ri n g ta sk s, sh o w n in th e fir st co lu m n of Ta bl e 2.
+T he se ar e th e sa m e ta sk s pe rf or m ed in th e su pe rv is ed se t- ti n g of Jo an is an d St ev en so n (2 0 0 3) . T he 2- an d 3 w ay ta sk s, an d th ei r m ot iv at io n, w er e de sc ri be d in S ec ti o n 3.
+Task C5.0 Base Full Ling Seed Full Ling Seed Full Ling Seed Benefactive/Recipient .74 .56 .60 .68 .58 .02 .10 .02 .22 .40 .81 Admire/Amuse .83 .56 .83 .80 .78 .41 .34 .29 .18 .49 .71 Run/Sound Emission .83 .56 .58 .50 .78 -.00 -.02 .29 .17 .44 .66 Cheat/Steal–Remove .89 .56 .55 .53 .80 -.01 -.02 .34 .30 .29 .74 Wipe/Steal–Remove .78 .56 .65 .73 .70 .07 .18 .15 .24 .33 .89 Mean of 2-way .81 .56 .64 .65 .73 .10 .12 .22 .22 .39 .76 Spray/Fill/Putting .80 .42 .53 .60 .47 .10 .16 .01 .12 .31 .48 Optionally Intrans.
+.66 .42 .38 .38 .58 -.02 -.02 .25 .16 .27 .39 Mean of 3-way .73 .42 .46 .49 .53 .04 .07 .13 .14 .29 .44 8 Locative Classes .72 .24 .31 .38 .42 .10 .12 .12 .13 .23 .23.
+5.4 Semi-Supervised Feature Selection.
+in this pa,per, we argue tha, t type inferencing incorrectly implements a.pl)rolwiateness specifica.tions for typed [ea.ture structures, promote a combina.tion of l;ype resolution and unfilling a,s a. correct a.nd ef'~ ticient Mternative, and consider the expressive limits of this a.lterna.tive approa.ch.
+With such a.n a.pl)rol)riatleness specifica.- tion lrla.tly Sllch restrictioi,s may be expressed, though no restrictions involving reentrancies ma.y be expressed.
+In this pal)er, we will first in 2 survey the range of type eonstra.ints tha.t ma.y be expressed with just a. type hiera.rchy and *']'he resea.rch pl'eS(!lllL('d ill |,his; paper was pay tia.lly sponsored hy '[kfilprojekt B4 "(;onsl.rahH.s on Grammar fl~r Efficient Ck:neration" of the Soi,der forschungsbereich 340 of the Deutsche ["orschungsgemeinscha, ft. "VVe would also like to thank 'l'hilo GStz for helph,l comments ou thc ideas present.ed here.
+All mistakes a.rc of collrsc our OWll.
+IKI.
+Wilhehnstr.
+a.n N)propria.teness specification.
+This strategy a.ctua.lly ma.inta.ins apl)ropri~tteness conditions in some ca.ses in which a. type in-ferencing stra.tegy would fa.il, l)'inMly, in 4, we discuss the possibilities for genera lizillg this a.pl)roa.ch to ha.ndle a bro~Mer r~tnge of constra.ints, including constraints inw)lving reentran cies.
+As discussed iu Gerdemann ,~ King [8], one ca.n view a.pl}rol)ria.teness CO[lditions as (lelining GPSG style fea,1;tl re cooccurence restrict:ions (FCRs).
+is a constra.int of the following fornl : i[' a.n object is of ;~ cert;fin kind then ill deserves certa.in fea.tures with wdues of cert~till kinds An FCI~ stat:ing tha,2: a. verb must h~we v and N t'eatures with values A- and -respectively is a.ll example of a. conjunctive FCI{.
+is of the form: l rl'he "]'roll ,qysl.em was implemented in Quintus Prolog by Dale (lerdemann and '['hilo (]Stz.
+if an object is of a. cel'taiu kiud then it deserves cerl;a.in [ca,1;tll'C~s with vMues of certa.hi kinds, or it deserves cerl.ahi (pei'ha.liS other) fea.1;u res \vil, h viiiues of terra.in (perlla.ps other) kinds, or ...
+sl.a.t.iug tha,t inverCed verbs lilt|S1, lie a.uxili;tries is disjunctive: a verb Ilitisl; ha.re the ['(~il.l.tll'(~s INV and AUX with va.l/ies d a.Iid I, -a.iitl i L-, or -;Mid -respectivel.y. Both o| these |el'illS or l,'(',lls iiHly I)(!
+expressed in a. foi'llla.iiSlli euiployhi<~ fiiiil.e lia,rtia.[ order (Type, E) o| types tllldel' sub- 8illnptioli> a, finite sel.
+Feat of ro;./.t;tll.(~s, and an a.pprol)ria.teness parl, ial rliilcl.ion Approp:Type X Feat -~ Type.
+llOW it encodes a disjuiictive I"(',1{ is less so.
+Ali exa.niple i|]usl;ral;es best how it.
+~Ul)pOS0 that F( ',1{ [i sl.al.es l.hal, ob- .iecls (if type t deserw!
+and Approp(t',g) = . .'2 This a pproa,ch Ina, kes two inll)ort;a, lll, closed-world type assumptious a, bouL (.he types tli~d; Slll)SlllIle 11o ogher types (hellCe- forth species), l:irst, the p;i.rtition conditiOII states tha.t for each type t, if a.n object is (31' type t theu the object is of ex-ax-I.ly o11(2 species subsulned by t. Second, the all-or-nothing cclndition sta, tes that 1'(31' each species ,q a.itd fea.ture f, either every el" IIO ol>,iecl, or species s deserves feature .#c.3 All a.l)ltroltriM,eliess [orli+ia.lisill sllc]l a.s ALl:, ([2], [3])ti,;t.l. does not uieet both c.ouditions llla.y llOt; ]lroper[y el|cOde a, disjull('- five l"(:l/.
+p. An a.I)prl;)pria.l, elleSS [ornia.l--iSlli I/lily l/O( properly encode 1,hi~t t / a.lld t" i'el)rt,selil, MI a.lid oilly the disjuncl, s ill the COll.qeqll(Hlt or [i wiLhout the i)a.rl,ition COll-d]tion.
+<till a.llln'ol)riill.eness [orlila.liSlll llia,y IIOl.
+llrOl)erly encode the [t~ii.l.llle/vii.hle (:(lll-<liiriOii: deinanded liy em'h disjuncl, hi the COli.~t!qllelil.
+As indicat.ed a.bove, AI, I.; is iLIi exa.tlli)le o| it.
+f(n'liialiSlU I.ha.l, does it(it ineel; llol;h o| 1.hese closed world aS,glllnlil,iOli.g. In AI+E :-/.
+['eli.l.tlr(~ st.i'llCtlile i.<4 won typed ifl' for ea.ch arc iit the te:+d.ure sI.l'tlCl;tlr0, if' 1,he SOtll'('(~ node is labelled wil.h type /., the targel; node is lallelled with 1;ype l / a.lld the il.i'c is IMlelled with [ea.tlll'(~ f 1,lien Approp(/.> .f) [ l/.
+"l'hc prolileni o[ c.xpr('.sshig F(Jl/'s, however, is a l'Cal Iiuguisl.ic i)rol)lcin.
+was inipossihlc I.o c.xpress CV('II Ihc .~ilii[)]oM.
+forilis o[ l"(JRs in l.hc.ii7 ctciidcd VCISiOII (it' AI.E. '['hc basic principle of expressing l"Clls also ex lends Io I"(',[(s iuvolviug longer palhs.
+Sag (rorthcoming) [14]..
+90 is well-typed, and hence trivially well-typable.
+This, h.w(wer, wa.s a. simple ca.se iu which a.I1 of the named dis.jun(:tion could ho removed.
+Ilut what.
+Foma: a finite-state compiler and library
+Foma is largely compatible with the Xerox/PARC finite-state toolkit.
+5. network = fsm_regex("a+ b+"); 6.
+printf("Regex matches"); 9.
+Feature-Rich Translation by Quasi-Synchronous Lattice Parsing
+tions.
+For example, Quirk et al.
+4.2 Source-Side Coverage Features.
+4.3 Non-Local Features.
+Eq. 10: Pseudolikelihood.
+Eqs.
+5.3 Handling Non-Local Features.
+6.6 QG Configuration Comparison.
+6.7 Discussion.
+cmu.edu/Quipu.
+2.1 Overview.
+The NE tagger is a rule-based system with 140 NE categories [Sekine et al. 2004].
+3.1 Corpora.
+3.2 Results.
+The work reported here is closely related to [Ha- segawa et al. 04].
+There has also been work using a bootstrap- ping approach [Brin 98; Agichtein and Gravano 00; Ravichandran and Hovy 02].
+We would like to thank Prof. Ralph Grish- man, Mr. Takaaki Hasegawa and Mr. Yusuke Shinyama for useful comments, discussion and evaluation.
+Top symptoms like "lexical reiteration" as­ sign score "2" whereas "non-prepositional" noun phrases are given a negative score of "-1".
+Out of 223 pro­ nouns in the text, 167 were non-anaphoric (deictic and non-anaphoric "it").
+55 % I 48 .5 5 % 6 5 . 9 5 % The lower figure in "Baseline subject" corresponds to "recall" and the higher figure- to "precision".
+The sample texts con­ tained 180 pronouns among which were 120 in­ stances of exophoric reference (most being zero pro­ nouns).
+dev.
+Low scores indicate a weak collocation 5.8 3.70 40 relation weights (95.2%) word repetition 40 collocation 6.4 4.72 (95.2%) relation weights 39 level of cohesion.
+collocation 6.3 3.83 35 (83.3%) Table 1.
+Liang et al.
+Brown et al.
+DeNero et al.
+the target sentence is "£2I +1 "£2I +1 φi. We define φǫ ≡ 2I +1 i=I +1 φi. For a bilingual sentence pair e1 and Given a source sentence f J = f1, f2, . . .
+Following Brown et al.
+Ex: Mr. Cristiani is the president ...
+Ex: Mr. Cristiani, president of the country ...
+3.2 The DempsterShafer Decision Model.
+4.1 Corpora.
+ments contained 322 anaphoric links.
+In considering the significance of these results from a general standpoint, the following facts about the test set need to be remembered: 96.42 95.66 94.92 94.00 93.65 93.33 92.88 92.74 92.61 91.20 90.84 89.06 88.19 85.82 85.73 84.95 5 7 8 10 10 11 10 12 12 13 14 18 19 20 23 22 96 95 93 92 94 92 94 92 89 91 91 84 86 85 80 82 97 96 96 96 93 95 92 93 96 91 91 94 90 87 92 89 Table 1.
+Summary NE scores on primary metrics for the top 16 (out of 20) systems tested, in order of decreasing F-Measure (P&R) 1 1 Key to F-measure scores: BBN baseline configuration 93.65, BBN experimental configuration 92.88, Knight-Ridder 85.73, Lockheed-Martin 90.84, UManitoba 93.33, UMass 84.95, MITRE 91.2, NMSU CRL baseline configuration 85.82, NYU 88.19, USheffield 89.06, SRA baseline configuration 96.42, SRA "fast" configuration 95.66, SRA "fastest" configuration 92.61, SRA "nonames" configuration 94.92, SRI 94.0, Sterling Software 92.74..
+Its basic strategy for 96.42 0 95.66 0 0 7 7 94.92 0 0 8 8 94.00 0 0 20 9 93.65 0 2 16 10 93.33 0 4 38 9 92.88 0 0 18 10 92.74 0 0 22 11 92.61 100 0 18 9 91.20 0 0 30 13 90.84 3 11 19 14 89.06 3 4 28 18 88.19 0 0 22 20 85.82 0 6 18 21 85.73 0 44 53 21 84.95 0 0 50 21 Table 3.
+Most systems achieved approximately the same levels of performance: five of the seven systems were in the 51%-63% recall O0  40 50 60 70 80 90 100 Recall Figure 3.
+Overall recall and precision on the CO task 2 2 Key to recall and precision scores: UDurham 36R/44P, UManitoba 63R/63P, UMass 44R/51P, NYU 53R/62P, UPenn 55R/63P, USheffield 51R/71P, SRI 59R/72P..
+((XI 90  ,,v 80   04 ~) 5O 4O 20 10 0 ..
+Overall recall and precision on the TE task 6 10090 80  "7" o qb l  70 60 50 40 30 20 10 0 0 10 20 30 40 50 60 70 80 90 100 Recall Figure 5.
+Organization and Person object recall and precision on the TE task 6Key to recall and precision scores: BBN 66R/79P, UDurham 49R/60P, Lockheed-Martin 76R/77P, UManitoba 71R/78P, UMass 53R/72P, MITRE 71R/85P, NYU 62R/83P, USheffield 66R/74P, SRA baseline configuration 75R/86P, SRA "noref" configuration 74R/87P, SRI 74R/76P, Sterling Software 72R/83P.
+432 8o I ,o l II ii 40 3o 2o ,~ 10- type name alias country locale descriptor ORGANIZATION Slot= Figure 6.
+The approximate 5050 split between relevant and nonrelevant texts was Template Level (Doc_Nr) JCCESSION_EVE/~ (Post, Vacancy_Reason) In_and_Out r IN_AND_OUT " Succession Org (New_Status, On_the_Job, Rel Other_Org) j IO Template Element Level PERSON ORGANIZATION 1ame, Per_Alias, (Org_Name, Org_Alias, Org_Descriptor, Per_Title) ~Q0rg_Type, Org_Locale, Org_Country) Figure 7.
+Management Succession Template Structure intentional and is comparable to the richness of the MUC3 "TST2" test set and the MUC4 "TST4" test set.
+MUC6 56.40 MUC5 EJV 52.75 MUC5 JJV 60.07 MUC5 EME 49.18 MUC5 JME 56.31 Table 4.
+He will be succeeded by Mr. Dooner, 45.
+7Key to recall and precision scores: BBN 50R/59P, UDurham 33R/34P, Lockheed-Martin 43R/64P, UManitoba 39R/62P, UMass 36R/46P, NYU 47R/70P, USheffield 37R/73P, SRA baseline configuration 47R/62P, SRA "precision" configuration 32R/66P, SRA "recall" configuration 58R/46P, SRI 44R/61P.

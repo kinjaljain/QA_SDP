@@ -5,10 +5,21 @@ import copy
 import xml.etree.cElementTree as ET
 import logging
 import codecs
+
+import enchant
+import nltk
 from tqdm import tqdm
-from dto.namedtuples import Article, Datum, Offsets
+# from dto.namedtuples import Article, Datum, Offsets
 import re
 import requests
+import numpy as np
+
+from collections import namedtuple
+d = enchant.Dict("en_US")
+
+Datum = namedtuple('Datum', 'ref cite offsets author is_test facet year')
+Offsets = namedtuple('Offsets', 'marker cite ref')
+Article = namedtuple('Article', 'id xml sentences sections')
 
 DATA_ROOT = '../../data'
 sep = os.path.sep
@@ -173,11 +184,12 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
     # remove cites in ref
     for key, sentence in ref.sentences.items():
         ref.sentences[key] = get_cites(sentence)
+        ref.sentences[key] = filter_meaningless(ref.sentences, key, jargon)
 
     cite_sentence = " ".join([cite.sentences[c] for c in citation_offsets])
     cite_sentence = re.sub(r"\D(\d{4})\D", '', cite_sentence)  # regex for removing years
     cite_sentence = re.sub(r"\[[0-9]{1,3}\]", '', cite_sentence)  # regex for removing citation numbers
-    translation = {ord(')'): None, ord('('): None, ord('.'): None,  ord(','): None, ord('!'): 'l'}
+    translation = {ord(')'): None, ord('('): None, ord('.'): None,  ord(','): None, ord('!'): None}
     cite_sentence = cite_sentence.translate(translation)
     author_info = author.split(" ")
     author_2 = None
@@ -215,16 +227,6 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
                 cite_sentence = cite_sentence.replace(citing_paper_text, "##CITATION##")
                 if cite_sentence != old_cite_sentence:
                     replace_count += 1
-    #             else:
-    #                 print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
-    #                                                                                       old_cite_sentence, author))
-    #         else:
-    #             print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence,
-    #                                                                                   old_cite_sentence, author))
-    #     else:
-    #         print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
-    # else:
-    #     print("cite_sentence: {}\n old_cite_sentence: {}\n author: {}".format(cite_sentence, old_cite_sentence, author))
 
     # remove all other cites in cite
     cite.sentences[citation_offsets[0]] = cite_sentence
@@ -246,12 +248,73 @@ def get_formatted_author_info(author_info):
 
 
 def get_cites(sentence):
-    regex = r"\(\D*\d{4}(;\D*\d{4})*\)"
-    sentence = re.sub(regex, " ", sentence)
+    if sentence:
+        regex = r"\(\D*\d{4}(;\D*\d{4})*\)"
+        sentence = re.sub(regex, " ", sentence)
     return sentence
+
+
+def filter_meaningless(ref_article, i, jargon):
+    line = ref_article[i]
+    # line.replace(";", " ").replace(",", " ")
+    enc_line = line.encode('unicode_escape').decode()
+    line = re.sub(r"\\u....", "", enc_line)
+    # Table caption
+    if re.search(r'Table [0-9]+: ', line):
+        start_idx = line.index("Table ")
+        line = line[start_idx:]
+        return True, line
+
+    # Figure caption
+    elif re.search(r'Figure [0-9]+: ', line):
+        start_idx = line.index("Figure ")
+        line = line[start_idx:]
+        return True, line
+
+    words = np.array(nltk.word_tokenize(ref_article[i]))
+    num_singles = np.array([len(word) < 2 for word in words])
+    count = words[num_singles].shape[0]
+    ratio = count / len(words)
+
+    if ratio > 0.53:
+        alphabet_file.write(ref_article[i] + "\n")
+        return False, ""
+
+    is_valid = []
+    check = words
+    for word in words:
+        if d.check(word) or word in jargon:
+            is_valid.append(True)
+        else:
+            is_valid.append(False)
+    is_valid = np.array(is_valid)
+    check = np.array(check)
+    count = check[is_valid].shape[0]
+    ratio = count / check.shape[0]
+    if ratio <= 0.72:
+        meaningless_file.write(ref_article[i] + "\n")
+        return False, ""
+    return True, line
 
 
 if __name__ == "__main__":
     logging.basicConfig(filename='example.log', level=logging.ERROR, filemode='w')
     print("Logging to example.log")
-    load_all(DATA_ROOT)
+    meaningless_file = open("meaningless_sentences.txt", "w")
+    alphabet_file = open("alphabet_sentences.txt", "w")
+    jargon = open("jargon.txt", 'r').readlines()
+    jargon = [word[:-1] for word in jargon]
+    dataset = load_all(DATA_ROOT)
+
+    print("dumping")
+    import pickle
+    with open('processed-data-2018-clean.json', 'wb') as f:
+        pickle.dump(dataset, f)
+
+#
+# if __name__ == "__main__":
+#     logging.basicConfig(filename='example.log', level=logging.ERROR, filemode='w')
+#     print("Logging to example.log")
+#     load_all(DATA_ROOT)
+
+
