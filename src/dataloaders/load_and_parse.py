@@ -30,6 +30,7 @@ annotation_load_fail = 0
 
 l = logging.getLogger('load_parse')
 replace_count = 0
+bad_count = 0
 
 # Gets names of folders where data is present. ex : "./data/Training-Set-2016/C90-2039_TRAIN"
 def get_folders(data_root):
@@ -178,13 +179,24 @@ def load_all(root):
 
 def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets, author, year):
     global replace_count
+    global bad_count
     ref = copy.copy(ref_article)
     cite = copy.copy(cite_article)
 
-    # remove cites in ref
+    # remove cites in ref and fix ocr issues
     for key, sentence in ref.sentences.items():
         ref.sentences[key] = get_cites(sentence)
-        ref.sentences[key] = filter_meaningless(ref.sentences, key, jargon)
+
+    if ref_article.id not in visited:
+        for key, sentence in ref.sentences.items():
+            meaningful, s = filter_meaningless(ref.sentences, key, jargon)
+            if not meaningful and key in ref_offsets:
+                if ref.sentences[key] != s:
+                    bad_count += 1
+                    positives_replaced_file.write(ref.sentences[key] + "\n")
+                    positives_replaced_file.write(s + "\n\n")
+            ref.sentences[key] = s
+        visited.add(ref_article.id)
 
     cite_sentence = " ".join([cite.sentences[c] for c in citation_offsets])
     cite_sentence = re.sub(r"\D(\d{4})\D", '', cite_sentence)  # regex for removing years
@@ -302,19 +314,15 @@ if __name__ == "__main__":
     print("Logging to example.log")
     meaningless_file = open("meaningless_sentences.txt", "w")
     alphabet_file = open("alphabet_sentences.txt", "w")
+    positives_replaced_file = open("positives_replaced.txt", "w")
     jargon = open("jargon.txt", 'r').readlines()
     jargon = [word[:-1] for word in jargon]
+    visited = set()
+
     dataset = load_all(DATA_ROOT)
+    print("Good positives replaced: ", bad_count)
 
     print("dumping")
     import pickle
-    with open('processed-data-2018-clean.json', 'wb') as f:
+    with open('processed-data-2018-clean.pkl', 'wb') as f:
         pickle.dump(dataset, f)
-
-#
-# if __name__ == "__main__":
-#     logging.basicConfig(filename='example.log', level=logging.ERROR, filemode='w')
-#     print("Logging to example.log")
-#     load_all(DATA_ROOT)
-
-

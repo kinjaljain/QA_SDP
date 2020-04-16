@@ -71,3 +71,4 @@ appositive
 uppercase
 misidentified
 misidentify
+WordNet
