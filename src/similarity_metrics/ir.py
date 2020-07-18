@@ -7,9 +7,13 @@ from sklearn.metrics.pairwise import polynomial_kernel
 import pickle
 import os
 from rank_bm25 import BM25Okapi
+from summa import summarizer
 
-
+import Levenshtein as lvstn
+from sematch.semantic.similarity import WordNetSimilarity
 from tqdm import tqdm_notebook as tqdm
+from nltk.stem import PorterStemmer
+
 
 from tqdm import tqdm as tqdm
 
@@ -17,6 +21,13 @@ Datum = namedtuple('Datum', 'ref cite offsets author is_test facet year')
 Offsets = namedtuple('Offsets', 'marker cite ref')
 Article = namedtuple('Article', 'id xml sentences sections')
 
+import spacy
+import pytextrank
+
+
+nlp = spacy.load("en_core_web_sm")
+tr = pytextrank.TextRank()
+nlp.add_pipe(tr.PipelineComponent, name="textrank", last=True)
 
 import nltk
 nltk.download('stopwords')
@@ -28,7 +39,7 @@ import re
 
 stop = set(stopwords.words('english'))
 
-rakey = Rake(max_length=2)
+rakey = Rake(max_length=1, ranking_metric=0)
 
 
 def encode(sentence):
@@ -83,11 +94,20 @@ def get_similarity_score(cite_paper, ref_paper, sentence1, sentence2, n=1, kerne
         return rbf_kernel(tfidf_1, tfidf_2).item()
 
 
+
+
+wns = WordNetSimilarity()
+ps = PorterStemmer()
+
 def get_similarity_score(sentence1, sentence2):
     # doesn't do anything about frequency of words in a sentence
     tokens1 = set(re.findall(r'[\w]+', sentence1.lower()))
     tokens2 = set(re.findall(r'[\w]+', sentence2.lower()))
     # print(sentence1)
+
+
+
+
     rakey.extract_keywords_from_sentences(sentence1.replace("-", " ").lower().split())
 
     keys1 = rakey.get_ranked_phrases()
@@ -107,14 +127,25 @@ def get_similarity_score(sentence1, sentence2):
     #     if word in keys2:
     #         return 1
     # return 0
+    # keys1 = tokens1
+    # keys2 = tokens2
+
     tokens1 = set(keys1) - stop  # - set(ref_keys)
     tokens2 = set(keys2) - stop  # - set(cite_keys)
+    # tokens1 = set([ps.stem(token) for token in tokens1])
+    # tokens2 = set([ps.stem(token) for token in tokens2])
+    # v = 0
+    # for token1 in tokens1:
+    #     max_sim = 0
+    #     for token2 in tokens2:
+    #         max_sim = max(max_sim, wns.word_similarity(token1, token2, 'li'))
+    #     v += max_sim
     # print(tokens1)
     # print(tokens2)
     # wefwefwef
     # tokens1 = tokens1 - stop
     # tokens2 = tokens2 - stop
-
+    # return v / len(tokens1.union(tokens2))
     return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
 
 # from sentence_transformers import SentenceTransformer
@@ -147,7 +178,36 @@ with open("%sprocessed-data-2018-clean.pkl" % root_path, 'rb') as f:
   dataset2 = pickle.load(f)
 
 # dataset =  dataset2 + dataset
+# dataset = dataset2
+
+
+
+
+ref_counts = {}
+for data in dataset2:
+    ctr = len(data.offsets.ref)
+    if ctr == 9:
+        print("ok")
+    ref_counts[ctr] = ref_counts.get(ctr, 0) + 1
+print(ref_counts)
+
+
+
+
+
 dataset = dataset2
+# dataset = [x for x in dataset if x.ref.id in {"C00-2123",
+# "C04-1089",
+# "I05-5011",
+# "J96-3004",
+# "N06-2049",
+# "P05-1004",
+# "P05-1053"
+# "P98-1046",
+# "P98-2143",
+# "W03-0410"}]
+
+
 
 articles = [x[1] for x in dataset]
 
@@ -157,15 +217,37 @@ with open("candall.json") as f:
 cands = {}
 
 
-def bias_intro(s, ref_article, num_cites):
+def bias_intro(s, ref_article, num_cites, id2score):
     sid = s[0]
     present = ("intro" in ref_article.sections[sid].lower() or "abstract" in ref_article.sections[
         sid].lower() or "concl" in ref_article.sections[sid].lower() or "summ" in ref_article.sections[sid].lower())
     if not present:
         score = s[1]
     else:
-        score = s[1]+(0.03)*(num_cites-1)
+        score = s[1]+min(0.05, (0.01)*(num_cites-1)) + 0.20 * id2score[sid]
+        # score = s[1] + (0.02) * (num_cites - 1) + 0.3 * id2score[sid]
     return [sid, score]
+
+
+memo = {}
+def get_id2_score(data):
+    global memo
+    if data.ref.id in memo:
+        return memo[data.ref.id]
+    sents = data.ref.sentences.values()
+    sents_merged = '\n'.join(sents)
+    sent_scores = {x[0]: x[1] for x in summarizer.summarize(sents_merged, ratio=1, split=True, scores=True)}
+    id2score = {}
+    for id in data.ref.sentences:
+        sentence = data.ref.sentences[id]
+        if sentence in sent_scores:
+            id2score[id] = sent_scores[sentence]
+        else:
+            closest_sent = sorted([x for x in sent_scores.keys()], key=lambda x: lvstn.distance(x, sentence))[0]
+            id2score[id] = sent_scores[closest_sent]
+    memo[data.ref.id] = id2score
+    return id2score
+
 
 def map_data(data):
     tp = 0
@@ -194,7 +276,13 @@ def map_data(data):
             new_ids.extend(extra)
       citing_sentence_ids = new_ids
       complete_citing_sentence = " ".join([citing_article.sentences[c] for c in citing_sentence_ids])
-      ref_vs = [(x[0],encode(x[1])) for i, x in enumerate(ref_article.sentences.items()) if ( True or  "intro" in ref_article.sections[x[0]].lower() or "abstract" in ref_article.sections[x[0]].lower() or "concl" in ref_article.sections[x[0]].lower() or "summ" in ref_article.sections[x[0]].lower())]
+      if has_multiple_cites(complete_citing_sentence) > 2:
+          print("---------------------")
+          print(complete_citing_sentence)
+          print([data.ref.sentences[x] for x in data.offsets.ref])
+          print("--------------")
+
+      ref_vs = [(x[0],encode(x[1])) for i, x in enumerate(ref_article.sentences.items()) if ( has_multiple_cites(x[1]) < 2)] # or  "intro" in ref_article.sections[x[0]].lower() or "abstract" in ref_article.sections[x[0]].lower() or "concl" in ref_article.sections[x[0]].lower() or "summ" in ref_article.sections[x[0]].lower())]
       similarity_score = {}
 
       # key_word_refs = []
@@ -230,14 +318,16 @@ def map_data(data):
                     #print(e)
                     pass
       if similarity_score:
+          id2score = get_id2_score(data)
+          similarity_score = {x: similarity_score[x]  + 0.20 * id2score[x] for x in similarity_score} # 0.3
           num_cites = has_multiple_cites(complete_citing_sentence)
           sorted_similarity_score = sorted(similarity_score.items(), key=lambda item: -item[1])
-          top_n = [s for s in sorted_similarity_score if s[1]]
-          top_n = [bias_intro(s, ref_article, num_cites) for s in top_n]
+          top_n = [s for s in sorted_similarity_score]
+          top_n = [bias_intro(s, ref_article, num_cites, id2score) for s in top_n]
 
-          top_n = [s for s in top_n if s[1] > 0.13]
+          top_n = [s for s in top_n if s[1]>0.15] # 0.18
 
-          top_n = {x[0]:x[1] for x in top_n[:7]}
+          top_n = {x[0]:x[1] for x in top_n[:5]}
           # print("--citing--")
           # print(complete_citing_sentence)
           # print("--candidates--")
@@ -285,13 +375,14 @@ groups = [("abstract", "intro", "concl", "paper", "summ"), ("",)]
 
 ctr = 0
 total_multiple = 0
+total = 0
 for data in dataset:
     cite_aticle = data.cite
     cite_offset = data.offsets.cite
     sentence = ' '.join([cite_aticle.sentences[c] for c in cite_offset])
     ref_offsets = data.offsets.ref
     ref_sections = [data.ref.sections[c] for c in ref_offsets]
-    if has_multiple_cites(sentence) > 1:
+    if has_multiple_cites(sentence) > 3:
         intro_group = groups[0]
         for sec in intro_group:
             for ref_sec in ref_sections:
@@ -299,8 +390,10 @@ for data in dataset:
                     ctr += 1
                     break
         total_multiple += 1
+    total += len(data.offsets.ref)
 
-print(ctr, total_multiple, len(dataset))
+print(ctr, total_multiple, total)
+print("here")
 
 
 
@@ -364,7 +457,7 @@ for ctr, data in enumerate(pbar):
   sentence = ' '.join([cite_aticle.sentences[c] for c in cite_offset])
   ref_offsets = data.offsets.ref
   ref_sections = [data.ref.sections[c] for c in ref_offsets]
-  if has_multiple_cites(sentence) > 1:
+  if has_multiple_cites(sentence) > 3:
       intro_group = groups[0]
       for sec in intro_group:
           for ref_sec in ref_sections:
@@ -382,7 +475,7 @@ f1 = 2*p*r/(p+r)
 print("f1 is ", f1)
 output_file.close()
 
-cscsc
+
 import multiprocessing as mp
 
 pool = mp.Pool(4)
@@ -390,10 +483,14 @@ all_results = []
 candidates = {}
 ctr = 0
 # output_file = open('out.ann.txt', 'w')
+# dataset = [x for x in dataset if x.ref.id == "E09-2008"]
+# print([(x.cite.id, x.offsets.ref) for x in dataset])
 pbar = tqdm(pool.imap_unordered(map_data, dataset), total=len(dataset))
 # pbar = tqdm(dataset)
 for res in pbar:
     candidates[str(res[0])] = res[2]
+
+    # print(res[0], res[2])
     # output_file.write(res[1]+'\n')
     if tp > 0:
       p = tp/(max(tp+fp,1))
@@ -407,7 +504,10 @@ for res in pbar:
     #     with open('cand' + str(ctr) +'.json', 'w') as f:
     #         json.dump(candidates, f)
     ctr += 1
-
+p = tp/(max(tp+fp,1))
+r = tp/(max(tp+fn,1))
+f1 = 2*p*r/(p+r)
+print("f1 is ", f1)
 # with open('cand' + "all" + '.json', 'w') as f:
 #     json.dump(candidates, f)
 

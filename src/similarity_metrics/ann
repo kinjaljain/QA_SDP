@@ -1,0 +1,61 @@
+1083 1056 - Table 3
+1083 1059 - Table 1
+1083 1059 - Intro -In this work we present
+1083 1059 - SOTA comparison table
+1083 1059 - ??  we adopt a simpler na ̈ıve Bayes strategy, where all features are emitted independently.
+1083 1059 - We train and test on the CoNLL-X training set
+1083 1086 - Simply assigning to each word its most frequent associated tag in a corpus achieves 94.6% accuracy on the WSJ portion of the Penn Treebank
+1083 1125 - We consider the unsupervised POS induction prob- lem without the use of a tagging dictionary Correct
+1083 1127 - Table with SOTA results or paragraph where there is comparison
+1083 1004 - Here, we con- sider suffix features, capitalization features, punctu- ation, and digit features
+1083 1045 - Here, we con- sider suffix features, capitalization features, punctu- ation, and digit features
+1083 1087 - ??
+1083 1087 - Table 3
+1083 1150 - Then, token- level HMM emission parameters.. [OFF BY ONE]
+1083 0301 - Correct (2)
+1083 1914 - Conclusion, maybe? Correct
+
+F1 = 23.5
+
+
+1020
+1104 - Markov clustering MCL thing - My mistake 1/1
+2038 - MCL thing and cooccurence self cite  - 2/2
+1080 - 1 TP 1 FP
+1073 - 1/1
+1020 - 1TP 1 FP
+1194 - 2 FP 2 FN
+1194 - 1 FP, 1 FN (Late in paper, so result??)
+1194 - 1/1
+1194 - 1FP 1 FN
+3010 - 1 FP 1 TP
+2214 - 1 FN
+2214 - 1 FP 1 FN
+3812 - 1 TP 2 FN (Did not know abstract was okay)
+
+TP = 8, FP = 8, FN = 8
+F1 = 50
+
+
+2008
+
+1/1
+1 TP 2 FP
+2 FP 1 FN
+1 TP 2 FP
+1 TP 1 FP (Don't include too generic unless really need)
+1 FP 1 FN (Wtf)
+1 TP (wtf)
+1 TP 1 FP
+
+TP = 6, FP = 9, FN = 2
+F1 = 52
+
+
+6 tp
+6 fp 8 fn
+F1 = 46.15
+
+
+38.53
+42.13

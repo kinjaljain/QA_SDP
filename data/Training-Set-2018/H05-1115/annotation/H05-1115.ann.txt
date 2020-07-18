@@ -31,3 +31,4 @@ Citance Number: 10 | Reference Article:  H05-1115.xml | Citing Article:  P08-200
 Citance Number: 11 | Reference Article:  H05-1115.xml | Citing Article:  P10-2055.xml | Citation Marker Offset:  ['108'] | Citation Marker:  Otterbacher et al., 2005 | Citation Offset:  ['104','108'] | Citation Text:  <S sid ="104" ssid = "36">Afterwards, our approach is evaluated against two existing approaches, which rely on the conventional semantic network and are able to capture binary relations only.</S><S sid ="108" ssid = "40">The other one is based on topic-sensitive LexRank (Otterbacher et al., 2005), called title-sensitive PageRank here.</S> | Reference Offset:  ['36'] | Reference Text:  <S sid ="36" ssid = "1">Our goal is to build a question-focused sentence retrieval mechanism using a topic-sensitive version ofthe LexRank method.</S> | Discourse Facet:  Aim_Citation | Annotator:  Kokil Jaidka, NTU |
 
 
+

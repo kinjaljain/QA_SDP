@@ -129,9 +129,9 @@ def load_folder_data(annotation_file, articles, is_test=False):
                 year = author_info[-2]
                 # author = '' if len(parts) < 10 or ":" not in parts[10] else parts[10].split(":")[1].replace("|",
                 #                                                                                             "").strip()
-                reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
-                                                         author, year)
-                # reference, cite = ref_article, cite_article
+                #reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
+                                                         #author, year)
+                reference, cite = ref_article, cite_article
                 d = Datum(reference, cite, Offsets(marker_offset, citation_offsets, ref_offsets), author,
                           is_test, facet, year)
                 data.append(d)
@@ -199,8 +199,8 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
         visited.add(ref_article.id)
 
     cite_sentence = " ".join([cite.sentences[c] for c in citation_offsets])
-    cite_sentence = re.sub(r"\D(\d{4})\D", '', cite_sentence)  # regex for removing years
-    cite_sentence = re.sub(r"\[[0-9]{1,3}\]", '', cite_sentence)  # regex for removing citation numbers
+    #cite_sentence = re.sub(r"\D(\d{4})\D", '', cite_sentence)  # regex for removing years
+    #cite_sentence = re.sub(r"\[[0-9]{1,3}\]", '', cite_sentence)  # regex for removing citation numbers
     translation = {ord(')'): None, ord('('): None, ord('.'): None,  ord(','): None, ord('!'): None}
     cite_sentence = cite_sentence.translate(translation)
     author_info = author.split(" ")
@@ -243,7 +243,7 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
     # remove all other cites in cite
     cite.sentences[citation_offsets[0]] = cite_sentence
     for key, sentence in cite.sentences.items():
-        cite.sentences[key] = get_cites(sentence)
+        cite.sentences[key] = get_cites(sentence, mask = "###OTHER###")
 
     if len(citation_offsets) > 1:
         for offset in citation_offsets[1:]:
@@ -259,10 +259,13 @@ def get_formatted_author_info(author_info):
     return author
 
 
-def get_cites(sentence):
+def get_cites(sentence, mask = " "):
+
     if sentence:
         regex = r"\(\D*\d{4}(;\D*\d{4})*\)"
-        sentence = re.sub(regex, " ", sentence)
+        sentence = re.sub(regex, mask, sentence)
+    if "Beesley and Karttunen" in sentence:
+        print(sentence)
     return sentence
 
 
@@ -324,5 +327,5 @@ if __name__ == "__main__":
 
     print("dumping")
     import pickle
-    with open('processed-data-2018-clean.pkl', 'wb') as f:
+    with open('processed-data-2018-nonclean.pkl', 'wb') as f:
         pickle.dump(dataset, f)
