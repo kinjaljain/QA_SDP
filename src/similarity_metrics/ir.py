@@ -6,11 +6,12 @@ from sklearn.metrics.pairwise import rbf_kernel
 from sklearn.metrics.pairwise import polynomial_kernel
 import pickle
 import os
-from rank_bm25 import BM25Okapi
+#from rank_bm25 import BM25Okapi
 from summa import summarizer
 
 import Levenshtein as lvstn
-from sematch.semantic.similarity import WordNetSimilarity
+from transformers import BertModel
+from transformers import AutoTokenizer
 from tqdm import tqdm_notebook as tqdm
 from nltk.stem import PorterStemmer
 
@@ -21,13 +22,8 @@ Datum = namedtuple('Datum', 'ref cite offsets author is_test facet year')
 Offsets = namedtuple('Offsets', 'marker cite ref')
 Article = namedtuple('Article', 'id xml sentences sections')
 
-import spacy
-import pytextrank
 
 
-nlp = spacy.load("en_core_web_sm")
-tr = pytextrank.TextRank()
-nlp.add_pipe(tr.PipelineComponent, name="textrank", last=True)
 
 import nltk
 nltk.download('stopwords')
@@ -51,7 +47,7 @@ def encode(sentence):
 
 global tf_vectorizer
 
-root_path = "/Users/kai/PycharmProjects/QA_SDP2/src/dataloaders/"
+root_path = "/Users/kradhakrishnan/PycharmProjects/qa/QA_SDP/src/dataloaders/"
 
 
 def build_model(cite_paper, ref_paper, n=1):
@@ -96,8 +92,6 @@ def get_similarity_score(cite_paper, ref_paper, sentence1, sentence2, n=1, kerne
 
 
 
-wns = WordNetSimilarity()
-ps = PorterStemmer()
 
 def get_similarity_score(sentence1, sentence2):
     # doesn't do anything about frequency of words in a sentence
@@ -211,9 +205,6 @@ dataset = dataset2
 
 articles = [x[1] for x in dataset]
 
-with open("candall.json") as f:
-    cands = json.load(f)
-
 cands = {}
 
 
@@ -319,7 +310,7 @@ def map_data(data):
                     pass
       if similarity_score:
           id2score = get_id2_score(data)
-          similarity_score = {x: similarity_score[x]  + 0.20 * id2score[x] for x in similarity_score} # 0.3
+          similarity_score = {x: similarity_score[x]  + 0.3 * id2score[x] for x in similarity_score} # 0.3
           num_cites = has_multiple_cites(complete_citing_sentence)
           sorted_similarity_score = sorted(similarity_score.items(), key=lambda item: -item[1])
           top_n = [s for s in sorted_similarity_score]
