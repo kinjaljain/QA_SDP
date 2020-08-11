@@ -5,6 +5,9 @@ import json
 import os
 import csv
 import xml.etree.cElementTree as ET
+
+import numpy as np
+import torch
 from rake_nltk import Rake
 from nltk.corpus import stopwords
 import re
@@ -14,10 +17,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 from summa import summarizer
 import csv
 
+from transformers import BertForSequenceClassification, BertTokenizer
+
+training_set = True
+
 ###########GLOBALS##################
 
 root = "./Test-Set-2018"
-root = "./Training-Set-2018"
+if training_set:
+    root = "./Training-Set-2018"
 Article = namedtuple('Article', 'id xml sentences sections')
 stop = set(stopwords.words('english'))
 rakey = Rake(max_length=1, ranking_metric=0)
@@ -75,7 +83,7 @@ def bias_intro(s, ref_article, num_cites, id2score):
     sid = s[0]
     present = ("intro" in ref_article.sections[sid].lower() or "abstract" in ref_article.sections[
         sid].lower() or "concl" in ref_article.sections[sid].lower() or "summ" in ref_article.sections[sid].lower())
-    if not present:
+    if True:
         score = s[1]
     else:
         score = s[1]+min(0.05, (0.01)*(num_cites-1)) + 0.20 * id2score.get(sid, 0)
@@ -92,9 +100,9 @@ def newest_file(path):
 
 ###########REAL FUNCTIONS##################
 
-# def encode(sentence):
-#     return sentence
-#
+def encode(sentence):
+    return sentence
+
 # def get_similarity_score(sentence1, sentence2):
 #     tokens1 = set(re.findall(r'[\w]+', sentence1.lower()))
 #     tokens2 = set(re.findall(r'[\w]+', sentence2.lower()))
@@ -108,32 +116,65 @@ def newest_file(path):
 #     return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
 
 
-from sentence_transformers import SentenceTransformer
-model = SentenceTransformer('bert-base-nli-mean-tokens')
+# from sentence_transformers import SentenceTransformer
+# model = SentenceTransformer('bert-base-nli-mean-tokens')
 
 
 
 
 
-def encode(sentence):
-  return model.encode([sentence])
+# def encode(sentence):
+#   return model.encode([sentence])
+#
+# def get_similarity_score(sentence1, sentence2, kernel = "poly_2"):
+#     return cosine_similarity(sentence1, sentence2)
+#   #return polynomial_kernel(sentence1, sentence2, 2).item()
 
-def get_similarity_score(sentence1, sentence2, kernel = "poly_2"):
-    return cosine_similarity(sentence1, sentence2)
-  #return polynomial_kernel(sentence1, sentence2, 2).item()
+
+
+
+model = BertForSequenceClassification.from_pretrained('../../models/bert_model_2018')
+tokenizer = BertTokenizer.from_pretrained('../../models/bert_model_2018')
+model.config.num_labels = 2
+cuda = torch.cuda.is_available()
+device = torch.device("cpu" if not cuda else "cuda")
+model.to(device)
+
+def softmax(x):
+    """Compute softmax values for each sets of scores in x."""
+    e_x = np.exp(x - np.max(x))
+    return e_x / e_x.sum()
+
+def get_similarity_score(sentence1, sentence2):
+    ref_sentence = " " + sentence1.lower()
+    citing_sentence = " " + sentence2.lower()
+    pairofstrings = [(citing_sentence, ref_sentence)]
+
+    encoded_batch = tokenizer.batch_encode_plus(pairofstrings, add_special_tokens=True, return_tensors='pt',
+                                                return_special_tokens_mask=True)
+    attention_mask = (encoded_batch['attention_mask'] - encoded_batch['special_tokens_mask']).to(device)
+    input_ids, token_type_ids = encoded_batch['input_ids'].to(device), encoded_batch['token_type_ids'].to(device)
+    logits = model(input_ids, token_type_ids=token_type_ids, attention_mask=attention_mask)[0]
+    logits = torch.nn.functional.softmax(logits, dim=1)
+    logits = logits.cpu().detach().numpy()
+    logits = logits[0]
+    # print("sim score (prpb not):", logits[0])
+    return logits[0]
+
+
 
 
 def sim_score_jugaad(ref_article, similarity_score, complete_citing_sentence):
     id2score = get_id2_score(ref_article)
-    similarity_score = {x: similarity_score[x] + 0.30 * id2score.get(x, 0) for x in similarity_score}  # 0.3
+    similarity_score = {x: similarity_score[x] + 0 * id2score.get(x, 0) for x in similarity_score}  # 0.3
     num_cites = has_multiple_cites(complete_citing_sentence)
     sorted_similarity_score = sorted(similarity_score.items(), key=lambda item: -item[1])
     top_n = [s for s in sorted_similarity_score]
     top_n_before_filter = [bias_intro(s, ref_article, num_cites, id2score) for s in top_n]
 
-    top_n = [s for s in top_n_before_filter if s[1] > 0.15]  # 0.18
+    top_n = [s for s in top_n_before_filter]  # 0.18
 
-    top_n = {x[0]: x[1] for x in top_n[:5]}
+    top_n = {x[0]: x[1] for x in top_n[:3]}
     if len(top_n) == 0:
         return {x[0]: x[1] for x in top_n_before_filter[:2]}
     return top_n
@@ -284,11 +325,14 @@ def write_out_2018_train(path, ref_id, results, ref_article, cite_texts):
 ################Strategy-hack################
 
 get_cite_texts = get_cite_texts_csv
-get_cite_texts = get_cite_texts_ann
+
 
 
 write_out = write_out_2018_test
-write_out = write_out_2018_train
+
+if training_set:
+    get_cite_texts = get_cite_texts_ann
+    write_out = write_out_2018_train
 ###########Main loop##################
 sk = 0
 for file in os.listdir(root):

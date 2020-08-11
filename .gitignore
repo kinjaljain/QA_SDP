@@ -21,3 +21,7 @@
 /src/similarity_metrics/cand15999.json
 /src/similarity_metrics/cand16999.json
 /src/similarity_metrics/candall.json
+/models/
+/.idea/
+/venv/
+/src/for_submission.zip
