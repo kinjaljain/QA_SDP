@@ -10,13 +10,14 @@ from nltk.corpus import stopwords
 import re
 from collections import namedtuple
 import Levenshtein as lvstn
+from sklearn.metrics.pairwise import cosine_similarity
 from summa import summarizer
 import csv
 
 ###########GLOBALS##################
 
-root = "./Training-Set-2018"
 root = "./Test-Set-2018"
+root = "./Training-Set-2018"
 Article = namedtuple('Article', 'id xml sentences sections')
 stop = set(stopwords.words('english'))
 rakey = Rake(max_length=1, ranking_metric=0)
@@ -91,20 +92,35 @@ def newest_file(path):
 
 ###########REAL FUNCTIONS##################
 
-def encode(sentence):
-    return sentence
+# def encode(sentence):
+#     return sentence
+#
+# def get_similarity_score(sentence1, sentence2):
+#     tokens1 = set(re.findall(r'[\w]+', sentence1.lower()))
+#     tokens2 = set(re.findall(r'[\w]+', sentence2.lower()))
+#     rakey.extract_keywords_from_sentences(sentence1.replace("-", " ").lower().split())
+#     keys1 = rakey.get_ranked_phrases()
+#     rakey.extract_keywords_from_sentences(sentence2.replace("-", " ").lower().split())
+#     keys2 = rakey.get_ranked_phrases()
+#     keys2 = set(keys2)
+#     tokens1 = set(keys1) - stop
+#     tokens2 = set(keys2) - stop
+#     return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
 
-def get_similarity_score(sentence1, sentence2):
-    tokens1 = set(re.findall(r'[\w]+', sentence1.lower()))
-    tokens2 = set(re.findall(r'[\w]+', sentence2.lower()))
-    rakey.extract_keywords_from_sentences(sentence1.replace("-", " ").lower().split())
-    keys1 = rakey.get_ranked_phrases()
-    rakey.extract_keywords_from_sentences(sentence2.replace("-", " ").lower().split())
-    keys2 = rakey.get_ranked_phrases()
-    keys2 = set(keys2)
-    tokens1 = set(keys1) - stop
-    tokens2 = set(keys2) - stop
-    return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
+
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('bert-base-nli-mean-tokens')
+
+
+
+
+
+def encode(sentence):
+  return model.encode([sentence])
+
+def get_similarity_score(sentence1, sentence2, kernel = "poly_2"):
+    return cosine_similarity(sentence1, sentence2)
+  #return polynomial_kernel(sentence1, sentence2, 2).item()
 
 
 def sim_score_jugaad(ref_article, similarity_score, complete_citing_sentence):
@@ -125,10 +141,11 @@ def sim_score_jugaad(ref_article, similarity_score, complete_citing_sentence):
 def get_best_cites(ref_article, complete_citing_sentence):
     ref_vs = [(x[0], encode(x[1])) for i, x in enumerate(ref_article.sentences.items()) if (has_multiple_cites(x[1]) < 2)]  # or  "intro" in ref_article.sections[x[0]].lower() or "abstract" in ref_article.sections[x[0]].lower() or "concl" in ref_article.sections[x[0]].lower() or "summ" in ref_article.sections[x[0]].lower())]
     similarity_score = {}
+    complete_citing_sentence_enc = encode(complete_citing_sentence)
     for ref_id, ref_sentence in ref_vs:
         try:
             similarity_score[ref_id] = max(similarity_score.get(ref_id, 0),
-                                           get_similarity_score(ref_sentence, complete_citing_sentence))
+                                           get_similarity_score(ref_sentence, complete_citing_sentence_enc))
         except Exception as e:
             # print(e)
             pass
@@ -146,7 +163,7 @@ def get_cite_texts_csv(path, ref_id):
             cite_text = annotation["clean_text"]
             if cite_text == "":
                 cite_text = annotation["raw_text"]
-            cite_texts[str(annotation["citance_number"])] = cite_text
+            cite_texts[str(annotation["citance_number"])] = {'cite_text': cite_text}
     return cite_texts
 
 
@@ -158,7 +175,9 @@ def get_cite_texts_ann(path, ref_id):
     '''
     annotation_file = newest_file(path + "/annotation/")
     cite_texts = {}
+    uniq = 0
     with open(annotation_file) as f_ann:
+        next(f_ann)
         for line in f_ann:
             if len(line.strip()) == 0:
                 continue
@@ -168,29 +187,47 @@ def get_cite_texts_ann(path, ref_id):
                 citation_html = parts[6].split(":", maxsplit=1)[1].strip()
                 tree = ET.fromstring("<root>" + citation_html + "</root>")
                 cite_text = ' '.join([x.text for x in tree.iter('S')])
-                cite_texts[parts[0].split(":")[1].strip()] = cite_text
-
+                cite_no = parts[0].split(":")[1].strip()
+                uniq += 1
+                ref_article = "-".join(
+                    parts[1].split(":")[1].strip().upper().replace("_", "-").replace(".XML", "").replace(".TXT",
+                                                                                                         "").split("-")[
+                    :2])
                 cite_article = "-".join(
                     parts[2].split(":")[1].strip().upper().replace("_", "-").replace(".XML", "").replace(".TXT",
                                                                                                          "").split("-")[
                     :2])
-                marker_offset = [int(x) for x in (
-                    parts[5].split(":")[1].replace("'", "").replace("[", "").replace("]", "").strip()).replace(",",
-                                                                                                               " ").split()]
-                citation_offsets = [int(x) for x in (
-                    parts[5].split(":")[1].replace("'", "").replace("[", "").replace("]", "").strip()).replace(",",
-                                                                                                               " ").split()]
-                ref_offsets = [int(x) for x in (
-                    parts[7].split(":")[1].replace("'", "").replace("[", "").replace("]", "").strip()).replace(",",
-                                                                                                               " ").split()]
-            except:
-                print("not ok")
+                marker_offset = parts[3].split(":")[1].strip()
+
+                marker = parts[4].split(":")[1].strip()
+
+                citation_offsets = parts[5].split(":")[1].strip()
+                citation_text = "dummy" # Hopefully not used
+                citation_text_clean = "dummy"  # Hopefully not used
+
+                ref_offsets = parts[7].split(":")[1].strip()
+                ref_text = "dummy"  # Hopefully not used
+
+                facet = "methodcitation" # Hopefully not used
+
+                '''
+                Citance Number,Reference Article,Citing Article,Citation Marker Offset,Citation Marker,Citation Offset,Citation Text,
+                Citation Text Clean,Reference Offset,Reference Text,Discourse Facet
+                '''
+
+                d = {'Citance Number' : cite_no, 'Reference Article' : ref_article, 'Citing Article' : cite_article,
+                     'Citation Marker Offset' : marker_offset, 'Citation Marker' : marker, 'Citation Offset' : citation_offsets,
+                     'Citation Text' : citation_text, 'Citation Text Clean' : citation_text_clean, 'Reference Offset' : ref_offsets,
+                     'Reference Text' : ref_text, 'Discourse Facet' : facet, 'cite_text' : cite_text}
+                cite_texts[cite_no + "-" + str(uniq)] = d
+            except Exception as e:
+                raise e
     return cite_texts
 
 
 
 
-def write_out_2018_test(path, ref_id, results):
+def write_out_2018_test(path, ref_id, results, ref_article, cite_texts = None):
     ann_out_template = path +"/annotation/" + ref_id +".csv"
     #TODO: Deal with repeated cite_nos
     with open(ann_out_template) as f:
@@ -208,39 +245,66 @@ def write_out_2018_test(path, ref_id, results):
                 print("Skipping ", ref_id, " ", cite_no)
                 cite_ids = ""
             new_rows[-1][-3] = cite_ids
-            new_rows[-1][-2] = "dummy" # Hopefully unused
+            sents = ['<S ssid="1" sid="' + str(x) + '">' + ref_article.sentences[x] + '</S>' for x in result]
+            new_rows[-1][-2] = ''.join(sents) # Hopefully unused
             new_rows[-1][-1] = "methodcitation"
     with open("./run1/Task1/" + ref_id+".csv", "w") as f:
         writer = csv.writer(f)
         writer.writerows(new_rows)
 
-def write_out_2018_train():
+def write_out_2018_train(path, ref_id, results, ref_article, cite_texts):
     '''
     Citance Number,Reference Article,Citing Article,Citation Marker Offset,Citation Marker,Citation Offset,Citation Text,
     Citation Text Clean,Reference Offset,Reference Text,Discourse Facet
     '''
     #TODO: Deal with repeated cite_nos
-
-    pass
+    with open("./runtrain/Task1/" + ref_id+".csv", "w") as f:
+        keys = ['Citance Number', 'Reference Article' , 'Citing Article',
+                     'Citation Marker Offset' , 'Citation Marker' , 'Citation Offset' ,
+                     'Citation Text' , 'Citation Text Clean' , 'Reference Offset' ,
+                     'Reference Text' , 'Discourse Facet']
+        writer = csv.writer(f)
+        writer.writerow(keys)
+        for cite_uniq in cite_texts:
+            cite_data = cite_texts[cite_uniq]
+            del cite_data['cite_text']
+            if cite_uniq in results and len(results[cite_uniq]) > 0:
+                result = results[cite_uniq]
+                cite_ids = ["'"+str(x)+"'" for x in result]
+                cite_ids = ','.join(cite_ids)
+            else:
+                print("Skipping ", ref_id, " ", cite_uniq)
+                cite_ids = ""
+            # VERY IMP LINE
+            cite_data['Reference Offset'] = cite_ids
+            sents = ['<S ssid="1" sid="'+str(x)+'">' + ref_article.sentences[x]+'</S>' for x in result]
+            cite_data["Reference Text"] = ''.join(sents)
+            current_row = [cite_data[key] for key in keys]
+            writer.writerow(current_row)
 ################Strategy-hack################
 
-get_cite_texts = get_cite_texts_ann
 get_cite_texts = get_cite_texts_csv
+get_cite_texts = get_cite_texts_ann
 
 
 write_out = write_out_2018_test
+write_out = write_out_2018_train
 ###########Main loop##################
-
+sk = 0
 for file in os.listdir(root):
     results = {}
+    sk += 1
     ref_id = file
+    if sk < -1:
+        print("Skipping: ", ref_id)
+        continue
     path = root +"/" + file
     ref_article = load_article(path+"/Reference_XML/"+file+".xml")
     print("Doing: ", ref_id)
     cite_texts = get_cite_texts(path, ref_id)
     for cite_id in cite_texts:
-            cite_text = cite_texts[cite_id]
-            best_cites = get_best_cites(ref_article, cite_text)
-            results[cite_id] =  [x for x in best_cites.keys()]
-    write_out(path, ref_id, results)
+        cite_text = cite_texts[cite_id]['cite_text']
+        best_cites = get_best_cites(ref_article, cite_text)
+        results[cite_id] =  [x for x in best_cites.keys()]
+    write_out(path, ref_id, results, ref_article, cite_texts)
 
