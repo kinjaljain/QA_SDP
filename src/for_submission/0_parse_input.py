@@ -83,7 +83,7 @@ def bias_intro(s, ref_article, num_cites, id2score):
     sid = s[0]
     present = ("intro" in ref_article.sections[sid].lower() or "abstract" in ref_article.sections[
         sid].lower() or "concl" in ref_article.sections[sid].lower() or "summ" in ref_article.sections[sid].lower())
-    if True:
+    if not present:
         score = s[1]
     else:
         score = s[1]+min(0.05, (0.01)*(num_cites-1)) + 0.20 * id2score.get(sid, 0)
@@ -103,17 +103,17 @@ def newest_file(path):
 def encode(sentence):
     return sentence
 
-# def get_similarity_score(sentence1, sentence2):
-#     tokens1 = set(re.findall(r'[\w]+', sentence1.lower()))
-#     tokens2 = set(re.findall(r'[\w]+', sentence2.lower()))
-#     rakey.extract_keywords_from_sentences(sentence1.replace("-", " ").lower().split())
-#     keys1 = rakey.get_ranked_phrases()
-#     rakey.extract_keywords_from_sentences(sentence2.replace("-", " ").lower().split())
-#     keys2 = rakey.get_ranked_phrases()
-#     keys2 = set(keys2)
-#     tokens1 = set(keys1) - stop
-#     tokens2 = set(keys2) - stop
-#     return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
+def get_similarity_score(sentence1, sentence2):
+    tokens1 = set(re.findall(r'[\w]+', sentence1.lower()))
+    tokens2 = set(re.findall(r'[\w]+', sentence2.lower()))
+    rakey.extract_keywords_from_sentences(sentence1.replace("-", " ").lower().split())
+    keys1 = rakey.get_ranked_phrases()
+    rakey.extract_keywords_from_sentences(sentence2.replace("-", " ").lower().split())
+    keys2 = rakey.get_ranked_phrases()
+    keys2 = set(keys2)
+    tokens1 = set(keys1) - stop
+    tokens2 = set(keys2) - stop
+    return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
 
 
 # from sentence_transformers import SentenceTransformer
@@ -133,48 +133,48 @@ def encode(sentence):
 
 
 
-model = BertForSequenceClassification.from_pretrained('../../models/bert_model_2018')
-tokenizer = BertTokenizer.from_pretrained('../../models/bert_model_2018')
-model.config.num_labels = 2
-cuda = torch.cuda.is_available()
-device = torch.device("cpu" if not cuda else "cuda")
-model.to(device)
+# model = BertForSequenceClassification.from_pretrained('../../models/bert_model_2018')
+# tokenizer = BertTokenizer.from_pretrained('../../models/bert_model_2018')
+# model.config.num_labels = 2
+# cuda = torch.cuda.is_available()
+# device = torch.device("cpu" if not cuda else "cuda")
+# model.to(device)
 
-def softmax(x):
-    """Compute softmax values for each sets of scores in x."""
-    e_x = np.exp(x - np.max(x))
-    return e_x / e_x.sum()
-
-def get_similarity_score(sentence1, sentence2):
-    ref_sentence = " " + sentence1.lower()
-    citing_sentence = " " + sentence2.lower()
-    pairofstrings = [(citing_sentence, ref_sentence)]
-
-    encoded_batch = tokenizer.batch_encode_plus(pairofstrings, add_special_tokens=True, return_tensors='pt',
-                                                return_special_tokens_mask=True)
-    attention_mask = (encoded_batch['attention_mask'] - encoded_batch['special_tokens_mask']).to(device)
-    input_ids, token_type_ids = encoded_batch['input_ids'].to(device), encoded_batch['token_type_ids'].to(device)
-    logits = model(input_ids, token_type_ids=token_type_ids, attention_mask=attention_mask)[0]
-    logits = torch.nn.functional.softmax(logits, dim=1)
-    logits = logits.cpu().detach().numpy()
-    logits = logits[0]
-    # print("sim score (prpb not):", logits[0])
-    return logits[0]
+# def softmax(x):
+#     """Compute softmax values for each sets of scores in x."""
+#     e_x = np.exp(x - np.max(x))
+#     return e_x / e_x.sum()
+#
+# def get_similarity_score(sentence1, sentence2):
+#     ref_sentence = " " + sentence1.lower()
+#     citing_sentence = " " + sentence2.lower()
+#     pairofstrings = [(citing_sentence, ref_sentence)]
+#
+#     encoded_batch = tokenizer.batch_encode_plus(pairofstrings, add_special_tokens=True, return_tensors='pt',
+#                                                 return_special_tokens_mask=True)
+#     attention_mask = (encoded_batch['attention_mask'] - encoded_batch['special_tokens_mask']).to(device)
+#     input_ids, token_type_ids = encoded_batch['input_ids'].to(device), encoded_batch['token_type_ids'].to(device)
+#     logits = model(input_ids, token_type_ids=token_type_ids, attention_mask=attention_mask)[0]
+#     logits = torch.nn.functional.softmax(logits, dim=1)
+#     logits = logits.cpu().detach().numpy()
+#     logits = logits[0]
+#     # print("sim score (prpb not):", logits[0])
+#     return logits[0]
 
 
 
 
 def sim_score_jugaad(ref_article, similarity_score, complete_citing_sentence):
     id2score = get_id2_score(ref_article)
-    similarity_score = {x: similarity_score[x] + 0 * id2score.get(x, 0) for x in similarity_score}  # 0.3
+    similarity_score = {x: similarity_score[x] + 0.30 * id2score.get(x, 0) for x in similarity_score}  # 0.3
     num_cites = has_multiple_cites(complete_citing_sentence)
     sorted_similarity_score = sorted(similarity_score.items(), key=lambda item: -item[1])
     top_n = [s for s in sorted_similarity_score]
     top_n_before_filter = [bias_intro(s, ref_article, num_cites, id2score) for s in top_n]
 
-    top_n = [s for s in top_n_before_filter]  # 0.18
+    top_n = [s for s in top_n_before_filter if s[1] > 0.15]  # 0.18
 
-    top_n = {x[0]: x[1] for x in top_n[:3]}
+    top_n = {x[0]: x[1] for x in top_n[:5]}
     if len(top_n) == 0:
         return {x[0]: x[1] for x in top_n_before_filter[:2]}
     return top_n
