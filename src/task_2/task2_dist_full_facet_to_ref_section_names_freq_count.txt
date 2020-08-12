@@ -1,0 +1,152 @@
+resultcitation:
+	- introduction: 0.189873417721519
+	- evaluation. : 0.1518987341772152
+	- abstract: 0.10126582278481013
+	- potential for improvement. : 0.0759493670886076
+	- conclusion. : 0.06329113924050633
+	- 0.834  336: 0.05063291139240506
+	- those words that have the semantic classes “parent”,. : 0.05063291139240506
+	- five methods for  spelling correction. : 0.05063291139240506
+	- experiments. : 0.0379746835443038
+	- related work. : 0.0379746835443038
+	- syntactic ambiguity in arabic. : 0.02531645569620253
+	- learning and inference. : 0.012658227848101266
+	- 58.0: 0.012658227848101266
+	- grammar development. : 0.012658227848101266
+	- the result is spliced between the states rep-. : 0.012658227848101266
+	- materials and methods. : 0.012658227848101266
+	- transliterated foreign  names such  as . 3r:®elli  ma3-lai2-xil-ya3. : 0.012658227848101266
+	- paper: 0.012658227848101266
+	- our chinese word segmentation process. : 0.012658227848101266
+	- applications and future research. : 0.012658227848101266
+	- 0.827: 0.012658227848101266
+	- after graph construction  we then employ a. : 0.012658227848101266
+	- experimental results. : 0.012658227848101266
+	- miscategorization  of  entity  as. : 0.012658227848101266
+methodcitation:
+	- introduction: 0.26499032882011603
+	- abstract: 0.06576402321083172
+	- the approach. : 0.05222437137330754
+	- transliterated foreign  names such  as . 3r:®elli  ma3-lai2-xil-ya3. : 0.03481624758220503
+	- related work. : 0.03288201160541586
+	- systems used. : 0.030947775628626693
+	- conclusion. : 0.02321083172147002
+	- summary. : 0.02127659574468085
+	- the proposal. : 0.02127659574468085
+	- experimental results. : 0.019342359767891684
+	- feature description. : 0.019342359767891684
+	- potential for improvement. : 0.019342359767891684
+	- the result is spliced between the states rep-. : 0.013539651837524178
+	- discussion. : 0.013539651837524178
+	- method. : 0.01160541586073501
+	- algorithm. : 0.01160541586073501
+	- pps containing “by” and a gerund followed by “it”. : 0.01160541586073501
+	- experiments. : 0.009671179883945842
+	- confusion network decoding. : 0.009671179883945842
+	- conclusions. : 0.009671179883945842
+	- relevant work. : 0.009671179883945842
+	- building a graph of similar words. : 0.009671179883945842
+	- identifying lexical cohesion. : 0.009671179883945842
+	- 0.834  336: 0.007736943907156673
+	- intersective levin classes. : 0.007736943907156673
+	- experiment. : 0.007736943907156673
+	- features. : 0.007736943907156673
+	- support vector machines. : 0.007736943907156673
+	- layers of annotation. : 0.007736943907156673
+	- markov clustering. : 0.007736943907156673
+	- dp algorithm for statistical. : 0.007736943907156673
+	- clustering and evaluation methods. : 0.007736943907156673
+	- fertility hidden markov model. : 0.007736943907156673
+	- 58.0: 0.005802707930367505
+	- generative story. : 0.005802707930367505
+	- previous work. : 0.005802707930367505
+	- standard parsing experiments. : 0.005802707930367505
+	- theory. : 0.005802707930367505
+	- decision trees. : 0.005802707930367505
+	- our approach. : 0.005802707930367505
+	- experimentation. : 0.005802707930367505
+	- our chinese word segmentation process. : 0.005802707930367505
+	- semi-supervised mincuts. : 0.005802707930367505
+	- the feature space. : 0.005802707930367505
+	- experimental classes and verbs. : 0.005802707930367505
+	- appropriateness for, malisms. : 0.005802707930367505
+	- gibbs sampling for fertility hmm. : 0.005802707930367505
+	- approach. : 0.0038684719535783366
+	- multiple confusion network decoding. : 0.0038684719535783366
+	- log-linear combination with arbitrary. : 0.0038684719535783366
+	- evaluation metrics. : 0.0038684719535783366
+	- weights optimization. : 0.0038684719535783366
+	- our approach: topic-sensitive lexrank. : 0.0038684719535783366
+	- the espresso algorithm. : 0.0038684719535783366
+	- finite-state  morphology. : 0.0038684719535783366
+	- classifying verbs. : 0.0038684719535783366
+	- hidden markov modeling of dialogue. : 0.0038684719535783366
+	- our tagger. : 0.0038684719535783366
+	- evaluation. : 0.0038684719535783366
+	- some  phonological rules  depend upon correct  word  segmentation,. : 0.0038684719535783366
+	- the  problem. : 0.0038684719535783366
+	- those words that have the semantic classes “parent”,. : 0.0038684719535783366
+	- five methods for  spelling correction. : 0.0038684719535783366
+	- experiment 2: test subject evaluation. : 0.0038684719535783366
+	- results. : 0.0019342359767891683
+	- semantic. : 0.0019342359767891683
+	- learning and inference. : 0.0019342359767891683
+	- formal description of the problem. : 0.0019342359767891683
+	- syntactic ambiguity in arabic. : 0.0019342359767891683
+	- grammar development. : 0.0019342359767891683
+	- compile-replace. : 0.0019342359767891683
+	- conclusions and future  work. : 0.0019342359767891683
+	- materials and methods. : 0.0019342359767891683
+	- multiword expressions. : 0.0019342359767891683
+	- the dialogue act labeling task. : 0.0019342359767891683
+	- maximum-likelihood estimation. : 0.0019342359767891683
+	- the strategic incremental copy graph unification. : 0.0019342359767891683
+	- past, present, future applications. : 0.0019342359767891683
+	- word sense clustering algorithm. : 0.0019342359767891683
+	- basic approach. : 0.0019342359767891683
+	- experimental data. : 0.0019342359767891683
+	- context-sensitive spelling correction. : 0.0019342359767891683
+	- after graph construction  we then employ a. : 0.0019342359767891683
+	- the data. : 0.0019342359767891683
+	- efficiency. : 0.0019342359767891683
+	- decoding. : 0.0019342359767891683
+	- apply  the antecedent  indicators  to each  poten­. : 0.0019342359767891683
+	- proposed segmentation algorithm. : 0.0019342359767891683
+	- learning contextual role knowledge. : 0.0019342359767891683
+	- paper: 0.0019342359767891683
+aimcitation:
+	- introduction: 0.48717948717948717
+	- formal description of the problem. : 0.20512820512820512
+	- paper: 0.07692307692307693
+	- abstract: 0.05128205128205128
+	- 58.0: 0.02564102564102564
+	- discussion. : 0.02564102564102564
+	- transliterated foreign  names such  as . 3r:®elli  ma3-lai2-xil-ya3. : 0.02564102564102564
+	- related work. : 0.02564102564102564
+	- conclusion. : 0.02564102564102564
+	- context-sensitive spelling correction. : 0.02564102564102564
+	- potential for improvement. : 0.02564102564102564
+implicationcitation:
+	- introduction: 0.3
+	- abstract: 0.12
+	- discussion. : 0.12
+	- those words that have the semantic classes “parent”,. : 0.08
+	- evaluation. : 0.06
+	- support vector machines. : 0.04
+	- miscategorization  of  entity  as. : 0.04
+	- intersective levin classes. : 0.02
+	- transliterated foreign  names such  as . 3r:®elli  ma3-lai2-xil-ya3. : 0.02
+	- the  problem. : 0.02
+	- conclusion. : 0.02
+	- our chinese word segmentation process. : 0.02
+	- applications and future research. : 0.02
+	- experimental results. : 0.02
+	- building a feature set of bigrams. : 0.02
+	- the data. : 0.02
+	- clustering and evaluation methods. : 0.02
+	- related work. : 0.02
+	- apply  the antecedent  indicators  to each  poten­. : 0.02
+hypothesiscitation:
+	- classifying verbs. : 0.3333333333333333
+	- intersective levin classes. : 0.3333333333333333
+	- introduction: 0.3333333333333333
