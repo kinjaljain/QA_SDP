@@ -1,0 +1,933 @@
+resultcitation:
+Bigrams have recently been shown to be very successful features in supervised word sense disambiguation (Pedersen, 2001).
+(2011) showed that by considering non-compositional MWEs as a single unit, the effectiveness of document ranking in an IR system improves, and Carpuat and Diab (2010) showed that by adding compositionality scores to the Moses SMT system (Koehn et al., 2007), they could improve translation quality.
+Following a strategy in line with work on verb classification (Merlo and Stevenson, 2001; Stevenson and Joanis, 2003), we set out to classify common noun lemmas based on their morphosyntactic distribution in a considerably larger corpus.
+Green and Manning (2010) discuss annotation consistency in the Penn Arabic Treebank (ATB), and for our test corpus we follow their discussion and use the same data set, the training section of three parts of the ATB (Maamouri et al., 2008a; Maamouri et al., 2009; Maamouri et al., 2008b).
+Lattice parsing was explored in the context of parsing of speech signals by Chappelier et al.
+(1996), the rate of agreement between two human judges is less than 80%.
+The part-of-speeches were generated using the TreeTagger and the RFTagger (Schmid and Laws, 2008), which produces more fine-grained tags that include also person, gender and case information.
+Especially, although we did not concern the dependency tree and full parse tree information as other supervised methods (Miller et al., 2000; Culotta and Soresen, 2004; Kambhatla, 2004; Zhou et al., 2005), the incorporation of simple features, such as words and chunking information, still can provide complement information for capturing the characteristics of entity pairs.
+The POS tags are generated with the RFTagger (Schmid and Laws, 2008) for German, which produces fine-grained tags that include person, gender and case information.
+It is important to mention that the F-measure for the human performance on this task is about 96%, (Sundheim 1995).
+This would not rule out the possibility that bigram presence is as equally useful a feature as unigram presence; in fact, Pedersen (2001) found that bigrams alone can be e.ective features for word sense disambiguation.
+However, detailed research (Zhou et al., 2005) shows that it’s difficult to extract new effective features to further improve the extraction accuracy.
+(2005): feature-based Kambhatla (2004): feature-based 80.8 (65.2) 77.3 (64.9) 80.1 (63.4) 76.1 (62.4) 65.5 (-) 67.1 (-) 77.2 (63.1) (63.5) 68.4 (54.9 ) 65.6 (51.2) 63.8 (51.9 ) 62.6 (48.5) 43.8 (-) 35.0 (-) 60.7 (49.5) (45.2) 74.1 (59.6) 70.9 (57.2) 71.0 (57.1) 68.7 (54.6) 52.5 (-) 45.8 (-) 68.0 (55.5) (52.8) show that our composite kernel-based system outper forms other composite ke rnel-based systems.
+Experiments have shown only about 75% agreement among native speakers regarding the correct word segmentation (Sproat et al., 1996).
+With LOB and a single 114K tune set (van Halteren, Zavrel, and Daelemans 1998), both MBL and Decision Trees degraded significantly when adding context, and MBL degraded when adding the word.24 With the increased amount of training material, addition of the context gener­ ally leads to better results.
+For German we used morphologically rich tags from RFTagger (Schmid and Laws, 2008), that contains morphological information such as case, number, and gender for nouns and tense for verbs.
+Similarly, Sproat et al.
+About the same accuracy is reported in Chinese by statistical methods (Sproat et al., 1996).
+For example, the best F-score in the shared task of BioNER in COLING 2004 JNLPBA (Kim et al., 2004) was 72.55% (Zhou and Su, 2004) 1, whereas the best performance at MUC6, in which systems tried to identify general named entities such as person or organization names, was an accuracy of 95% (Sundheim, 1995).
+Where TagPair used to be significantly better than MBL, the roles are now well reversed.
+The best reported results for parsing Arabic when the gold word segmentation is not known, however, are obtained using a pipeline model in which a tagger and word-segmenter is applied prior to a manually state-split constituency parser, resulting in an F-score of 79% F1 (for sentences of up to 70 words) (Green and Manning 2010).
+In van Halteren, Zavrel, and Daelemans (1998) we used a straightforward im­ plementation of HMM's, which turned out to have the worst accuracy of the four competing methods.
+(2010).
+Under this model, the conditional probability that the word sense is s given that classi.er ioutputs sand classi.er joutputs s2, P(sls i(xd)=ss j(xd)=s2), is computed on development data, and the posterior probability is estimated as N P(slx,d)e(s,sAk(x,d))+(s,sA j(x,d)) (7) k..
+In the experiments presented in van Halteren et al.
+This led us to perform further, more extensive, 1In previous work (van Halteren, Zavrel, and Daelemans 1998), we were unable to confirm the latter half of the hypothesis unequivocally.
+Although a bit lower than Zhou et al.’s result of 55.5 (Zhou et al., 2005), we attribute the difference to our use of a different tokenizer, different parser, and having not used the semantic information features.
+No comparable figure has been reported for classical Chinese word segmentation, but this rate compares favorably with past attempts for modern Chinese, e.g., an average of 76% interhuman agreement rate in (Sproat et al., 1996).
+The test corpus consists of 100 Wall Street Journal documents from the period January 1993 to June 1994, 54 of which contained management succession events (Sundheim, 1995).
+Qian and Liu (2012) train independent models for word segmentation, POS tagging, and 13 Green and Manning (2010) find that using automatic tokenization provided by MADA (Habash et al., 2009) instead of gold tokenization results in a 1.92% F score drop in their constituent parsing work.
+The results described in this section are based on the 18 confusion sets selected by Golding (1995; 1996).
+We adopted K = 3 topics, following the setting in (Zhao and Xing, 2006).
+While the TreeTagger assigns 54 different POS tags to the 357K German words in the corpus, the RFTagger produces 756 different fine-grained tags on the same corpus.
+example, in the corefercnce annotation experiments for MUC6 (Sundheim 1995), relations other than identity were dropped due to difficulties in annotating them.
+On the other hand, it has been shown that incorporating syntactic information in the form of features can lead to improved performance (Chiang, 2010; Gimpel and Smith, 2009; Marton and Resnik, 2008).
+Nevertheless, recent results show that knowledge-poor methods perform with amazing ac­ curacy (cf.
+j where sc;,j(xfd)=argmaxtP(tlsc;(xfd)fscj(xfd)).
+There are multiple studies (Wu and Fung, 1994; Sproat et al., 1996; Luo and Roukos, 1996) showing that the agreement between two (untrained) native speakers is about upper to lower . The agreement between multiple human subjects is even lower (Wu and Fung, 1994).
+As they rely on the detection of high-density areas in a network of cooccurrences, (Vronis, 2003) and (Dorow and Widdows, 2003) are the closest methods to ours.
+This is a lightweight model and generally does not attempt to exhaustively leverage all possible proven sources of useful features (Zhou et al., 2005) towards a higher absolute score, but rather to serve as a point of comparison to the models which rely on syntactic information.
+(2010) note, assigning each word type to its most frequent part of speech yields an upper bound accuracy of 93% or more for most languages.
+Table 6 shows 3 An exception is Golding (1995), who uses the entire Brown corpus for training (1M words) and 3/4 of the Wall Street Journal corpus (Marcus et al., 1993) for testing.
+That model incorrectly assumed independence of the conditional sampling distributions, resulting in a accuracy of 66.4%, well below that of our model.
+We previously showed that segmentation errors decrease Arabic parsing accuracy by about 2.0% F1 (Green and Manning 2010).
+Zhao and Grisman (2005) 2 combined various kinds of knowledge from tokenization, sentence parsing and deep dependency analysis through support vector machines and achieved F-measure of 70.1 on the 7 relation types of the ACE RDC 2004 corpus3 . Zhou et al (2005) further systematically explored diverse lexical, syntactic and semantic features through support vector machines and achieved Fmeasure of 68.1 and 55.5 on the 5 relation types and the 24 relation subtypes in the ACE RDC 2003 corpus respectively.
+(1998) have generalized this approach for higher number of classifiers in their TotPrecision voting method.
+Given that close to 95% of the word occurrences in human labeled data are tagged with their most frequent part of speech (Lee et al., 2010), this is probably not surprising; one-tag-per-word is a fairly good first approximation for induction.
+To develop UWI, there are three approaches: (1) Statistical approach, researchers use common statistical features, such as maximum entropy (Chieu et al. 2002), association strength, mutual information, ambiguous matching, and multi-statistical features for unknown word detection and extraction; (2) Linguistic approach, three major types of linguistic rules (knowledge): morphology, syntax, and semantics, are used to identify unknown words; and (3) Hybrid approach, recently, one important trend of UWI follows a hybrid approach so as to take advantage of both merits of statistical and linguistic approaches.
+(1998) introduce a modi.ed version of voting called TagPair.
+Indeed, even native speakers can agree on word boundaries in modern Chinese only about 76% of the time (Sproat et al., 1996).
+In Japanese, around 95% word segmentation ac­ curacy is reported by using a word-based lan­ guage model and the Viterbi-like dynamic program­ ming procedures (Nagata, 1994; Yamamoto, 1996; Takeuchi and Matsumoto, 1997; Haruno and Mat­ sumoto, 1997).
+However, these experiments were restricted to a single language, a single tagset and, more importantly, a limited amount of training data for the combiners.
+First experiments (van Halteren, Zavrel, and Daelemans 1998; Brill and Wu 1998) demonstrated the basic validity of the approach for tagging, with the error rate of the best combiner being 19.1% lower than that of the best individual tagger (van Halteren, Zavrel, and Daelemans 1998).
+We consider an alternative method, Bayes, a Bayesian hybrid method (Golding, 1995), for the case where the words have the same part of speech.
+Although in order to achieve the best performance, it is necessary to use a proper combination of these features (Zhou et al., 2005), in this paper, we will concentrate on how to better capture the syntactic features for relation extraction.
+Quasi-synchronous grammar (QG) provides this backbone (Smith and Eisner, 2006); we describe a coarse-to-fine approach for decoding within this framework, advancing substantially over earlier QG machine translation systems (Gimpel and Smith, 2009).
+The latter is currently dominating in NER amongst which the most popular methods are decision tree (Sekine et al., 1998; Pailouras et al., 2000), Hidden Markov Model (Zhang et al., 2003; Zhao, 2004), maximum entropy (Chieu and Ng, 2002; Bender et al., 2003), and support vector machines (Isozaki and Kazawa, 2002; Takeuchi and Collier, 2002; Mayfield, 2003).From the linguistic perspective, NIL expres sions are rather different from named entities in nature.
+Each classi.er votes for its classi.cation and every pair of classi.ers votes for the sense that is most likely given the joint classi.cation.
+According to Sproat et al. {1996) and Wu and Fung {1994), experiments show that only about 75% agreement between native speakers is to be expected on the "correct" segmentation, and the figure reduces as more people become involved.
+If the confidence of a character is lower than the threshold, the tag of that character will be adjusted to the tag assigned by the Maximum Probability Segmentation (R. Zhang et al., 2006).
+For German, finally, we see the greatest improvement with k = 3 tional words that are not found in the training corpus and additional tags for words that do occur in the training data (Schmid and Laws, 2008).
+model’s conditional probability is defined as Another model is Maximum Entropy (Zhao Jian 2005, Hai Leong Chieu 2002).
+The most important result that has undergone a change between van Halteren, Zavrel, and Daelemans (1998) and our current experiments is the relative accuracy of TagPair and stacked systems such as MBL.
+(2010), we report the best and median settings of hyperparameters based on the Fscore, in addition to inferred values.
+Such global features enhance the performance of NER (Chieu and Ng, 2002b).
+It is not clear what resources are required to adapt systems to new languages."
+In statistical methods, the most popular models are Hidden Markov Models (HMM) (Rabiner, 1989), Maximum Entropy Models (ME) (Chieu et al., 2002) and Conditional Random Fields (CRF) (Lafferty et al., 2001).
+(2010) we used only the training sections for each language.
+In Chinese text segmentation there are three basic approaches (Sproat et al. 1996): pure heuristic, pure statistical, and a hybrid of the two.
+After we get word-based segmentation result, we use it to revise the CRF tagging result similar to (Zhang et al., 2006).
+Measuring recall is tricky, even using the errors identified in Green and Manning (2010) as “gold” errors.
+Chinese word segmentation is a well-known problem that has been studied extensively (Wu and Fung, 1994; Sproat et al., 1996; Luo and Roukos, 1996) and it is known that human agreement is relatively low.
+For instance, Acosta et al.
+The third main result was that we found very little agreement between our sub­ jects on identifying briding descriptions: in our second experiment, the agreement on 5 Previous attempts to annotate anaphoric relations had resulted in very low agreement levels; for.
+The present work inherits the spirit of the supervised approaches to verb classification (Stevenson et al., 1999; Stevenson and Merlo, 1999; Merlo and Stevenson, 2001; Stevenson and Joanis, 2003; Joanis and Stevenson, 2003; Joanis et al., 2008).
+The features used in Kambhatla (2004) and Zhou et al.
+As shown in Sproat et al.
+Biemann’s idea and motivation is that noncompositional expressions could be treated as single units in many NLP applications such as Information Retrieval (Acosta et al., 2011) or Machine Translation (Carpuat and Diab, 2010).
+All methods use either the full set or a subset of 18 confusion sets originally gathered by Golding (1995).
+The vote of each classifier (parser) is weighted by their respective accuracy.
+Van Halteren et al.
+Curiously, while researchers of Modern Hebrew parsing find lattice parsers outperforming their pipeline systems (Goldberg and Tsarfaty, 2008; Goldberg and Elhadad, 2011; Goldberg and Elhadad, 2013), Green and Manning (2010) obtain the opposite result in their Arabic parsing experiments, with the lattice parser underperforming the pipeline system by over 3 points (76.01 F1 vs 79.17 F1).
+This is a popular approach in parsing systems for Arabic and Chinese (Jiang, Huang, and Liu 2009; Green and Manning 2010).
+(van Halteren et al., 1998) who found that combining the results of several part of speech taggers increased performance).
+While syntactic features are known to improve the performance of supervised IE, at least using clean hand-labeled ACE data (Zhou et al., 2007; Zhou et al., 2005), we do not know whether syntactic features can improve the performance of unsupervised or distantly supervised IE.
+Thirdly, this approach is compatible with in­ corporating multiple components of the same type to improve performance (cf.
+Challenging non-concatenative morphological phenomena, such as circumfixion and root-and-pattern morphology, can be characterized by regular means (Beesley and Karttunen 2000, 2003).
+We previously showed that the “Kulick” tag set is very effective for basic Arabic parsing (Green and Manning 2010).
+(2009), where on a set of 83 English words, an accuracy of 88% was observed; and the method proposed in Su and Markert (2009), where an accuracy of 84% was obtained on another dataset of 298 words.
+The work closest to ours is the subjectivity word sense disambiguation method proposed in Akkaya et al.
+It is also interesting to compare the bigram PYP1HMM to the closely related model of Lee et al.
+For Arabic, we use the head-finding rules from Green and Manning (2010).
+Recent work has therefore focused on the importance of detecting errors in the treebank (Green and Manning, 2010), and methods for finding such errors automatically, e.g.
+(1996) also uses multiple human judges.
+(Mitkov, 1998), (Kennedy and Boguraev, 1996) (Kameyama, 1997)).
+With the simplicity of our algorithm and the ease of implementing it (compared to both incremental copying schemes and lazy schemes), combined with the demonstrated speed of the algorithm, the algorithm could be a viable alternative to existing unification algorithms used in current ~That is, unless some new scheme for reducing excessive copying is introduced such as scucture-sharing of an unchanged shared-forest ([Kogure, 1990]).
+(1998), this method was the best performer among the presented methods.
+The memory-based learner was tested using the 18 confusion word sets from Golding (1995) on the WSJ section of the Penn Treebank and the Brown Corpus.
+Following Lee et al.
+(1999), Sima’an (1999), and Hall (2005), and in the context of joint word-segmentation and syntactic disambiguation in Cohen and Smith (2007), Goldberg and Tsarfaty (2008), and Green and Manning (2010).
+Experiments have shown that there is only about 75% agreement among native speakers regarding the correct word segmentation (Sproat et al. 1996).
+For example, Stevenson and Joanis (2003) report an accuracy of 29% (which implies mP U R ≤ 29%), but their task involves classifying 841 verbs to 14 classes based on differences in the predicate-argument structure.
+(2005) have to be selected and carefully calibrated manually.
+Finally, they also Ours: composite kernel Zhang et al (2006): composite kernel Ours: context -sensitive convolution tree ke rnel Zhang et al (2006): convolution tree ke rnel Bunescu et al (2005): shortest path dependency kernel Culotta et al (2004): dependency kernel Zhou et al.
+This makes the word sequence unobserved to the parser, which has to infer both the syntactic-structure and the token segmentation.6 One possible solution to the unobserved word-sequence problem is a pipeline system in which an initial model is in charge of token-segmentation, and the output of the initial model is fed as the input to a second stage parser.
+VN is built on a refinement of the Levin classes, the intersective Levin classes (Dang et al., 1998), aimed at achieving more coherent classes both semantically and syntactically.
+This property is not strictly true of linguistic data, but is a good approximation: as Lee et al.
+methodcitation:
+Bangalore et al.
+For models with fertility computing the expectations instead becomes intractable, and previous authors have solved this by using approximative 2 The approximation consists of ignoring the dependence between the two draws from the word order jump distribution (second and third factors).
+The first is the word segmentation problem (Sproat et al. 96, Palmer 97).
+Thus for any automatic counting scheme some constant shuffling and reshuffling of the conjunct order needs to be applied until the order stabilizes (see also [Kogure 1990]).
+Mitkov’s approach Mitkov’s approach (Mitkov, 1998b) is a robust anaphora resolution method for technical texts which is based on a set of boosting and impeding indicators applied to each candidate for antecedent.
+Qc 2009 Association for Computational Linguistics System Combination: In a typical system combination task, e.g. Rosti et al.
+Recently, Green and Manning (2010) report on an extensive set of experiments with several kinds of tree annotations and refinements, and report parsing accuracies of 79% F1 using the Stanford-parser and 82% F1 using the PCFG-LA BerkeleyParser, both when assuming gold word segmentation.
+In this two-pass method, translation performance hinges on the N-best hypotheses that are generated in the first pass (since rescoring occurs on these), so adding the translation candidates generated by other MT systems to these hypotheses could potentially improve the performance.
+Conventionally a word segmentation process identifies the words in input text by matching lexical entries and resolving the ambiguous matching (Chen & Liu, 1992, Sproat et al, 1996).
+al.
+Supersense tagging (Ciaramita and Johnson, 2003; Curran, 2005) evaluates a model’s ability to cluster words by their semantics.
+• Conditional Probability Given the model parameters and a sentence pair (f , e), compute P (f |e).
+The Arabic grammar features come from Green and Manning (2010), which contains an ablation study similar to Table 2.
+As we now apply the methods of van Halteren, Zavrel, and Daelemans (1998) to WSJ as well, it is easier to make a comparison.
+However this work approximated the derivation of the Gibbs sampler (omitting the interdependence between events when sampling from a collapsed model), resulting in a model which underperformed Brown et al.
+Loosely speaking, the resolvants of a feature structure have the same underlying finite state automaton as the feature structure, and differ only in their output fllnction.
+As a result, quantitative evaluation is now commonplace in areas of language engineering such as parsing, and quantitative evaluation techniques are being proposed for semantic * Univcrsidade do Vale do Rio dos SinosUNISINOS, Av.
+In addition, it may also be used as a general-purpose string alignment tool—TER has been used for aligning multiple system outputs to each other for MT system combination (Rosti et al. 2007), a task for which TERp may be even better suited.
+1997), (Tillman, 2000), (Och et al., 2001), (Germann et al., 2003), (Udupa et al., 2004).
+Previous research has leveraged prosodic cues (Sridhar et al., 2009; Stolcke et al., 2000) and facial expressions (Boyer et al., 2011) for automatic dialogue act classification, but other types of nonverbal cues remain unexplored.
+Tagging and tagging errors For tagging, we use a version of RFTagger (Schmid and Laws, 2008) 2 Pairwise bootstrap resampling with 1000 samples..
+• In addition to the utilization of in-domain monolingual corpora, our method is different from the previous works (Zhao and Xing, 2006; Zhao and Xing, 2007; Tam et al., 2007; Gong and Zhou, 2010) in the following aspects: (1) we use a different topic model — HTMM which has different assumption from PLSA and LDA; (2) rather than modeling topic-dependent translation lexicons in the training process, we estimate topic-specific lexical probability by taking account of topical context when extracting word pairs, so our method can also be directly applied to topic-dependent phrase probability modeling.
+Discourse structures cannot always be described completely, either because they are ambiguous (Stede, 2004), or because a discourse parser fails to analyse them completely.
+Morphological analysis and resources The morphological analysis of the French training data is obtained using RFTagger, which is designed for annotating fine-grained morphological tags (Schmid and Laws, 2008).
+The CogNIAC algorithm {Baldwin, 1997) uses six heuristic rules to resalv.e coreference, whereas the algorithm presented in (Mitkov, 1998) is based on a limited set of preferences (e.g. definitiveness, l cal reiteration or immediate reference).
+Bean and Riloff (2004) used information extraction patterns to identify contextual clues that would determine the compatibility between NPs.
+Best05 represents the best system of the Second International Chinese Word Segmentation Bakeoff on the corresponding data; CRF + rule-system represents confidencebased combination of CRF and rule-based models, presented in Zhang et al.
+In this paper we present and evaluate a system that transforms texts into logical formulas – using the C&C tools and Boxer (Bos, 2008) – in the context of the shared task on recognising negation in English texts (Morante and Blanco, 2012).
+Following annotation schemes like the one of Stede (2004), we model discourse structures by binary trees.
+They found that a semisupervised approach where the classifier was trained with five seed verbs from each verb class outperformed both a manual selection of features and the unsupervised 186 approach of Dash, Liu, and Yao (1997), which used an entropy measure to organize data into a multidimensional space.
+There are also approaches to anaphora resolution using unsupervised methods to extract useful information, such as gender and number (Ge et al., 1998), or contextual role-knowledge (Bean and Riloff, 2004).
+(2007), but, instead of forming alignments using the tercom script (Snover et al., 2006), we create alignments that minimize invWER (Leusch et al., 2003), a form of edit distance that permits properly nested block movements of substrings.
+(2007), each component system produces a set of translations, which are then grafted to form a confusion network.
+One area in which the statistical approach has done par­ ticularly well is automatic part of speech tagging, as­ signing each word in an input sentence its proper part of speech (1, 2, 3, 4, 6, 9, 11, 12].
+An additional potential is to integrate automatically acquired relationships with the information found in WordNet, which seems to suffer from several serious limitations (Curran 2005), and typically overlaps to a rather limited extent with the output of automatic acquisition methods.
+The first, syscomb pw, corresponds BLEU System deen fren worst 11.84 16.31 best 28.30 33.13 syscomb 29.05 33.63 Table 3: NIST BLEU scores on the GermanEnglish (deen) and French-English (fren) Europarl test2008 set.
+(2010).
+In fact, the way we use relations between words is closer to (Jobbins and Evett, 1998), even if the relations in this work come from a network of co-occurrences or a thesaurus rather than from text topics.
+(2005), TPWF kernel, SL kernel, PET kernel, KH F kernel and KH ybrid kernel separately (only the results of KH ybrid are reported in Table 1 due to space limitation).
+In both cases the similarity of two text units is determined by the proportion of their words that are part of a relation across the two units.
+Pantel and Pennacchiotti [31] extends Espresso by treating patterns with high recall differently from patterns with high precision.
+A number of feature-based methods have been proposed, including Bayesian classifiers (Gale, Church, and Yarowsky, 1993), decision lists (Yarowsky, 1994), Bayesian hybrids (Golding, 1995), and, more recently, a method based on the Winnow multiplicative weight-updating algorithm (Golding and Roth, 1996).
+Evaluation E C We processed news articles for an entire year in tion of maximum bipartite matching (West, 1999) on a bipartite graph GB = (VB = (Si , Sj ), EB ) 2008 by Xinhua news who publishes news in E C both English and Chinese, which were also used with edge weights that are defined by TS . The maximum bipartite matching finds a subset of by Kim et al.
+(2006), combines a C R F and a rule-based model.
+The prior work compared Viterbi with a form of local search (sampling repeatedly and keeping the max), finding little difference between the two (Zhao and Gildea, 2010).
+For the evaluation of the clustering results, we calculated the accuracy of the clusters, a cluster similarity measure that has been applied before, cf.
+(Shao and Ng, 2004) rank translation candidates using PH and CX independently and return results with the highest average rank.
+We also proposed a method to find paraphrases in the context of two Named Entity instances in a large un-annotated corpus (Sekine 05).
+(1996) employs stochastic finite state machines to find word boundaries.
+The lazy copying approach ([Kogure, 1990], and [Emele, 1991] for lazy copying in TFS with historical backtracking) copies only overlapping parts of the structure.
+The syllable counter is implemented using the foma software (Hulden, 2009), and the implementation (Hulden, 2006) can be found on the homepage of Figure 1: A verse written in the BAD web application.
+Feature-based methods (Kambhatla, 2004; Zhou et al., 2005; Zhao and Grishman, 20052 ) for this task employ a large amount of diverse linguistic features, such as lexical, syntactic and semantic features.
+In larger-scale classifications such as (Korhonen et al., 2003; Stevenson and Joanis, 2003; Schulte im Walde, 2003), which model verb classes with similarity at the syntax-semantics interface, it is not clear which features are the most salient.
+(2005) introduce additional chunking features to enhance the parse tree features.
+(2005) and Zhou et al.
+(1998): equal vote, where each classifier's vote is weighted equally, overall accuracy, where the weight depends on the overall accuracy of a classifier, and pair'wise voting.
+After a concentration on rule-based systems (cf.
+This is quite similar to the bagged decision trees of bigrams (B) presented here, except that the earlier work learns a single decision tree where training examples are represented by the top 100 ranked bi-grams, according to the loglikelihood ratio.
+The search scope for candidate antecedents is set to the current sentence together with the three preceding sentences as suggested in (Mitkov, 1998) as empirical studies show that more than 85% of all cases are handled correctly with this window size (Mitkov, 2002).
+To generalize the task, we first determine noun phrases in the data following the definition in (Pennacchiotti and Pantel 2006).
+Our research in compositionality is motivated by the hypothesis that a special treatment of semantically non-compositional expressions can improve results in various Natural Language Processing (NPL) tasks, as shown for example by Acosta et al.
+The Chinese person-name model is a modified version of that described in Sproat et al.
+Moreover, to establish a strong baseline, we also include the discount feature used by Chiang et al. [3] in our baseline string-to-tree model.
+In order to train the POS-based reordering model, probabilistic rules were learned based on the POS tags from the TreeTagger (Schmid and Laws, 2008) of the training corpus and the alignment.
+We explore the different options for context and feature se 1 See (Chan et al., 2007) for the relevance of word sense disambiguation and (Chiang et al., 2009) for the role of prepositions in MT. 454 Coling 2010: Poster Volume, pages 454–462, Beijing, August 2010 lection, the influence of different preprocessing methods, and different levels of sense granularity.
+We first adopted the full feature set from Zhou et al.
+Mutu al infor matio n-like statist ics are very often adopt ed in meas uring assoc iation stren gth msi (?)
+To automatically find ties between pairwise words three features were developed: word repetition, collocation and relation weights.
+In (Pennacchiotti and Pantel, 2006; Pantel and Pennacchiotti, 2006) they report the results.
+@2009 Association for Computational Linguistics System Combination: In a typical system combi­ nation task, e.g. Rosti et al.
+Following (Chiang et al., 2009), we only use 100 most frequent words for word context feature.
+Gimpel and Smith (2009) present an MT framework based on lattice parsing with a quasi-synchronous grammar that can incorporate arbitrary features from both source and target sentences (Table 5).
+Even total reduplication can be characterized without going outside the regular languages (Beesley and Karttunen 2000).
+As an example, Carpuat and Diab (2010) proposed two strategies for integrating MWEs into statisti­ cal machine translation.
+PM can also choose among different unification algorithms that have been designed to: * carefully control and minimize the amount of copying needed with non-deterministic parsing schemata (Wroblewski, 1987) (Kogure, 1990);  provide a better match between the characteristics of the unifiers and those of the linguistic processors.
+For the purpose of language engineering and linguistic investigation, we are constructing a Chinese corpus comparable to the English WSJRST treebank and the German Potsdam Commentary Corpus (Carlson et al. 2003; Stede 2004).
+Following prior work (Zhao and Gildea, 2010), we augment the standard HMM with a fertility dis­ tribution.
+This is by now a fairly standard representation for multiple morphological segmentations of Hebrew utterances (Adler 2001; Bar-Haim, Sima’an, and Winter 2005; Adler 2007; Cohen and Smith 2007; Goldberg, Adler, and Elhadad 2008; Goldberg and Tsarfaty 2008; Goldberg and Elhadad 2011).
+(2010) combined the one class per word type constraint (Brown et al., 1992) in a HMM with a Dirichlet prior to achieve both forms of sparsity.
+(2005).
+This network could also be used more directly for topic segmentation as in (Jobbins and Evett, 1998).
+Discourse processing has emerged as a highly relevant source of information for applications such as information extraction and automatic summarisation (Taboada and Mann (2006) outline this and further applications).
+A lot of work has been done in English for the purpose of anaphora resolution and various Proceedings of the IJCNLP08 Workshop on NLP for Less Privileged Languages, pages 81–90, Hyderabad, India, January 2008.
+ps(arc) is increased by 1/(k + 1) if the hypothesis ranking k in the system s contains the arc (Rosti et al., 2007a; He et al., 2008).
+GigaPairs has been derived from Gigaword using the pairwise similarity method on headlines presented by Wubben et al.
+Semi-supervised techniques on text mining were applied by Fangzhong and Markert (2009).
+At present, the methods for OOV term translation have changed from the basic pattern based on bilingual dictionary, transliteration or parallel corpus to the intermediate pattern based on comparable corpus (Lee et al., 2006; Shao and Ng, 2004; Virga and Khudanpur, 2003), and 1435 Coling 2010: Poster Volume, pages 1435–1443, Beijing, August 2010 then become a new pattern based on Web mining (Fang et al., 2006; Sproat et al., 2006).
+In practice, a statistical component is required to decide on the correct morphological segmentation, that is, to pick out the correct path through the lattice.
+As a consequence, two different words that respectively belongs to Wl and Wr but also belong to the same text topic cannot contribute l r to the identification of a possible topical similarity This measure was adopted instead of the Cosine measure used in TextTiling because its definition in terms of sets makes it easier to extend for taking into account other types of relations, as in (Jobbins and Evett, 1998).
+In these experiments, they enlarged the number of gold standard English verb classes to 14 classes related to Levin classes, with a total of 841 verbs.
+However, most approaches to RE have assumed that the relations’ arguments are given as input (Chan and Roth, 2010; Jiang and Zhai, 2007; Jiang, 2009; Zhou et al., 2005), and therefore offer only a partial solution to the problem.
+So far, the Complex Concept Builder implements tokenization (Schmid, 2009), lemmatisation (Schmid, 1995), part-of-speech tagging (Schmid and Laws, 2008), named entity detection (Faruqui and Pado´ , 2010), syntactical parsing (Bohnet, 2010), coreference analysis for German (Lappin and Leass, 1994; Stuckardt, 2001), relation extraction (Blessing et al., 2012) and sentiment analysis for English (Taboada et al., 2011).
+System.
+(2005) explore various features in relation extraction using SVM.
+A partial list consists of Bayesian classifiers (Gale et al., 1993), decision lists (Yarowsky, 1994), Bayesian hybrids (Golding, 1995), HMMs (Charniak, 1993), inductive logic methods (Zelle and Mooney, 1996), memoryThis research is supported by NSF grants IIS9801638, IIS 0085836 and SBR987345.
+Algorit hmThis algorithm was first implemented for the MUC 6 FASTUS system (Appelt et al., 1995) , and prod.
+In such languages, words are segmented using more advanced techniques, which can be categorized into three methods: (i) Dictionary/lexicon based approaches (ii) Linguistic knowledge based approaches (iii) Machine learning based approaches/statistical approaches (Haruechaiyasak et al., 2008) Longest matching (Poowarawan, 1986; Richard Sproat, 1996) and maximum matching (Sproat et al., 1996; Haizhou & Baosheng, 1998) are examples of lexicon based approaches.
+The most advanced voting method ex­ amines output values of pairs of classifiers and assigns weights to tags based on how often they appear with this pair in the tuning data (Tag­ Pair, Van Halteren et al., (1998)).
+Various correlation measures have been used: log-likelihood ratio (Rapp, 1999; Chiao and Zweigenbaum, 2002), tfidf (Fung and Yee, 1998), pointwise mutual information (PMI) (Andrade et al., 2010), context heterogeneity (Fung, 1995), etc. Shao and Ng (2004) represented contexts using language models.
+Their experiments were conducted on collections of texts in two topic areas (terrorism and natural disasters).
+Beesleyl7l presents a finite-state morphological analyzer for Arabic, which displays the root, pattern and prefixes/suffixes.
+The Stanford Arabic Phrase Structure Treebank In order to stay compatible with the state of the art, we provide the constituency data set with most of the pre-processing steps of Green and Manning (2010), as they were shown to improve baseline performance on the PATB parsing considerably.12 To convert the original PATB to preprocessed phrase-structure trees á la Stanford, we first discard all trees dominated by X, which indicates errors and non-linguistic text.
+The Chinese word segmentation is a nontrivial task because no explicit delimiters (like spaces in English) are used for word separation.
+(1996) implement special recognizers not only for Chinese names and transliterated foreign names, but for components of morphologically obtained words as well.
+(1996), which utilize information such as word frequency statistics in a corpus to build the model and are less efficient but more accurate.
+Hybrid systems that combine the approaches we have presented were also developed and illustrated the interest of such a combination: (Jobbins and Evett, 1998) combined word recurrence, co-occurrences and a thesaurus; (Beeferman et al., 1999) relied on both lexical modeling and discourse cues; (Galley et al., 2003) made use of word reiteration through lexical chains and discourse cues.
+Part of the work using this tool was described by (Zhang et al., 2006).
+Typically algorithms are compared using one set of handpicked seeds for each category (Pennacchiotti and Pantel, 2006; McIntosh and Curran, 2008).
+This constraint of having the same semantic roles is further ensured inside the VN lexicon which is constructed based on a more refined version of the Levin’s classification, called Intersective Levin classes (ILCs) (Dang et al., 1998).
+Bean and Riloff (2004) proposed the use of caseframe networks as a kind of contextual role knoweldge for anaphora resolution.
+Binding constraints have been in the focus of linguistic research for more than thirty years.
+The problem of the longest match string frequency method is that if a word W1 is a substring of other word w2 and if wl always appears as a substring of w2 in the training text, just like m 1Although (Sproat et al., 1996] calls it "maximum matching", we call this method "longest match" according to a review on Chinese word segmentation [Wu and Tseng, 1993) and the literal translation of the Japanese name of the method Hi!:.
+For examples: these words should be obtained: The ambiguous string is .There are some methods to resolve this problem: the one is the method forward maximum matching, backward maximum matching and minimum matching are used to find out the possible word strings from the character string [Guo 1997; Sproat et al. 1996; Gu and Mao 1994; Li et al. 1991; Wang et al. 1991b; Wang et al. 1990].
+We previously applied quasi-synchronous grammar to machine translation (Gimpel and Smith, 2009), but that system performed translation fundamentally at the word level.
+This diﬀers from the result of (Rosti et al., 2007) where the nearest hypothesis is computed at each step, which is supposed to be better.
+The last trend, explored by (Vronis, 2003), (Dorow and Widdows, 2003) and (Rapp, 2003), starts from the cooccurrents of a word recorded from a corpus and builds its senses by gathering its cooccurrents according to their similarity or their dissimilarity.
+Wubben et al. have attempted k-means clustering, while the proposed system uses fuzzy clustering.
+For a QPDG model, decoding consists of finding the highest-scoring tuple (t, γ, φ, τφ, a) for an in put sentence s and its parse τs, i.e., finding the most probable derivation under the s/τs-specific grammar Gs,τs . We follow Gimpel and Smith (2009) in constructing a lattice to represent Gs,τs and using lattice parsing to search for the best derivation, but we construct the lattice differently and employ a coarse-tofine strategy (Petrov, 2009) to speed up decoding.
+The bound constraint B was set to 1.4 The approximate sentence-level BLEU cost ∆i is computed in a manner similar to (Chiang et al., 2009), namely, in the context of previous 1-best translations of the tuning set.
+In a completely separate stream of work, Pantel and Pennacchiotti investigated the extraction of axioms from the text using the statistical text harvesting paradigm.
+Bean and Riloff (2004) used bootstrapping to extend their semantic compatibility model, which they called contextual-role knowledge, by identifying certain cases of easily-resolved anaphors and antecedents.
+In earlier work [11] a text segmentation algorithm was described that captured all types of lexical cohesion ties.
+For experiments with a larger feature set, we introduced additional lexical and non-lexical sparse Boolean features of the form commonly found in the literature (Chiang et al., 2009; Watan 4 We also conducted an investigation into the setting of the B parameter.
+Following previous works (Golding, 1995; Meknavin et al., 1997), we have tried two types of features: context words and collocations.
+(2005) and Zhao and Grishman (2005) studied various features and feature combinations for relation extraction.
+Other systems have made a second tagging pass which uses information on token sequences tagged in the first pass (Borthwick 1999), or have used as features information about features assigned to other instances of the same token (Chieu and Ng 2002).
+Instead, only common words are represented individually; the rest of the words in the dictionary are partitioned into word equivalence classes (Kupiec, 1989) such that all words that can function as a particular set of part-of-speech categori~ are given the same label.
+In all of these papers, the problem is formulated as follows: Given a specific confusion set (e.g. {to, two, too}), all occurrences of confusion set members in the test set are replaced by some marker.
+These are represented as layers in the DAMSL system (Core & Allen 1997).
+Then the feature based method explicitly extracts a variety of lexical, syntactic and semantic features for statistical learning, either generative or discriminative (Miller et al., 2000; Kambhatla, 2004; Boschee et al., 2005; Grishman et al., 2005; Zhou et al., 2005; Jiang and Zhai, 2007).
+Unlike other knowledge-poor methods for coreference resolution (Baldwin 1997) (Mitkov 1998), COCK TAIL filters its most performant rules through massivetraining data, generated by its AUTOTAGCOFtEF com ponent.
+For a discussion of recent Chinese segmentation work, see Sproat et al. {1996).
+Recently Bean and Riloff (2004) have sought to acquire automatically some semantic patterns that can be used as contextual information to improve reference resolution, using techniques adapted from information extraction.
+We denote this grammar by Gs,τs ; its (weighted) language is the set of translations of s. Quasi-synchronous grammar makes no restrictions on the form of the target monolingual grammar, though dependency grammars have been used in most previous applications of QG (Wang et al., 2007; Das and Smith, 2009; Smith and Eisner, 2009), including previous work in MT (Smith and Eisner, 2006; Gimpel and Smith, 2009).
+Su and Markert (2009) propose a semi-supervised minimum cut framework to label word sense entries in WordNet with subjectivity information.
+Some recent research used comparable corpora to mine name translation pairs (Feng et al., 2004; Kutsumi et al., 2004; Udupa et al., 2009; Ji, 2009; Fung and Yee, 1998; Rapp, 1999; Shao and Ng, 2004; Lu and Zhao, 2006; Hassan et al., 2007).
+Beesley and Karttunen (2000) describe a technique, called compile-replace, for constructing FSTs, which involves reapplying the regular-expression compiler to its own output.
+A number of feature-based methods have been tried, including Bayesian classifiers (Gale, Church, and Yarowsky, 1992; Golding, 1995), decision lists (Yarowsky, 1994), and knowledge-based approaches (McRoy, 1992).
+However, they use a very small corpus (two domains) and do not aim to build a dictionary.
+We will evaluate nine different methods for combining the output of our five chunkers (Van Halteren et al., 1998).
+When the number of features is too large, even popular reranking algorithms such as SVM (Shen et al., 2004) and MIRA (Watanabe et al., 2007; Chiang et al., 2009) may fail.
+We use SVM as our learning algorithm with the full feature set from Zhou et al.
+To avoid the drawback, several linguistic clues, such as fine-grained classification of named entities and coordinated sentences, have been utilized (Sekine, 2005; Torisawa, 2006).
+The decisiontree uses different context features for the predic tion of different attributes (Schmid and Laws, 2008).
+They also explore the performance with decision trees and neural networks and report their highest accuracy at 65% on the Switchboard corpus.
+For this purpose we have used the part-of-speech tag of the cur­ rent word as compressed representation of the first stage input (Van Halteren et al., 1998).
+In addition to the model based upon a dictionary of stems and words, we also experimented with models based upon character n-grams, similar to those used for Chinese segmentation (Sproat et al., 1996).
+Dialog act (DA) annotations and tagging, inspiredby the speech act theory of Austin (1975) and Searle(1976), have been used in the NLP community to understand and model dialog.
+Chinese According to Sproat et al.
+This feature allows the repetition of arbi­ trarily complex sublanguages by specifying the brackets '"'[ " and "A 1 " to mark the domain of re­ duplication.
+Previous works on Levin style verb classification have investigated optimal features for this task (Stevenson and Joanis, 2003; Li and Brew, 2008; Sun and Korhonen, 2009)).
+The decoding algorithm employed for this chunk + weight × j f req(EA j , J j ) based statistical translation is based on the beam search algorithm for word alignment statistical in which Ptm(J|E) and Plm (E) are translationmodel and language model probability, respec translation presented in (Tillmann and Ney, 2000), tively1 , f req(EA j , J j ) is the frequency for the which generates outputs in left-to-right order by consuming input in an arbitrary order.
+Many methods for automatic acquisition of rules have been suggested in recent years, ranging from distributional similarity to finding shared contexts (Lin and Pantel, 2001; Ravichandran and Hovy, 2002; Shinyama et al., 2002; Barzilay and Lee, 2003; Szpektor et al., 2004; Sekine, 2005).
+The MERT algorithm is known to be unable to learn optimal weights for large parameter settings (Chiang et al., 2009).
+The interdigitation is handled using a compile-replace process using the replace operator (Karttunen and Beesley, 2000) (Karttunen, 1995).
+vised POS induction algorithm (Lee et al., 2010).11 Our mapping algorithm then learns the connection between these clusters and universal tags.
+For example, the algorithm may generate the following two patterns as paraphrases: (PERSON) is promoted to (POST) the promotion of (PERSON) to (POST) is decided As a later reﬁnement, Sekine (2005) makes a similar attempt at using distributional similarity over named entity pairs in order to produce a list of fully lexicalized phrasal paraphrases for speciﬁc concepts represented by keywords.
+Distributed representations are useful in capturing such meaning for individual words (Sato et al., 2008; Maas and Ng, 2010; Curran, 2005).
+Similarly to previous work (Dolan et al., 2004; Wubben et al., 2009; Bejan & Harabagiu, 2010, inter alia), the Google News service3 was used to identify news.
+Since in written Chinese there is no explicit word delimiter (equivalent to the blank space in written English), the problem of Chinese sentence tokenization has been the focus of considerable research efforts, and significant advancements have been made (e.g., Bai 1995; Zhang et al. 1994; Chen and Liu 1992; Chiang et al. 1992; Fan and Tsai 1988; Gan 1995; Gan, Palmer, and Lua 1996; Guo 1993; He, Xu, and Sun 1991; Huang 1989; Huang and Xia 1996; Jie 1989; Jie, Liu, and Liang 1991a, 1991b; Jin and Chen 1995; Lai et al. 1992; Li et al. 1995; Liang 1986, 1987, 1990; Liu 1986a, 1986b; Liu, Tan, and Shen 1994; Lua 1990, 1994, and 1995; Ma 1996; Nie, Jin, and Hannan 1994; Sproat and Shih 1990; Sproat et al. 1996; Sun and T'sou 1995; Sun and Huang 1996; Tung and Lee 1994; Wang, Su, and Mo 1990; Wang 1989; Wang, Wang, and Bai 1991; Wong et al. 1995; Wong et al. 1994; Wu et al. 1994; Wu and Su 1993; Yao, Zhang, and Wu 1990; Yeh and Lee 1991; Zhang, Chen, and Chen 1991).
+The obtained results have been compared with that of the Paraphrase Acquisition system developed by Wubben et al. [9].
+As in (Rosti et al., 2007), confusion networks built around all skeletons are joined into a lattice which is expanded and rescored with language models.
+This can be then be used in spell checking applications, for example, by integrating the lexicon with weighted transduc ers reflecting frequency information and error models (Hulden, 2009a; Pirinen et al., 2010).
+But it can be enhanced by taking into account semantic relations between words.
+Among them, feature-based methods (Kambhatla 2004; Zhou et al., 2005) achieve certain success by employing a large amount of diverse linguistic features, varying from lexical knowledge, entityrelated information to syntactic parse trees, dependency trees and semantic information . How ever, it is difficult for them to effectively capture struc tured parse tree information (Zhou et al 2005), which is critical for further performance improvement in relation extraction.
+Dang et al.
+The MUC organisers provided strict guidelines about what constituted a succession event and how the templates should be .lled which the annotators sometimes found di.cult to interpret (Sundheim, 1995).
+archy is composed of a set of members (linked to their WordNet synsets) and a set of syntactic frames and semantic information for each frame Currently VerbNet has over 4 000 verb senses described (3 004 lemmas) within 191 first level classes VerbNet has a hierarchical structure with the first level classes constituted by the original Levin classes In order to ensure that each class is coherent so that all its members share a common set of thematic roles syntactic frames and semantic predicates some restructuring of the classes was required This reorganization which was facilitated by the use of intersective Levin classes (Dang et al 1998) refined the classes to account for semantic and syntactic differences within a class A child subclass inherits all the information from its parent class and adds information to it which can be in terms of imposing further restrictions on the roles or adding syntactic frames or semantic predicates to the subclass The hierarchical organization of VerbNet is illustrated in Figure 1 The Transfer of a Message verb class is subdivided into three levels At the top level are thematic roles syntactic frames and semantic predicates shared by all members of the class In this particular case there is a transitive frame with the Topic (message) as the direct object (Agent Verb Topic) as in "John explained trigonometry" and a frame for Topic and Recipient (Agent Verb Topic to the transfer of information event but in the first case the Recipient is underspecified Some of the verbs in this class are able to participate in other syntactic frames as well Verbs at the second level can take the ditransitive frame (Agent Verb Recipient Topic) in addition to the frames and predicates inherited from the parent class VerbNet uses a fiat semantic representation in which the semantics of each syntactic frame is captured by a conjunction of predicates 1 such as motion, contact, transfer info which can be negated or not These predicates can take arguments over the verb complements as well as over implicit existentially quantified event variables Each semantic predicate in VerbNet also include a time function specifying whether the predicate is true in the preparatory (during(E )) culmination (end(E )) or consequent (result(E )) stage of an event in a tripartite event structure is similar to that of Moens and Steedman (1988) which allows us to express the semantics of classes of verbs like change of state verbs whose description requires reference to a complex event structure 2.2 PropBank.
+Lowfrequency and ambiguous verbs were excluded from the classes.
+Pennachiotti and Pantel developed a system that extracts the relations such as is-a, part-of, and succession from the Trec9 corpus and is-a, part-of, production, and reaction from a chemistry corpus (Pennacchiotti & Pantel 2006).
+This method, described in earlier work Wubben et al.
+(1996): FNs are usually transliterated using Chinese character strings whose sequential pronunciation mimics the source language pronunciation of the name.
+We chose the three models that achieved at least one best score in the closed tests from Emerson (2005), as well as the sub-word-based model of Zhang et al.
+(2009).
+Dorow and Widdows (2003) use the BNC to build a cooccurrencegraph for nouns, based on a co-occurrence frequency threshold.
+More re cently, the task of automatic supersense tagging has emerged for English (Ciaramita and Johnson, 2003; Curran, 2005; Ciaramita and Altun, 2006; Paaß and Reichartz, 2009), as well as for Italian (Picca et al., 2008; Picca et al., 2009; Attardi et al., 2010) and Chinese (Qiu et al., 2011), languages with WordNetsmapped to English WordNet.3 In principle, we be lieve supersenses ought to apply to nouns and verbsin any language, and need not depend on the avail ability of a semantic lexicon.4 In this work we focuson the noun SSTs, summarized in figure 2 and ap plied to an Arabic sentence in figure 1.
+dsi +1 () combine (i, i + 1) 1993, Sproat et al, 1996).
+(2007) and Chiang et al.
+This testgrammar is based on the implementation of an analysis of partial vP topicalization in German (Hinrichs et al., 1994) in the Troll system (Gerdemann and King, 1994).
+They then collapse this set down to a single feature structure where nodes are labeled with dependent disjunctions of types.
+These different methods can use semantic relations that are manually defined by experts, as in Morris and Hirst (1991), or extracted automatically from corpora (Ferret, 2006; Jobbins and Evett, 1998).
+Recent work (Zhao and Gildea, 2010) de­ scribed an extension to the HMM with a fertility model, using MCMC techniques for parameter es­ timation.
+These include a variety of Bayesian classifi ers (Golding, 1995; Golding and Schabes, 1996), decision lists (Golding, 1995) transformation-based learning (Mangu and Brill, 1997), Latent Semantic Analysis (LSA) (Jones and Martin, 1997), multiplicative weight update algorithms (Golding and Roth, 1999), and augmented mixture models (Cucerzan and Yarowsky, 2002).
+(2011)) and machine translation (“MT”: Weller et al.
+Chinese NE recognition is much more difficult than that in English due to two major problems.
+In the future, we would like to use more effective feature sets Zhou et al.
+They assign weights to the output of the individual systems and use these weights to determine the most probable output tag.
+Golding (1995) builds a classifier based on a rich set of context features.
+(1996), which is based on weighted finite-state transducers (FSTs).
+to the pairwise TER alignment described in (Rosti et al., 2007).
+Pang[4] and Su[5] both optimized their multi-classification results using the Mincut model.
+(2006) for comparison.
+Then everywhere the system sees this marker, it must decide which member of the confusion set to choose.
+For each si, the probability is computed with Bayes' rule: As Golding (1995) points out, the term p(c_kf ..
+Discourse studies The Potsdam Commentary Corpus, PCC (Stede, 2004), consists of 173 newspaper commentaries, annotated for morphosyntax, coreference, discourse structure according to Rhetorical Structure Theory, and information structure.
+Sproat et al.
+Component relevance scores are calculated using Term Frequency × Inverse Sentence Frequency (TF×ISF) (Otterbacher et al., 2005):quiring a specific strategy.
+Su and Markert (2009) adopt a semi-supervised mincut method to recognize the subjectivity of word senses.
+One related line of research is to automatically assign subjectivity and/or polarity labels to word senses in a dictionary (Valitutti et al., 2004; Andreevskaia and Bergler, 2006; Wiebe and Mihalcea, 2006; Esuli and Sebastiani, 2007; Su and Markert, 2009).
+Indeed, the primary goal of semantic relations is obviously to ensure that two semantically related words, e.g., “car” and “drive”, contribute to the lexical cohesion, thus avoiding erroneous topic boundaries between two such words.
+© 2001 Association for Computational Linguistics interpretation as well, for example, at the Sixth and Seventh Message Understa nd­ ing Conferences (MUC6 and MUC7) (Sundheim 1995; Chinchor 1997), which also included evaluations of systems on the so-called coreference task, a subtask of which is the resolution of definite descriptions.
+Approach Accuracy % Precision % Recall % F-Measure % Fernando et al.
+Thus, some research has been focused on deriving different sense groupings to overcome the fine– grained distinctions of WN (Hearst and Schu¨ tze, 1993) (Peters et al., 1998) (Mihalcea and Moldovan, 2001) (Agirre et al., 2003) and on using predefined sets of sense-groupings for learning class-based classifiers for WSD (Segond et al., 1997) (Ciaramita and Johnson, 2003) (Villarejo et al., 2005) (Curran, 2005) (Ciaramita and Altun, 2006).
+.,Ck I si) is difficult to estimate because of the sparse data problem, but if we assume, as is often done, that the occurrence of each cue is independent of the others, then this term can be replaced with: p(c-b·· .,ck I si) =IT p(cj I Si) j=-k In TLC, we have made this assumption and have estimated p(cj I si) from the training.
+(2005), a state-of-the-art feature based relation extraction system.
+We instantiate such relations instead of the classical is-a patterns since these have been shown to bring in too many false positives, see (Pantel and Pennacchiotti, 2006) for a discussion of such generic patterns.
+(2007).
+(2007b) partially resolved the problem by constructing a large network in which each hypothesis was treated as a skeleton and the multiple networks were merged into a single network.
+More details of this mixed case NER and its performance are given in (Chieu and Ng, 2002).
+For example, the accuracy/purity measure (Stevenson and Joanis 2003; Korhonen, Krymolowski, and Marx 2003) evaluates whether a verb is assigned to a correct cluster with respect to the gold standard class of the majority of cluster members.
+It is also used for Arabic (Green and Manning 2010) and other languages (Smith, Smith, and Tromble 2005).
+Its weight twij is calculated by tf · idf (Otterbacher et al., 2005).
+Other pronominal resolution approaches promote knowledge-poor methods (Mitkov, 1998), eitper by using an ordered set of general heuristics or by combining scores assigned to candidate antecedents.
+Then senses of target word were iteratively learned by clustering the local graph of similar words around target word.
+With respect to morphosyntactic annotations (parts of speech, pos) and morphological annotations (morph), five Annotation Models for German are currently available: STTS (Schiller et al., 1999, pos), TIGER (Brants and Hansen, 2002, morph), Morphisto (Zielinski and Simon, 2008, pos, morph), RFTagger (Schmid and Laws, 2008, pos, morph), Connexor (Tapanainen and Ja¨rvinen, 1997, pos, morph).
+(2007b) used minimum Translation Error Rate (TER) based alignment to build the confusion network.
+Since no such corpus exists, researchers have used coarser features learned from smaller sets through supervised learning (Soon et al., 2001; Ng and Cardie, 2002), manually-defined coreference patterns to mine specific kinds of data (Bean and Riloff, 2004; Bergsma, 2005), or accepted the noise inherent in unsupervised schemes (Ge et al., 1998; Cherry and Bergsma, 2005).
+However, the proposed system performs better than Wubben et al.’s approaches as well as FCM Clustering for Paraphrase Extraction.
+(4) rdf:type(olia:PronounOrDeterminer) rdf:type(olia:Pronoun) olia:hasNumber(some olia:Singular) olia:hasGender(some olia:Feminine) rdf:type(olia:DemonstrativePronoun) olia:hasCase(some olia:Nominative) Analogously, the corresponding RFTagger analysis (Schmid and Laws, 2008) given in (5) can be transformed into a description in terms of the OLiA Reference Model such as in (6).
+They extract onlynoun neighbours that appear in conjunctions or dis-junctions with the target word.
+We use the metric described in (Yarowsky, 1994; Golding, 1995).
+(Lin and Pantel, 2001; Szpektor et al., 2004; Sekine, 2005).
+This was done for instance in (Jobbins and Evett, 1998) by taking semantic relations from Roget’s Thesaurus.
+But discourse structures cannot always be described completely, either due to genuine ambiguity (Stede, 2004) or to the limitations of a discourse parser.
+One example of such approaches is Sproat et al.
+This is done in our case by applying the Dice coefficient between the two sides of the focus window, following (Jobbins and Evett, 1998).
+Similar constraints have been developed for part-of-speech tagging (Lee et al., 2010; Christodoulopoulos et al., 2011), and the power of type-based sampling has been demonstrated, even in the absence of explicit model constraints (Liang et al., 2010).
+we call the features used in Zhou et al.
+For discourse relations and DCs especially, more and more annotated resources have become available in several languages, such as English (Prasad et al., 2008), French (Pe´ryWoodley et al., 2009; Danlos et al., 2012), German (Stede, 2004), Arabic (AlSaif, 2012), Chinese (Zhou and and the discourse relation (or sense) signaled is Xue, 2012) and Czech (Mladova´ et al., 2009).
+The coreferential chain length of a candidate, or its variants such as occurrence frequency and TFIDF, has been used as a salience factor in some learning-based reference resolution systems (Iida et al., 2003; Mitkov, 1998; Paul et al., 1999; Strube and Muller, 2003).
+2 One could approximate this likelihood term by assuming independence between all nj feature tokens of word type j. This is the approach taken by Lee et al.
+Additionally, we used 50,000 sparse, binary-valued source and target features based on Chiang et al.
+We selected for comparative evaluation three approaches extensively cited in the literature: Kennedy and Boguraev’s parserfree version of Lappin and Leass’ RAP (Kennedy and Boguraev, 1996), Baldwin’s pronoun resolution method (Baldwin, 1997) and Mitkov’s knowledge-poor pronoun resolution approach (Mitkov, 1998b).
+Another graph-based method is presented in(Dorow and Widdows, 2003).
+(2011) showed that treating non-compositional MWEs as a sin­ gle unit in information retrieval improves retrieval effectiveness.
+We use a state-of-the-art feature space (Zhou et al., 2005) to represent examples (including all correct examples, erroneous ones and untagged examples) and use MaxEnt as the weight learning model since it shows competitive performance in relation extraction (Jiang and Zhai, 2007) and outputs probabilities associated with each prediction.
+In addition, BABAR (Bean and Riloff, 2004) used contextual role knowledge for coreference resolution in the domains of terrorism and natural disasters.
+Soderland (1999) and Chieu and Ng (2002a) attempted machine learning approaches for a scaled-down version of the ST task, where it was assumed that the information needed to fill one template came from one sentence only.
+Mitkov’s knowledge-poor pronoun resolution method (Mitkov, 1998), for example, uses the scores from a set of antecedent indicators to rank the candidates.
+We adopt the Bayesian hybrid method, which we will call Bayes, having experi­ mented with each of the methods and found Bayes to be among the best-performing for the task at hand.
+We consider three voting strategies suggested by van Halteren et al.
+5.2.4 Transliterations of foreign names As described in Sproat et al.
+Under this constraint, many researchers had contributed algorithms and associated pruning strategies, such as Berger et al.
+This sparked intensive research on unsupervised acquisition of entailment rules (and similarly paraphrases) e.g.
+Unsupervised induction of POS taggers offers the possibility of avoiding costly annotation, but despite recent progress, the accuracy of unsupervised POS taggers still falls far behind supervised systems, and is not suitable for most applications (BergKirkpatrick et al., 2010; Grac¸a et al., 2011; Lee et al., 2010).
+The '1oll unifier is closed on these representations.
+Yet, many of these templates share a similar meaning, e.g. ‘X accommodate up to Y ’, ‘X can accommodate up to Y ’, ‘X will accommodate up to Y ’, etc. Following Sekine (2005), we clustered templates that share their main verb predicate in order to scale down the number of different predicates in the corpus and collect richer word cooccurrence statistics per predicate.
+Most of the indicators have been adopted in LINGUA without modification from the original English version (see (Mitkov, 1998) for more details).
+[Sproat et al., 1996] also proposed another method to estimate a set of initial word frequencies without segmenting the corpus.
+(2007) Ar→En[UN, NIST 06][L] SL:lexical, morphological and syntactic features Gimpel and Smith (2009) De→En[BTEC][S] SL and TL:syntactic features from dependency trees Proposed DTM2 model Proposed MT model En English, Fr French, De German, Zh Chinese, Ar Arabic, CPH Canadian Parliament Hansards, UN United Nations, BTEC basic travel expression corpus, FST finite state transducer Table 5 Related research integrating context into word alignment models Authors SL→TL[DS][S/L] Contextual features Integrated into Berger et al.
+\tVe think that many cases of am­ biguous classification of verb types can be ad­ dressed with the notion of intersedive sets in­ troduced by (Dang ct a!., 1998).
+In both cases the investigators were able to achieve significant improvements over the previous best tagging results.
+In more recent work it has been argued that the classification of subjectivity vs. objectivity needs to be done independently from the polarity identification (Gyamfi et al., 2009; Su and Markert, 2009).
+Our paper discusses a particular configuration of this new evaluation environment incorporating three approaches sharing a common ”knowledge-poor philosophy”: Kennedy and Boguraev’s (1996) parser-free algorithm, Baldwin’s (1997) CogNiac and Mitkov’s (1998b) knowledge-poor approach.
+In this paper, a system combination based on confusion network (CN) is described.
+This technique is called system combination (Bangalore et al., 2001; Matusov et al., 2006; Sim et al., 2007; Rosti et al., 2007a; Rosti et al., 2007b).
+Like many heuristic-based pronoun resolvers (e.g., Mitkov (1998)), they first apply a set of constraints to filter grammatically incompatible candidate antecedents and then rank the remaining ones using salience factors.
+Most prior RE evaluation on ACE data assumed that mentions are already pre-annotated and given as input (Chan and Roth, 2010; Jiang and Zhai, 2007; Zhou et al., 2005).
+The MWE productions seem to overlap with wellknown linguistic phenomena – consider Fahrni and Klenner (2008) and their claim that most adjectives have a polarity that is dependent on the target they modify instead of having a ‘prior’ polarity that holds independently of the target, or the observation of Su and Markert (2009) that sentiment should be dependent on word senses instead of word forms (which would capture a large number of examples within the expression strengthening category).
+7 Here, we use the same set of flat features (i.e. word,.
+Lexicalize operator is used more frequently mainly dues to that the reference derivations are initialized with reusable (thus Chiang et al., 2009), gradient descent (Blunsom et al., 2008; Blunsom and Osborne, 2008).
+For this reason, various methods for automatically classifying verbs using machine learning techniques have been attempted ((Merlo and Stevenson, 2001), (Stevenson and Joanis, 2003), (Schulte im Walde, 2003)).
+Joint segmentation and parsing was also investigated for Arabic (Green and Manning, 2010).
+LINGUA performs the pre-processing, needed as an input to the anaphora resolution algorithm: sentence, paragraph and clause splitters, NP grammar, part-of-speech tagger, 2 MARS stands for Mitkov’s Anaphora Resolution.
+In the experiment, we classify the data into three group depending on types of text ambiguity according to section 2: CDSA, CISA and Homograph, and compare the results from different approaches; Winnow, Bayseian hybrid [3] and POS trigram.
+More recently, Lee et al.
+Beesley and Karttunen (2000) described a new technique for constructing finite-state transducers that involves reapplying a regular-expression compiler to its own output.
+In that paper, QG was applied to word alignment and has since found applications in question answering (Wang et al., 2007), paraphrase detection (Das and Smith, 2009), and machine translation (Gimpel and Smith, 2009).
+3.2.1 Pronoun Resolution Mitkov (1998) developed a robust approach to pronoun resolution which only requires input text to be part-of-speech tagged and noun phrases to be identified.
+For example, Chiang et al. [3] designed many target-side syntax features to improve the string-to-tree translation.
+The POS tags are generated using the RFTagger (Schmid and Laws, 2008) for German.
+(2014), Carpuat and Diab (2010) and Venkatapathy and Joshi (2006)).
+Similar to the approach as presented in (Dorow and Widdows, 2003) we construct a word graph.
+Some existing entailment acquisition algorithms can add contextual constraints to the learned rules (Sekine, 2005), but most don’t. However, NLP applications usually implicitly incorporate some contextual constraints when applying a rule.
+Search algorithms We evaluate the following two search algorithms: • beam search algorithm (BS): (Tillmann, 2001; Tillmann and Ney, 2000) In this algorithm the search space is explored in a breadth-first manner.
+Morphological information is annotated using RFTagger (Schmid and Laws, 2008), a state-of-the-art morphological tagger based on decision trees and a large context window (which allows it to model morphological agreement more accurately than a normal trigram-based sequence tagger).
+(2005) tested their system on the ACE 2003 data;.
+Following prior work (Zhao and Gildea, 2010), we augment the standard HMM with a fertility distribution.
+More recent approaches have used deeper syntactic information derived from parses of the input sentences, including work exploiting syntactic dependencies by Lin and Pantel (2001) and Snow et al.
+In information retrieval, to segment a long document into distinct topics is useful because only the topical segments relevant to the user’s needs are retrieved [1].
+(2007) (denoted as G07) with an improved performance; Z06-a and Z06-b represents the pure subword CRF model and the conﬁdence-based combination of CRF and rule-based models, respectively (Zhang et al., 2006); ZC07 represents the word-based perceptron model in Zhang and Clark (2007); T05 represents the CRF model in Tseng et al.
+One can either select a segmentation path prior to parsing, or, as has been recently argued, one can let the parser pick a segmentation jointly with decoding (Tsarfaty, 2006; Cohen and Smith, 2007; Goldberg and Tsarfaty, 2008; Green and Manning, 2010).
+A concept analogous to our notion of meta sense (i.e., senses beyond single words) has been used in previous work on class-based WSD (Yarowsky, 1992; Curran, 2005; Izquierdo et al., 2009), and indeed, the CAM might be used for class-based WSD as well.
+A large-scale implementation of the Arabic morphological system is the Xerox Arabic Morphologi cal Analyzer and Generator (Beesley and Karttunen,2000; Beesley, 2001).
+In contrast, some research have been focused on using predefined sets of sense-groupings for learning class-based classifiers for WSD (Segond et al., 1997), (Ciaramita and Johnson, 2003), (Villarejo et al., 2005), (Curran, 2005), (Kohomban and Lee, 2005) and (Ciaramita and Altun, 2006).
+Interannotator agreement was measured on 30 texts which were examined by two annotators.
+Using the 495 characters that are frequently used for transliterating foreign names (Sproat et al., 1996), a sequence of three of more characters from the list was taken as a possible candidate for Chinese.
+Some previous work (Peng et al., 2004; Tseng et al., 2005; Low et al., 2005) illustrated the effectiveness of using characters as tagging units, while literatures (Zhang et al., 2006; Zhao and Kit, 2007a; Zhang and Clark, 2007) focus on employing lexical words or subwords as tagging units.
+Zhao and Grishman (2005) and Zhou et al.
+Acosta et al.
+ Salient bigrams: Salient bigrams within the abstract with high log-likelihood scores, as described by Pedersen (2001).
+(2005), and work in the ACE paradigm such as Zhou et al.
+A variety of machine-learning methods have been proposed in spelling correction and preposition and article error correction fields, such as Bayesian classifiers (Golding, 1995; Golding and Roth, 1996), Winnow-based learning (Golding and Roth, 1999), decision lists (Golding, 1995), transformation-based learning (Mangu and Brill, 1997), augmented mixture models (Cucerzan and Yarowsky, 2002) and maximum entropy classifiers (Izumi et al., 2003; Han et al., 2006; Chodorow et al., 2007; Tetreault and Chodorow, 2008; Felice and Pulman, 2008).
+All parallel corpora were POS-tagged with the TreeTagger (Schmid, 1994); in addition, for German, fine-grained POS labels were also needed for pre-processing and were obtained using the RFTagger (Schmid and Laws, 2008).
+We use the top-10 list of hypothesis provided by the translation system described in (Tillmann and Ney, 2000) for rescoring the hypothesis using the ME models and sort them according to the new maximum entropy score.
+We also obtain salient bigrams in the context, with the methods and the software described in (Pedersen, 2001).
+A previous work along this line is Sproat et al.
+Online large-margin algorithms, such as MIRA, have also gained prominence in SMT, thanks to their ability to learn models in high-dimensional feature spaces (Watanabe et al., 2007; Chiang et al., 2009).
+(1996), Och et al.
+As pointed out by Pennacchiotti and Pantel [6], most ontology extraction systems so far have focused on generalised is-a or part-of relationships.
+The basic features used by both ME1 and ME2 can be divided into two classes: local and global (Chieu and Ng, 2002b).
+Bag-of-Words: These features have also been explore by Zhao and Grishman (2005) and Zhou et.
+One of the best methods for tagger combination in (van Halteren, Zavrel, and Daele­ mans 1998) is the TagPair method.
+While not developed within a graph-based framework, factor-based approaches for pronoun resolution (Mitkov, 1998) can be regarded as greedy clustering in a multigraph, where edges representing factors for pronoun resolution have negative or positive weight.
+They use contextual roles (i.e., the role that an NP plays in an event) for extracting patterns that can be used in coreference resolution, showing the relevance of verbs in deciding on coreference between their arguments.
+Chiang et al.
+One of the major problems in unsupervised word segmentation is the treatment of unseen word [Sproat et al., 1996] wrote lexical rules for each productive morphological process, such as plur noun formation, Chinese personal names, and transliterations offoreign words.
+This line of research converts logical representations obtained from syntactic parses using Bos’ Boxer (Bos, 2008) into Markov Logic Networks (Richardson and Domingos, 2006), and uses distributional semantics-based models such as that of Erk and Pado´ (2008) to deal with issues polysemy and ambiguity.
+For German, we show results for RFTagger (Schmid and Laws, 2008).
+(1996), most prior work in Chinese segmentation has exploited lexical knowledge bases; indeed, the authors assert that they were aware of only one previously pub­ lished instance (the mutual-information method of Sproat and Shih (1990)) of a purely statistical ap­ proach.
+As discussed elsewhere (Sproat et al., 1996), a subset of a few hundred characters (out of several thousand) tends to be used overwhelmingly for transliterating foreign names into Chinese.
+, fJ and word alignment vectors a = estimate the posterior distribution using Markov chain Monte Carlo methods such as Gibbs sampling (Zhao and Gildea, 2010).
+Recent work on relation extraction has been dominated by feature-based and kernel-based supervised learning methods.
+Zhao and Gildea (2010) explored a model with a word order and fertility model as described above, but based their work on the EM algorithm, using Gibbs sampling only for approximating the expectations.
+The frustration with models that lack an intuitive interpretation led to the development of decision trees based on bigram features (Pedersen, 2001a).
+Chi and Geman (1998) proved that this condition is met if the rule probabilities are estimated using relative frequency estimation from a corpus.
+In the last decade, finite-state approaches to phonology (Gildea and Jurafsky, 1996; Beesley and Karttunen, 2000) have effectively brought theoretical linguistic work on rewrite rules into the computational realm.
+Zhao and Gildea [15] use sampling in their proposed fertility extensions to IBM Model 1 and HMM, but they do not place any prior on the parameters.
+In recent several years, the system combination methods based on confusion networks developed rapidly (Bangalore et al., 2001; Matusov et al., 2006; Sim et al., 2007; Rosti et al., 2007a; Rosti et al., 2007b; Rosti et al., 2008; He et al., 2008), which show state-of-the-art performance in benchmarks.
+Token Information These features are based on the string w, such as contains-digits, contains-dollar-sign, etc (Chieu and Ng, 2002b).
+(2011), who utilized MWEs in Information Re­ trieval (IR).
+Recently, a simple method was presented in (Chiang eta!., 2009), which keeps partial English and Urdu words in the training data for alignment training.
+First, we used features proposed by Chiang et al.
+In most systems ((Mitkov, 1998),(Lappin and Leass, 1994)) the weights that are assigned for different anaphor-antecedent relationships are programmer dependent.
+Recently, open-source tools have been released: in this paper, we used Foma (Hulden, 2009) to develop the Russian guesser.
+We implemented meta-modules to in­ terface to the genetic algorithm driver and to combine different salience factors into an over­ all score (similar to (Carbonell and Brown, 1988; Mitkov, 1998)).
+Prior work addressed this by using the single parameter Pois­ son distribution, forcing infrequent words to share a global parameter estimated from the fertility of all words in the corpus (Zhao and Gildea, 2010).
+(2010) presented a new type-based model, and also reported very good results.
+So-called comparable monolingual corpora, for instance independently written news reports describing the same event, in which some pairs of sentences exhibit partial semantic overlap have also been investigated (Shinyama et al., 2002; Barzilay and Lee, 2003; Shen et al., 2006; Wubben et al., 2009) The first manually collected paraphrase corpus is the Microsoft Research Paraphrase (MSRP) Corpus (Dolan et al., 2004), consisting of 5,801 sentence pairs, sampled from a larger corpus of news articles.
+In a practical tagger (Kupiec, 1989), only the most frequent 100 words are lexicalized.
+We present a quasi-synchronous dependency grammar (Smith and Eisner, 2006) for machine translation in which the leaves of the tree are phrases rather than words as in previous work (Gimpel and Smith, 2009).
+Minimal supervision is used in the form of small sets of manually provided seed patterns or seed instances.
+utilizing local and sentential constraints, what Sproat et al.
+When no external knowledge is used, this similarity is only based on the strict reiteration of words.
+The decoding methods presented in this paper explore the partial candidate translation hypotheses greedily, as presented in Tillmann and Ney (2000) and Och et al.
+We build our confusion networks using the method of Rosti et al.
+Hybrid approach [3, 12] combines the strengths of other techniques such as Bayesian classifier, n-gram, and decision list.
+For each pair of entity mentions, we extract and compute various lexical and syntactic features, as employed in a state-of-the-art relation extraction system (Zhou et al., 2005).
+(1996) is another excellent representative example.
+(Stevenson and Joanis, 2003; Korhonen et al., 2003).4 Accuracy is determined in two steps: • GermaNet: We randomly extracted 100 verb 4 Note that we can use accuracy for the evaluation because.
+Foma (Hulden, 2009) is a freely available2 toolkit that allows to both build and parse FS automata and transducers.
+Bush disclosed the policy by reading it.” Once we identify that it and policy are coreferent, we include read:obj:policy as part of the compatibility model.
+There are a number of popular dictionary-based solutions such as Cha Sen10 and Juman.11 Sproat et al (1996) proposed an alternative solution based on distributional statistics such as mutual information.
+To improve word segmenta­ tion accuracy, (Nagata, 1996) used a single general purpose unknown word model, while (Sproat et al., 1996) used a set of specific word models such as for plurals, personal names, and transliterated foreign words.
+Two examples of such corpora are the RST Tree Corpus by (Marcu et al., 1999) for English and the Potsdam Commentary Corpus (Stede, 2004) for German.
+A preliminary version of the work presented here was published in Tillmann and Ney (2000).
+Because any character strings can be in principle named entities of one or more types, to limit the number of candidates for a more effective search, we generate named entity candidates, given an input string, in two steps: First, for each type, we use a set of constraints (which are compiled by 3 Sproat et al.
+Such a technique has been used with TER to combine the output of multiple translation systems (Rosti et al., 2007).
+The sequence-based model is easier to implement, and recent experiments have shown that appropriately modified sequence-based model can produce comparable performance with fertility-based models (Lopez and Resnik, 2005; Liang et al., 2006; DeNero and Klein, 2007; Zhao and Gildea, 2010; Bansal et al., 2011).
+From the annotated document, the plain tokenized text is extracted and analyzed by one or more of the following NLP tools: (i) Morphisto, a morphological analyzer without contextual disambiguation (Zielinski and Simon, 2008), (ii) two part of speech taggers: the TreeTagger (Schmid, 1994) and the Stanford Tagger (Toutanova et al., 2003), (iii) the RFTagger that performs part of speech and morphological analysis (Schmid and Laws, 2008), (iv) two PCFG parsers: the StanfordParser (Klein and Manning, 2003) and the BerkeleyParser (Petrov and Klein, 2007), and (v) the Connexor dependency parser (Tapanainen and Ja¨rvinen, 1997).
+This earlier approach was evaluated on the SENSEVAL1 data and achieved an overall accuracy of 64%, whereas the bagged decision tree presented here achieves an accuracy of 68% on that data.
+Prior work addressed this by using the single parameter Poisson distribution, forcing infrequent words to share a global parameter estimated from the fertility of all words in the corpus (Zhao and Gildea, 2010).
+Consequently, current anaphora resolution methods rely mainly on constraint and preference heuristics, which employ morpho-syntactic information or shallow semantic analysis (see, for example, Mitkov [1998]).
+As discussed elsewhere (Sproat et al., 1996), out of several thousand common Chinese characters, a subset of a few hundred characters tends to be used overwhelmingly for transliterating English names to Chinese, e.g. only 731 Chinese characters are adopted in the E-C corpus.
+(2009), Section 4.1) • Target word insertion features9 We used the following feature classes in SBMT extended scenarios only (cf.
+Tillman and Ney showed how to improve the complexity of the Held-Karp algorithm for restricted word reordering and gave a O (l3m4) ≈ O (m7) algo rithm for French-English translation (Tillman and Ney, 2000).
+(2011), who utilized MWEs in Information Retrieval (IR).
+Many of the groups of disjunctions in their feature structures can be made more efficient via modularization.
+A non-exhaustive sample is given below: [X → •αLs, i, i] Terminal Symbol (X → αLs) ∈ G X → ADJ A1 Akt # X1 Act N P → N E1 X2 # X1 X2 T OP → N E1 letzter X2 # X1 Last X2 [X → α • Fj,k βLs, i, j] [X → αFj,k • βLs, i, j + 1] Non-Terminal Symbol [X → α • Fj,k βLs, i, j] [X, j, Rj,k ] [X → αFj,k • βLs, i, Rj,k ] [X → α • Ls, i, Ri,j ] [Fi,j = Ls] the log function (hm = log hm) [X → αLs•, i, Ri,j ] log p(t|s) = λm hm(t, s) (3) m Goal [X → αLs•, 0, |V | − 1] An advanta ge of our model over (Marto n and Resnik, 2008; Chiang et al., 2008, 2009) is the number of feature function s remains the same,This model allows translation rules to take ad vantage of both syntactic label and word context.
+In the second step, the normalized training data is annotated with Part-of-Speech tags (PoS-tags) and word lemmas using RFTagger (Schmid and Laws, 2008) which was trained on the French treebank (Abeille´ et al., 2003).
+Techniques based on machine learning (Zhou et al., 2005; Hao et al., 2005; Bunescu and Mooney, 2006) are expected to alleviate this problem in manually crafted IE.
+Our second measure is derived from purity, a global measure which evaluates the mean precision of the clusters, weighted according to the cluster size (Stevenson and Joanis, 2003).
+Combination techniques have been successfully applied to part of speech tagging (van Halteren et al., 1998; Brill and Wu, 1998; van Halteren et al., 2001).
+The DempsterShafer rule (Dempster, 1968), which combines the positive and negative pairwise decisions to score a partition, is used by Kehler (1997) and Bean and Riloff (2004) to identify the most probable NP partition.
+Some existing paraphrase and entailment acquisition algorithms add constraints to the learned rules (e.g.
+We used three gold standards (and corresponding test sets) extracted from these resources in our experiments: T1: The first gold standard is a flat gold standard which includes 13 classes appearing in Levin’s original taxonomy (Stevenson and Joanis, 2003).
+(2011).
+(2006) [41] 70.3 69.6 97.7 81.3 Proposed system variant WSD, threshold = 0.2, top 50% 66.4 81.0 65.2 72.3 Cosine similarity, threshold = 0.7 (Wubben et al. [9]) 62.5 80.5 56.6 66.5 k-Means clustering (Wubben et al. [9]) 60.6 70.6 71.0 70.8 FCM clustering 36.2 68.1 9.5 16.7 Table 6 Performance of proposed system on MSRVDC Dataset 1.
+Our research in compositionality is motivated by the hypothesis that a special treatment of se­ mantically non-compositional expressions can im­ prove results in various Natural Language Process­ ing (NPL) tasks, as shown for example by Acosta et al.
+This may be done based on linear local context (Adler and Elhadad, 2006; Shacham and Wintner, 2007; Bar-haim et al., 2008; Habash and Rambow, 2005), or jointly with parsing (Tsarfaty, 2006; Goldberg and Tsarfaty, 2008; Green and Manning, 2010).
+(2007), Carpuat (2009).
+Kupiec (1989) has experimented with the inclusion of networks to model mixed-order dependencies.
+For example, in the following sentence, mentions are underlined: “The American Medical Association voted yesterday to install the heir apparent as its president-elect, rejecting a strong, upstart challenge by a District doctor who argued that the nation’s largest physicians’ group needs stronger ethics and new leadership.” “American Medical Association”, “its” and “group” belong to the same entity as they refer to the same object.Early work of anaphora resolution focuses on find ing antecedents of pronouns (Hobbs, 1976; Ge et al., 1998; Mitkov, 1998), while recent advances (Soon et al., 2001; Yang et al., 2003; Ng and Cardie, 2002; Ittycheriah et al., 2003) employ statistical machine learning methods and try to resolve reference among all kinds of noun phrases (NP), be it a name, nominal, or pronominal phrase – which is the scope of this paper as well.
+Following most of the 6 http://nlp.stanford.edu/software/lex-parser.shtml 7 http://ilk.uvt.nl/team/sabine/chunklink/README.html 8 http://opennlp.sourceforge.net/ 9 Zhou et al.
+Chieu and Ng (2002) propose a solution to this problem: for each token, they define additional features taken from other occurrences of the same token in the document.
+In this paper, w−i refers to the ith word before w, and w+i refers to the ith word after w. The features used are similar to those used in (Chieu and Ng, 2002b).
+Chieu and Ng used global information such as the occurrence of the same word with other capitalisation in the same document (Chieu and Ng, 2002a), and have also used a mixed-case classifier to teach a “weaker” classifier that did not use case information at all (Chieu and Ng, 2002b).
+The approach is presented as a knowledge poor anaphora resolution algorithm (Mitkov R. [1995;1998]), which makes use of POS and NP chunking, it tries to individuate pleonastic “it” occurrences, and assigns animacy.
+Dependency Relations and Dependency Paths: These features have been explored by Bunescu and Mooney (2005a), Zhao and Grishman (2005), and Zhou et.
+A third approach has been to use a very small number of seed instances or patterns to do bootstrap learning (Brin, 1998; Riloff and Jones, 1999; Agichtein and Gravano, 2000; Ravichandran and Hovy, 2002; Etzioni et al., 2005; Pennacchiotti and Pantel, 2006; Bunescu and Mooney, 2007; Rozenfeld and Feldman, 2008).
+The model also differs from (Marton and Resnik, 2008; Chiang et al., 2008, 2009) by adding informative labels to rule non-terminals and requiring them to match the source span label.
+( 1996) implemented was simply a token unigram scoring function.
+For discourse relations annotated in the RST framework, there is the RST Discourse TreeBank of English text (Carlson et al., 2003), available through the Linguistic Data Consortium (LDC), as well as similarly annotated corpora in Spanish (da Cunha et al., 2011), Portugese (Pardo et al., 2008) and German (Stede, 2004).
+Another related task is supersense tagging (Ciaramita and Johnson, 2003; Curran, 2005; Ciaramita and Altun, 2006).
+We also plan to experiment with different classification schemes for verb semantics such as WordNet (Miller et al., 1990) and intersective Levin classes (Dang et al., 1998).
+One existing method that is based on sub-word information, Zhang et al.
+The proposed system, the existing systems (Wubben et al.) and FCM Clustering approach were tested on this dataset.
+uced one of the top scores (a recall of 59% and precision of 72%) in the MUC6 Coreference Task, which evaluated systems' ability to recog nize coreference among noun phrases (Sund heim, 1995).
+The handicap of using a single reference can be addressed by constructing a lattice of reference translations–this technique has been used to combine the output of multiple translation systems (Rosti et al. 2007).
+Following Stevenson and Joanis (2003), we selected 20 verbs from each class which occur at least 100 times in our corpus.
+Many researchers have proposed practical methods to resolve this problem such as (Nie et al., 1995, Wu and Tsang, 1995, Jin & Chen, 1996, Ponte & Croft, 1996, Sproat et al., 1996, Sun et al., 1997).
+Possibilities include associating items with similar existing senses (Widdows, 2003; Curran, 2005; Burchardt et al., 2005) or clustering them into approximate senses.
+In such cases, neither global features (Chieu and Ng, 2002) nor aggregated contexts (Chieu and Ng, 2003) can help.
+Note that the algorithm of Rosti et al.
+Exa mple s: (we athe r) It is raini ng, (tim e) It is 5 o'clo ck, and (am bien t envi ron men t) It is hot in here . reports provide no exclusion details at all, and even when authors do provide them, the descriptions they use are often incomplete or confusing, as in these examples: • "7 of the pronouns were non-anaphoric and 16 exophoric" (Mitkov 1998, page 872).
+In early work, rule-based models find words one by one based on heuristics such as forward maximum match (Sproat et al., 1996).
+Although it is presented as a variant of voting in that paper, it is in fact also a stacked classifier, because it does not necessarily select one of the tags suggested by the component taggers.
+This observation conﬁrms previous ﬁndings (Chiang et al., 2009) regarding the inability of the MERT algorithm to converge on an optimal set of weights for a reasonably large number of parameters.
+Hybrid methods exploit that a term or a named entity can be translated in various ways across languages (Shao and Ng, 2004; Feng et al., 2004; Lu and Zhao, 2006).
+(2009), Section 4.1):10 • Rule overlap features • Node count features 9 For ChineseEnglish and UrduEnglish SBMT these features only fired when the inserted target word was unaligned to any source word.
+And .nally, TAGPAIR uses classi.cation pair weights based on the probability of a classi.cation for some predicted classi.cation pair (van Halteren et al., 1998).
+This large grammatical difference may produce a longer sentence with spuriously inserted words, as in “I saw the blue trees was found” in Figure 1(c).
+As the task is an important precursor to many natural language processing systems, it receives a lot of attentions in the literature for the past decade (Wu and Tseng, 1993; Sproat et al., 1996).
+Many translation models use such knowledge before decoding (Xia and McCord, 2004) and during decoding (Birch et al., 2007; Gimpel and Smith, 2009; Koehn and Hoang, 2007; Chiang et al., 2009), but they are limited to simpler features for practical reasons, often restricted to conditioning left-toright on the target sentence.
+e.g.
+Wide-coverage logic-based semantics Boxer (Bos, 2008) is a software package for wide-coverage semantic analysis that produces logical forms using Discourse Representation Structures (Kamp and Reyle, 1993).
+There exists stack decoding algorithm (Berger et al., 1996), A* search algorithm (Och et al., 2001; Wang and Waibel, 1997) and dynamic-programming algorithms (Tillmann and Ney, 2000; GarciaVarea and Casacuberta, 2001), and all translate a given input string word-by-word and render the translation in left-to-right, with pruning technologies assuming almost linearly aligned translation source and target texts.
+(Stolcke et al., 2000) use HMMs for dialogue modelling, where sequences of observations correspond to sequences of dialogue act types.
+entity type, mention level, overlap, base phrase chunking, dependency tree, parse tree and semantic information) as Zhou et al (20 05).
+(2009) added thousands of linguistically-motivated features to hierarchical and syntax systems, however, the source syntax features are derived from the research above.
+Zhou et al.
+A variety of features have been explored for ERD in previous research (Zhou et al., 2005; Zhou et al., 2008; Jiang and Zhai, 2007; Miller et al., 2000).
+Note a lexicon and a LM are the only needed resources for building a dictionary-based CWS, like the “dict-hybrid.” (Zhang et al., 2006) We used the “dict-hybrid” to segment the SMT training corpus and test data.
+(2008b; 2009).
+The cohesion in the part of text delimited by this window is evaluated by measuring the word reiteration between its two sides.
+• words/phrases as preposed predicate complements • preand post-modified connectives • co-occurring connectives • single and multiple clauses/sentences as arguments of connectives • annotation of discontinuous connective arguments Annotators have to also make syntactic judgements, which is not the case in our approach (where syntax would be done on a different annotation layer, see (Stede, 2004)).
+It is computed as: (O11 + 1 )(O22 + 1 ) scribed in (Shao and Ng, 2004).
+Related work includes the Bilingual Topic Admixture Model (BiTAM) for word alignment proposed by (Zhao and Xing, 2006).
+We finally remove all traces, but, unlike Green and Manning (2010), we keep all function tags.
+(3) Removing e1 and e5 in t1 and adding e2 leads to another reference derivation t3 . Generally, this is done by deleting a node X0,1 . ing to constructing the oracle reference (Liang et al., 2006; Watanabe et al., 2007; Chiang et al., 2009), which is nontrivial for SMT and needs to be determined experimentally.
+How these factors are helpful in anaphora resolution in English language was worked out by Mitkov (Mitkov, 1998), but their role in Urdu discourse for the resolution of personal pronouns is more cherished.
+(2001)) and unsupervised approaches (e.g., Cardie and Wagstaff (1999), Bean and Riloff (2004)).
+These challenges have prompted some researchers to move away from MERT, in favor of linearly decomposable approximations of the evaluation metric (Chiang et al., 2009; Hopkins and May, 2011; Cherry and Foster, 2012), which correspond to easier optimization problems and which naturally incorporate regularization.
+(2007), each compo­ nent system produces a set of translations, which are then grafted to form a confusion network.
+The recent approaches used pairwise alignment algorithms based on symmetric alignments from a HMM alignment model (Matusov et al., 2006) or edit distance alignments allowing shifts (Rosti et al., 2007).
+We also performed (5-fold cross validation) experiments by combining the Stage 1 classifier with each of the Zhou et al.
+For German, the fine-grained POS information used for pre-processing was computed by the RFTagger (Schmid and Laws, 2008).
+In our case, we chose a more general approach by working at the level of a similarity graph: when the similarity of two words is given by their relation of cooccurrence, our situation is comparable to the one of (Vronis, 2003) and (Dorow and Widdows, 2003); but in the same framework, we can also take into account other kinds of similarity relations, such as the second order cooccurrences.
+There are only a few studies on document-level SMT.
+This means that it is relatively straightforward to deterministically map parser output to a logical form, as in the Boxer system (Bos, 2008).
+The computational complexity for the left-to-right and right-to-left is the same, O(|E|3m22m ), as reported by Tillmann and Ney (2000), in which |E| is the size of the vocabulary for output sentences 3.
+Mitkov’s algorithm operates on the basis of antecedent-tracking preferences (referred to hereafter as ”antecedent indicators”).
+It was found to be 83% when one annotators templates were assumed to be correct and compared with the other.
+The majority of the data-driven methods use a classification technique to determine whether a word is used appropriately in its context, continuing the tradition established for contextual spelling correction by Golding (1995) and Golding and Roth (1996).
+(2008) [40] 74.1 75.2 91.3 82.4 Mihalcea et al.
+While contextual information is the primary source of information used in WSD research and has been used for acquiring semantic lexicons and classifying unknown words in other languages (e.g., Roark and Charniak 1998; Ci aramita 2003; Curran 2005), it has been used in only one previous study on semantic classification of Chinese unknown words (Chen and Lin,2000).
+Their approach produces a set of feature structures from a satisfiability algorithm such that all of the feature structures have the same shape but the nodes may be labeled by different types.
+The algorithm in (Dorow and Widdows, 2003) represented target noun word, its neighbors and their relationships using a graph in which each node denoted a noun and two nodes had an edge between them if they co-occurred with more than a given number of times.
+Although we could adapt our method for use with an automatically induced inventory, our method which uses WordNet might also be combined with one that can automatically find new senses from text and then relate these to WordNet synsets, as Ciaramita and Johnson (2003) and Curran (2005) do with unknown nouns.
+Wubben et al. have compared Clustering against pairwise matching for extracting paraphrases from news corpora [9].
+Candidate Chinese transliterations are generated by consulting a list of characters that are frequently used for transliterating foreign names.
+The more recent set of techniques includes mult iplicative weightupdate algorithms (Golding and Roth, 1998), latent semantic analysis (Jones and Martin, 1997), transformationbased learning (Mangu and Brill, 1997), differential grammars (Powers, 1997), decision lists (Yarowsky, 1994), and a variety of Bayesian classifiers (Gale et al., 1993, Golding, 1995, Golding and Schabes, 1996).
+Since N and M are fixed by the model, the only parameter that can be varied to reduce storage costs is T. Now, adequate training requires processing from tens of thousands to hundreds of thousands of tokens [Kupiec, 1989a].
+In knowledge-lean approaches, coreference resolvers employ only morpho-syntactic cues as knowledge sources in the resolution process (e.g., Mitkov (1998), Tetreault (2001)).
+We first extracted opinionated and objective texts from DeReKo corpus (Stede, 2004; Kupietz Figure 4: 10 most used verbs (lemma) in indirect speech.
+A possible solution is the implementation of interpolation techniques to smooth sharp distributions estimated on few events (Och and Ney, 2003; Zhao and Xing, 2006).
+task Corpus Sentences Tokens En Zh/Ar MT05 1082 35k 33k training 1M 23.7M 22.8M tune (MT06) 1797 55k 49k baselines: hypergraph-based MERT (Kumar et al., 2009), k-best variants of MIRA (Crammer et al., 2006; Chiang et al., 2009), PRO (Hopkins and May, 2011), and RAMPION (Gimpel and Smith, 2012).
+In fact, Troll represents each feature structure as a disjunction of the resolvants of the feature structure.
+Investigating the degree of MWE compositionality has been shown to have applications in information retrieval and machine translation (Acosta et al., 2011; Venkatapathy and Joshi, 2006).
+Many natural language models can be captured by weighted finite-state transducers (Pereira et al., 1994; Sproat et al., 1996; Knight and AlOnaizan, 1998; Clark, 2002; Kolak et al., 2003; Mathias and Byrne, 2006), which offer several benefits:• WFSTs provide a uniform knowledge represen tation.
+ParalStuctmarks whether a candidate and an anaphor have sim StatSemN (C, ana) = c max StatSem(ci , ana) (ana) ilar surrounding words, which is also a salience factor for the candidate evaluation (Mitkov, 1998).
+Representative work includes Zhao et al.
+For part-of-speech tagging, a significant increase in accuracy through combining the output of different taggers was first demonstrated in van Halteren, Zavrel, and Daelemans (1998) and Brill and Wu (1998).
+Although it can be used in its current form for data-driven Sentiment Analysis (Pang et al., 2002; Pang and Lee, 2004; Kim and Hovy, 2004; Popescu and Etzioni, 2005; Su and Markert, 2009; DanescuNiculescuMizil et al., 2009), or for lexical sentiment analysis tasks (Strapparava and Mihalcea, 2007; Su and Markert, 2009), it could also be used as a training set for supervised classifiers that would subsequently be applied for the improvement of Q-WordNet.
+The anaphora resolver is an adaptation for Bulgarian of Mitkovs knowledge-poor pronoun resolution approach (Mitkov, 1998).
+(2002), Baldwin and Kim (2009)) has been shown to be useful in various NLP applications (Ramisch, 2012), recent work has shown that automatic prediction of the degree of compositionality of MWEs also has utility, in applications including information retrieval (“IR”: Acosta et al.
+Since all prob(w ) < 1.0, this probability becomes smaller for a greater n. Clearly, it looks more straightforward in an equi-probability setting.Statistical approaches involve language mod els mostly finite-state ones trained on some large-scale corpora as showed in Fan and Tsai (1988) Chang et al (1991) Chiang et al (1992) Sproat et al (1996) Pont and Croft (1996) and Ng and Lua (forthcoming) These approaches do not provide any explicit strategy for disambiguation but they get more ambiguous chunks correctly segmented than MMs by virtue of probability Other linguistic resources or computational processes can also be integrated for further improvement e g Lai et al (1991) attempts to integrate POS tagging with word segmentation for the enhancement of accuracy and Gan et al (1997) integrates word boundary disambiguation into sentence processing within a probabilistic emergent model There are also other approaches that incorporate various techniques of statistical NLP and machine learning e g transformation-based error-driven learning (Palmer 1997 Hockenmaier and Brew 1998) and compression-based algorithm (Teahan et al 2 ) Recent research shifts its focus onto the following aspects resorting to a variety of resources and techniques in particular machine learning techniques 1 Lexical resource acquisition including.
+A number of automatically acquired inference rule/paraphrase collections are available, such as (Szpektor et al., 2004), (Sekine, 2005).
+We use features developed in part from those described in Zhou et al (2005) and Wang et al (2006).
+In particular, recent work (Chiang et al., 2009) has shown that adding thousands or tens of thousands of features can improve MT quality when weights are optimized using a margin-based approximation.
+Alternatively, by using the largemargin optimizer in (Chiang et al., 2009) and moving it into the for-each loop (lines 49), one can get an online algorithm such PMOMIRA.
+(Mitkov, 1998; Poesio et al., 2002; Markert and Nissim, 2005)), machine learning methods were embraced (cf.
+From a global viewpoint, these two differences lead (Vronis, 2003) and (Dorow and Widdows, 2003) to build finer senses than ours.
+no . of se nt en ce s 2 0 0 no . of ru nn in g w or ds 2 05 5 no . of w or d for ms no . of un kn o w n w or d for ms 3 8 5 2 5 We used a translation system called “singleword based approach” described in (Tillmann and Ney, 2000) and compared to other approaches in (Ney et al., 2000).
+Besides Wubben et al.’s systems, a Fuzzy C-Means (FCM) clustering approach has also been adopted.
+(Borthwick, 1999) made a second tagging pass which uses information on token sequences tagged in the first pass; (Chieu and Ng, 2002) used as features information about features assigned to other instances of the same token.Recently, in (Ji and Grishman, 2004) we pro posed a name tagging method which applied an SVM based on coreference information to filter the names with low confidence, and used coreference rules to correct and recover some names.
+(2006).
+(2007) has been shown to yield significant improvements in translation quality, and uses an estimate of Translation Error Rate (TER) to guide the alignment.
+We use Boxer semantic analyzer (Bos, 2008) to extract semantic predicates such as EVENT or DATE.
+The PCC176 (Stede, 2004) is a sub-corpus that is available upon request for research purposes.
+A. wide variety of machine learning methods have been applied to this problem, including Hidden Markov Models (Bikel et al. 1997), Maximum Entropy methods (Borthwick et al. 1998, Chieu and Ng 2002), Decision Trees (Sekine et al. 1998), Conditional Random Fields (McCallum and Li 2003), Class-based Language Model (Sun et al. 2002), Agent-based Approach (Ye et al. 2002) and Support Vector Machines.
+Recent work by (Chiang et al., 2009) describes new features for hierarchical phrase-based MT, while (Collins and Koo, 2005) describes features for parsing.
+The rules that are learned are in the format of so-called phonological replacement rules (Beesley and Karttunen, 2002) which we have later converted into equivalent finite-state transducers using the freely available foma toolkit (Hulden, 2009a).
+(2006), Tam et al.
+The antonymous classes of each are -effect events: destroying the building has a negative effect on the building; demand decreasing has a negative effect on demand; and killing Bill has a negative effect on Bill.4 While sentiment (Esuli and Sebastiani, 2006; Wilson et al., 2005; Su and Markert, 2009) and connotation lexicons (Feng et al., 2011; Kang et al., 2014) are related, sentiment, connotation, and +/-effects are not the same; a single event may have different sentiment and +/-effect polarities, for example.
+(2005) explored a large set of features that are potentially useful for relation extraction.
+Recent work has begun to address relation and event extraction through trainable means, chiefly SVM classification (Zelenko et al, 2003, Zhou et al, 2005).
+Like Van Halteren et al.
+By representing a higher level intention of utterancesduring human conversation, dialogue act labels arebeing used to enrich the information provided byspoken words (Stolcke et al., 2000).
+Recent lazy copying unification algorithms are based on Wroblewski's or Tomabeehi's schema: Godden (1990) proposed a unification algorithm that uses active data structures, Kogure (1990) proposed a lazy incremental copy graph (LING) unification that uses dependency-directed eol)yiug, and Emeie (1991) proposed a lazy-incremental copying (LIC) unification that uses chronological dereference.
+3 For a detailed procedure how candidates are handled in the event of a tie, see (Mitkov, 1998).
+Thus, we employ the com­ pile-replace feature in xfst (Beesley & Karttunen, 2000).
+(2009), was reported to yield a precision of 0.76 and a recall of 0.41 on clustering actual Dutch paraphrases in a headline corpus.
+ Data-Structure Sharing: Two or more distinct graphs share the same subgral)h by converging nil the same node the noti(m nf
+The original annotation guidelines were drafted in 2004 by the authors for the annotation of the Potsdam Commentary Corpus of German newspaper commentaries (PCC) (Stede, 2004) and the RST Discourse Treebank of Wall Street Journal articles (WSJ) (Carlson et al., 2003).
+While in lattice decoding, a translation path may skip some nodes as some hypothesis arcs may cross more than one backbone arc. Similar to the features in Rosti et al.
+We used the following feature classes in SBMT and PBMT extended scenarios: • Discount features for rule frequency bins (cf.
+Pennacchiotti and Pantel [32] describes a system called Espresso.
+3.3.1 Dictionary features Because segmentation using a dictionary alone can serve as a strong baseline in Chinese word segmentation (Sproat et al., 1996), the use of dictionaries is expected to make our joint model more robust and enables us to investigate the contribution of the syntactic dependency in a more realistic setting.
+the dependency from the event head to an event argument depi,j , our model instead emits the pair of event head and dependency relation, which we call a caseframe following Bean and Riloff (2004).
+Each arc has different confidences concerned with different systems, and the confidence of system s is denoted by ps(arc).
+(2001), Sim et al.
+ITG-based alignments and tercom-based alignments were also compared in oracle experiments involving confusion networks created through the algorithm of Rosti et al.
+We think that many cases of ambigu­ ous classification of the lexical entry for a verb can be addressed with the notion of intersective sets introduced by Dang et al.
+It looks at all situations where one tagger suggests tag1 and the other tag2 and estimates the probability that in this situation the tag should actually be tagx.
+The words were stemmed all possible ways using simple hand-developed affix lists: for example, given a Hindi word c1 c2 c3 , if both c3 and c2 c3 are in our suffix and ending list, then this single word generates three possible candidates: c1 , c1 c2 , and c1c2 c3 . In contrast, Chinese candidates were extracted using a list of 495 characters that are frequently used for foreign names (Sproat et al., 1996).
+The first utilizes a set of carefully selected features obtained from different levels of text analysis, from part-of-speech (POS) tagging to full parsing and dependency parsing (Kambhatla, 2004; Zhao and Grishman, 2005; Zhou et al., 2005)1.
+Recently (Zhang et al., 2006) proposed a maximum subword-based IOB tagger for Chinese word segmentation, and our system applies their approach which obtains a very high accuracy on the shared task data from previous SIGHAN competitions.
+The MIRA technique of Chiang et al. has been shown to perform well on large-scale tasks with hundreds or thousands of features (2009).
+Table 1: Comparison against Stevenson and Joanis (2003)’s result on T1 (using similar features).
+This may sound simple enough but in reality identifying words in Chinese is a nontrivial problem that has drawn a large body of research in the Chinese language processing community (Fan and Tsai, 1988; Gan et al., 1996; Sproat et al., 1996; Wu, 2003; Xue, 2003).
+The procedure described by Rosti et al.
+Segmentation rutd morphological analysis related issues of both Chinese and Japanese are intensively addressed elsewhere (Sproat et al., 1996; MatsUIIt(ltO et al., 1997 and many others).
+(Zhou et al., 2005), our experiments are carried out on explicit relations due to the poor inter-annotator agreement in annotation of implicit relations and their limited numbers.
+For this, Rosti et al.
+Our baseline confusion network system has an additional penalty feature, hp (m), which is the total edits required to construct a confusion network using the mth system hypothesis as a skeleton, normalized by the number of nodes in the network (Rosti et al., 2007b).
+Recently, Green and Manning (2010) demonstrated the effectiveness of lattice-parsing for parsing Arabic.
+In this experiment, we used the same feature set as Stevenson and Joanis (2003) (set B, see section 3.1) and were therefore able to reproduce their AGG result with a difference smaller than 2%.
+Thus, Table 1 confirms the fact reported in (Jobbins and Evett, 1998) that using collocations together with word recurrence is an interesting approach for text segmentation.
+A comparison with the literature shows that the best Altavista model outperforms Golding (1995), Jones and Martin (1997) highest accuracy on the task is achieved by the class of multiplicative weight-update algorithms such as Winnow (Golding and Roth, 1999).
+(2007a), the features adopted by lattice-based model are arc posterior probability, language model probability, the number of null arcs, the number of hypothesis arcs possessing more than one non-null word and the number of all non-null words.
+(2007) used N -best lists in the combination.
+Initial work was done onspoken interactions (see for example (Stolcke et al.,2000)).
+We chose the three models that achieved at least one best score in the closed tests from Emerson (2005), as well as the sub-word-based model of Zhang, Kikui, and Sumita (2006) for comparison.
+This is slightly behind that of Zhang (2006); the reason might be threefold: i) different data partitioning; ii) different pre-processing; iii) they incorporate features from additional sources, i.e. a phrase chunker, dependency parser and semantic resources (Zhou et al., 2005) (we have on average 9 features/instance, they use 40).
+We would also like to look into alternative tuning techniques, especially ones based on the MIRA algorithm to improve the quality of log-linear mixture adaptation in large parameter settings (Chiang et al., 2009).
+Due to space limitations, we only describe the collocation features and refer the reader to (Zhou et al., 2005) for the rest of the features.
+(2007), Rosti et al.
+Other scores for the word arc are set as in (Rosti et al., 2007).
+Their algorithm required a threshold as input, which controlled the number of senses.
+In both approaches, different tagger gen­ erators were applied to the same training data and their predictions combined using different combination methods, including stacking.
+Troll exploits this property to represent each feature structure as a finite state automaton and a set of output flmctions.
+Data-driven paraphrase discovery methods (Lin and Pantel, 2001; Pasca and Dienes, 2005; Wu and Zhou, 2003; Sekine, 2005) extends the idea of distributional similarity to phrases.
+They show that even a large scale bilingual corpus cannot capture all the necessary information to translate MWEs, and that in adding the facility to model the compositional­ ity ofMWEs into their system, they could improve translation quality.
+(2005), TPWF kernel, SL kernel, different versions of proposed KH F kernel and KH ybrid kernel.
+Basically, the BiTAM model consists of topic-dependent transla tion lexicons modeling P r(c|e, k) where c, e and k denotes the source Chinese word, target English word and the topic index respectively.
+Useful Unigrams (UNI) For each name class, words that precede the name class are ranked using correlation metric (Chieu and Ng, 2002a), and the top 20 are compiled into a list.
+These normalization patterns use the lemma information computed by the TreeTagger and the fine-grained POS information computed by the RFTagger (Schmid and Laws, 2008), which uses a tagset containing approximately 800 tags.
+Hearst’s method has since then been followed by the most successful systems, such as the Espresso system proposed by Pennacchiotti and Pantel [6], based on bootstrapping.
+(1996).
+Among these strategies, the confidence measure used to combine the results of CT and DS is a straightforward one, which is introduced in (Zhang et al., 2006a).
+It consists of 176 relatively short commentaries (12 15 sentences), with 33.000 tokens in total.
+Rosti et al.
+To summarize these experimental tests, we briefly report experimental offline results for the following translation approaches: • single-word based approach [20]; • alignment template approach [15]; • cascaded transducer approach [23]:unlike the other two-approaches, this approach re quires a semiautomatic training procedure, in which the structure of the finite state transducers is designed manually.
+Thus, though RES is computationally expensive, Troll uses RES only during compilation, never during run time.
+(Sekine, 2005), (CallisonBurch, 2008)), but most do not.
+134 R. Östling, J. Tiedemann Eﬃcient Word Alignment with MCMC (125–146) greedy optimization techniques (Brown et al., 1993) or local Gibbs sampling (Zhao and Gildea, 2010).
+In all of these approaches, the problem is formulated as follows: Given a specific confusion set (e.g. {to,two,too}), all occurrences of confusion set members in the test set are replaced by a marker; everywhere the system sees this marker, it must decide which member of the confusion set to choose.
+As in previous work (Lee et al., 2010), we find that the one-class-per-type restriction boosts performance considerably over a comparable tokenbased model and yields results that are comparable to state-of-the-art even without the use of morphology or alignment features.
+They provide restrictions on coindexation of pronouns with clause siblings, and therefore can only be applied with systems that determine clause boundaries, i.e. parsers (Mitkov, 1998).
+Our Gibbs sampler is similar to the MCMC algorithm in Zhao and Gildea (2010), but we assume Dirichlet priors when sampling model parameters and take a different sampling approach based on the source side dependency tree.
+Recent work have shown that SMT benefits a lot from exploiting large amount of features (Liang et al., 2006; Tillmann and Zhang, 2006; Watanabe et al., 2007; Blunsom et al., 2008; Chiang et al., 2009).
+The weighted finite-state transducer model developed by Sproat et al.
+This article will present a DP-based beam search decoder for the IBM4 translation model.
+However, the pressing need for the development of robust and inexpensive solutions encouraged the drive toward knowledge-poor strategies (Dagan and Itai 1990; Lappin and Leass 1994; Mitkov 1998; Soon, Ng and Lim 2001; Ng and Cardie 2002), which was further motivated by the emergence of cheaper and more reliable corpusbased NLP tools such as part-of-speech taggers and shallow parsers alongside the increasing availability of corpora and other resources (e.g. ontology).
+This module resolves third-person personal pronouns and is an adaptation of Mitkov’s robust, knowledge-poor multilingual approach (Mitkov, 1998) whose latest implementation by R. Evans is referred to as MARS 2 (Orasan et al., 2000).
+If measures with this property are used to tune a typical statistical MT system, it can sometimes be observed that the MT system learns to “play” against this, and might even learn to produce translations which show the “good” features without actually being good translations.
+For better comparison with work of others, we adopt the suggestion made by Green and Manning (2010) to evaluate the parsing quality on sentences up to 70 tokens long.
+An extension of this approach is the dynamic programming search of the most probable word combination on the word lattice, such as Ma (1996) and Sproat et al.
+In an article on the Named Entity recognition competition (part of MUC6)Sundheim (1995) remarks that "common organization names, first names of people and location names can be handled by recourse to list lookup, although there are drawbacks" (Sundheim 1995: 16).
+The task of identifying MWEs is relevant not only to lexical semantics applications, but also machine translation (Koehn et al., 2003; Ren et al., 2009; Pal et al., 2010), information retrieval (Xu et al., 2010; Acosta et al., 2011), and syntactic parsing (Sag et al., 2002).
+Early work on pronoun anaphora resolution usually uses rule-based methods (e.g. Hobbs 1976; Ge et al., 1998; Mitkov, 1998), which try to mine the cues of the relation between the pronouns and its antecedents.
+They give the example “Mr.
+This method has been described elsewhere (Golding, 1995) and so will only be briefly reviewed here; how­ ever, the version used here uses an improved smooth­ ing technique, which is mentioned briefly below.
+In this section we will show in detail how Realizational Morphology can be expressed in terms of the parc/xrce regular expression calculus as deﬁned in Beesley and Karttunen [4].
+Och et al. report word error rates of 68.68% for optimal search (based on a variant of the A* algorithm), and 69.65% for the most restricted version of a decoder that combines dynamic programming with a beam search (Tillmann and Ney, 2000).
+Same as Zhou et al (2005), we only model explicit relations and explicitly model the argument order of the two mentions involved.
+(1998) modify it by adding new classes which remove the overlap between classes from the original scheme.
+But BABAR acquired and used lexical information to match the compatibility of contexts surrounding NPs, not the NPs themselves.
+While it may not be totally impossible to fully incorporate such knowledge and heuristics into the general framework of path evaluation and searching, they are ap­ parently employed neither in Sproat et al.
+Many existing systems for statistical machine translation 1 1 (Garc´ıa-Varea and Casacuberta 2001; Germann et al. 2001; Nießen et al. 1998; Och, Tillmann, and Ney 1999) implement models presented by Brown, Della Pietra, Della Pietra, and Mercer (1993): The correspondence between the words in the source and the target strings is described by alignments that assign target word positions to each source word position.
+Feature Template Description f) in(str, subword-list) is str in subword list g) in(str, confident-word-list) is str in confident-word list Table 2: Subword Features for CRF-based Segmenter dure for constructing a subword list is similar to the one used in (Zhang et al., 2006).
+This method, as the ones presented in (Vronis, 2003), (Dorow and Widdows, 2003) and (Rapp, 2003), relies on the following hypothesis: in the subgraph gathering the cooccurrents of a word, the number of relations between the cooccurrents defining a sense is higher than the number of relations that these cooccurrents have with those defining the other senses of the considered word.
+Recent work (Zhao and Gildea, 2010) described an extension to the HMM with a fertility model, using MCMC techniques for parameter estimation.
+Some of the limitations of the traditional rule based approaches (Mitkov, 1998) could be overcome by machine learning techniques, which allow automating the acquisition of knowledge from annotated corpora.
+(2007) use the tercom script (Snover et al., 2006), which uses a number of heuristics (as well as dynamic programming) for finding a sequence of edits (insertions, deletions, substitutions and block shifts) that convert an input string to another.
+This approach is similar in spirit to the iterative computational approaches of the Hidden Markov Models (Kupiec, 1989; Kupiec, 1992; Rabiner, 1989), though our zeroth order solution begins quite close to the desired result, so it should converge very close to a global optimum.
+Besides, Zhou et al.
+Zhao proposes a brief fertility based HMM model,8 which also decreases the complexity of Model A Fully Bayesian Inference for Word Alignment 93 Table 2.
+Conversational feedback is mostly performedthrough short utterances such as yeah, mh, okaynot produced by the main speaker but by one ofthe other participants of a conversation.
+We adopt as our baseline method a well-known hierarchical method – agglomerative clustering (AGG) – which has been previously used to acquire flat Levin-style classifications (Stevenson and Joanis, 2003) as well as hierarchical verb classifications not based on Levin (Ferrer, 2004; Schulte im Walde, 2008).
+To apply LexRank to query-focused context, a topic-sensitive version of LexRank isproposed in (Otterbacher et al., 2005).
+There are several commonly used segmentation methods such as forward maximum matching and backward maximum matching(Teahan et al. 2000; Dai, Loh, and Khoo 1999; Sproat et al. 1996).
+• Information retrieval: when MWEs like pop star are indexed as a unit, the accuracy of the system improves on multiword queries (Acosta et al., 2011).
+(2001), Wang and Waibel (1997), Tillmann and Ney (2000) GarciaVarea and Casacuberta (2001) and Germann et al.
+Recently Lee et al.
+Most of the features used in our system are based on the work in (Zhou et al., 2005).
+For example, Rosti et al.
+(2007) report such an effect.
+The methodology of Dorow and Widdows (2003) was adopted: for the focus word, obtain its graph neighborhood (all vertices that are connected via edges to the focus word vertex and edges between these).
+(2011) and Shao and Ng (2004).
+However, when we trained two (experienced) students to annotate the 171 newspaper commentaries of the Potsdam Commentary Corpus (Stede, 2004) and upon completion of the task asked them about their experiences, a very different picture emerged.
+449 PIION ~ lleben, liebt / [dl VFORM~ bse, fill} I, el SUBJ [] f rVFORM bse] ] ) [lieben -] [AaG~ 2t!]] { rv,,'OaMbsol } s,,,,s,, d2 Another example of where modularization might prove useful is in the treatment of typed feature structures presented in (Gerdemann and King, 1994).
+Indeed, we have used it to solve the problem of parsing while recovering null elements in both English and Chinese (Cai, Chiang, and Goldberg 2011), and others have used it for the joint segmentation and parsing of Arabic (Green and Manning 2010).
+In [Kupiec, 1989a], networks are used to selectively augment the context in a basic firstorder model, rather than using uniformly second-order dependencies.
+Systems for inducing syntactic categories often make use of morpheme-like features, such as word-final characters (Smith and Eisner, 2005; Haghighi and Klein, 2006; Berg-Kirkpatrick et al., 2010; Lee et al., 2010), or model words at the character-level (Clark, 2003a; Blunsom and Cohn, 2011), but do not include morphemes explicitly.
+Current approaches have used clustering (Dorow and Widdows, 2003; Klapaftis and Manandhar, 2008) or statistical graph models (Klapaftis and Manandhar, 2010) to identify sense-specific subgraphs.
+These features are calculated by mining the parse trees, and then could be used for resolution by using manually designed rules (Lappin and Leass, 1994; Kennedy and Boguraev, 1996; Mitkov, 1998), or using machine-learning methods (Aone and Bennett, 1995; Yang et al., 2004; Luo and Zitouni, 2005).
+We use the following baselines: SVMTool (Gime´nez and Ma`rquez, 2004), an SVM-based discriminative tagger; RFTagger (Schmid and Laws, 2008), an n-gram Hidden Markov Model (HMM) tagger developed for POS+MORPH tagging; Morfette (Chrupała et al., 2008), an averaged perceptron with beam search decoder; CRFSuite (Okazaki, 2007), a fast CRF implementation; and the Stanford Tagger (Toutanova et al., 2003), a bidirectional Maximum Entropy Markov Model.
+Hybrid systems that combine the approaches we have presented were also developed and illustrated the interest of such a combination: (Jobbins and Evett, 1998) combined word recurrence, collocations and a thesaurus; (Beeferman et al., 1999) relied on both collocations and linguistic cues.
+See the details of subword-based Chinese word segmentation in (Zhang et al., 2006) 2.2 OOV Recognition with Accessor Variety.
+As for paraphrase, Sekine’s Paraphrase Database (Sekine, 2005) is collected using an unsupervised method, and focuses on phrases connecting two Named Entities.
+The most prominent example of a tuning method that performs well on high-dimensionality candidate spaces is the MIRA-based approach used by Watanabe et al.
+The first is the LOB corpus (Johansson 1986), which we used in the earlier experiments as well (van Halteren, Zavrel, and Daelemans 1998) and which has proved to be a good testing ground.
+Confusion network and re-decoding have been well studied in the combination of different MT systems (Bangalore et al., 2001; Matusov et al., 2006; Sim et al., 2007; Rosti et al., 2007a; Rosti et al., 2007b).
+Additionally, theyextract second-order co-occurrences.
+(2005) and Kambhatla (2004) flat feature set.
+These experiments are done using Zhou et al.
+Gimpel & Smith (2009; 2011) treat translation as a monolingual dependency parsing problem, creating a dependency structure over the translation during decoding.
+Also, the CRF model using maximum subword-based tagging (Zhang et al., 2006) and the CRF model using minimum subword-based tagging, both of which are statistical methods, are used individually to solve the Figure 1: Outline of the segmentation process 2.1 Forward Maximum Matching.
+In this paper we extend this work to represent sets of situation-specific events not unlike scripts, caseframes (Bean and Riloff, 2004), and FrameNet frames (Baker et al., 1998).
+Five are so-called voting methods.
+This makes it difficult to do machine studies on these languages since isolated words are needed for many purposes, such as linguistic analysis, machine translation, etc. Automatic methods for correctly isolating words in a sentence -a process called word segmentation -is therefore an important and necessary first step to be taken before other analysis can begin.
+Log-linear translation models (instead of MLE) with rich feature sets are used also in (Ittycheriah and Roukos, 2007) and (Gimpel andSmith, 2009); the idea can be traced back to (Pap ineni et al., 1997).
+Previous work on prediction at the supersense level (Ciaramita and Johnson, 2003; Curran, 2005) has focused on lexical acquisition (nouns exclusively), thus aiming at word type classification rather than tagging.
+This unsupervised discovery process produces a sense inventory where the number of senses is corpus-driven and where senses may reflect additional usages not present in a predefined sense inventory, such as those for medicine or law (Dorow and Widdows, 2003).
+Despite their differences, most approaches use two types of features: context words and collocations.
+The application of the merge algorithm to the lower-side of the relation is performed by the COMPILER EPL ACE algorithm (Beesley and Karttunen, 2000),11 and the result is shown in Figure 7.
+Here, W t refers to the set of word types that are generated by tag t. In other words, conditioned on tag t, we can only generate word w from the set of word types in W t which is generated earlier (Lee et al., 2010).
+We used Zhou et al.’s lexical features (Zhou et al., 2005) as the basis for the features of our system similar to what other researchers have done (Chan and Roth, 2010).
+(2007a), and Rosti et al.
+(2001) used a WER based alignment and Sim et al.
+Another interesting extension of the HMM alignment is presented in Zhao and Gildea (2010) who added a fertility distribution to the HMM.
+(1992)’s one-class HMM.
+Data Sets The Arabic data set contains two treebanks derived from the LDC Penn Arabic Treebanks (PATB) (Maamouri et al., 2004b):11 the Columbia Arabic Treebank (CATiB) (Habash and Roth, 2009), a dependency treebank, and the Stanford version of the PATB (Green and Manning, 2010), a phrasestructure treebank.
+Ruslan Mitkov (1998) Robust pronoun resolution th evaluation, several baselines on pronominal anaphora resolution have been implemented, and with limited knowledge.
+We used a simple greedy algorithm described in [Sproat et al., 1996].
+While various machine learning approaches, such as generative modeling (Miller et al 2000), maximum entropy (Kambhatla 2004) and support vector machines (Zhao and Grisman 2005; Zhou et al 2005), have been applied in the relation extraction task, no explicit learning strategy is proposed to deal with the inherent data sparseness problem caused by the much uneven distribution among different relations.
+Another source of inspiration is the work by Bean and Riloff (2004).
+They perform Markov clustering on this graph.
+Chiang et w(X → (α, γ, ∼ )) = λiφi (2) i al.
+Caseframes do not consider the dependents of the semantic role approximations.The use of caseframes is well grounded in a va riety of NLP tasks relevant to summarization such as coreference resolution (Bean and Riloff, 2004), and information extraction (Chambers and Jurafsky, 2011), where they serve the central unit of semantic analysis.
+The vocabulary entry may be a word or an equivalence class based on categories (Kupiec, 1989).
+In all experiments, the TotPrecision voting scheme of (van Halteren et al., 1998) has been used.
+(2007b) chose the hypothesis that best agrees with other hypotheses on average as the skeleton.
+In the work presented here, we have reimplemented and expanded the original rules written for XFST with the foma2 toolkit (Hulden, 2009).
+We used a maximummatching algorithm and a dictionary compiled from the CTB (Sproat et al., 1996; Xue, 2001) to do segmentation, and trained a maximum entropy part-ofspeech tagger (Ratnaparkhi, 1998) and TAG-based parser (Bikel and Chiang, 2000) on the CTB to do tagging and parsing.4 Then the same feature extraction and model-training was done for the PDN corpus as for the CTB.
+Gerdemann and G6tz's Troll system (see [G6Tz 1993], [GFRDEIVIANN AND KING 1994] and [GERDEMANN (FC)]) employs an efficient refinement of RES to test the satisfiability of feature structures.
+(1998), we evaluated two features combinations.
+(Manfred Stede, Potsdam) Construction of the Potsdam Commentary Corpus (PCC) began in 2003 and is still ongoing.
+I Pr(f, ale) =p(JII) ITP(cPilei) estimate the posterior distribution using Markov chain Monte Carlo methods such as Gibbs sam­ pling (Zhao and Gildea, 2010).
+Joining the words of MWEs before indexation is a simple idea that was put in practice by Acosta et al.
+5.4.1 MERT We used David Chiang’s CMERT implementation We for the most part follow the MIRA algorithm for machine translation as described by Chiang et al.
+This approach is not new, and numerous publications are available on that subject, see for example, (Rosti et al., 2007); (Shen et al., 2008); (Karakos et al., 2008) and (Leusch et al., 2009).
+1998).
+The more recent set of techniques includes multiplicative weight-update algorithms [4], latent semantic analysis [7], transformation-based learning [8], differential grammars [10], decision lists [12], and a variety of Bayesian classifiers [2,3,5].
+In recent work, Stevenson and Joanis (2003) compared their supervised method for verb classification with semisupervised and unsupervised techniques.
+The current version of the system includes an implementation of the MARS pronoun resolution algorithm (Mitkov, 1998) and a partial implementation of the algorithm for resolving definite descriptions proposed by Vieira and Poesio (2000).
+Since the question of transducer functionality is known to be decidable (Blattner and Head, 1977), and an efficient algorithm is given in Hulden (2009a), which is included in foma (with the command test functional) we can address this question by calculating the above for each constraint, if necessary, and then permute the violation markers until the above transducer is functional.
+The approach was reported to achieve the highest word segmentation accuracy using the data from the second Sighan Bakeoff.
+Qc 2008 Asian Federation of Natural Language Processing algorithms have been devised for this purpose (Aone and Bennette, 1996; Brenan , Friedman and Pollard, 1987; Ge, Hale and Charniak, 1998; Grosz, Aravind and Weinstein, 1995; McCarthy and Lehnert, 1995; Lappins and Leass, 1994; Mitkov, 1998; Soon, Ng and Lim, 1999).
+This evaluation is also a weak point as card(Wl ∩ Wr ) only relies on word reiteration.
+There are, however, approaches to the complementary problem of determining the closest known sense for unknown words (Widdows, 2003; Curran, 2005; Burchardt et al., 2005), which can be viewed as the logical next step after unknown sense detection.
+Levin's classification has been extended by other NLP researchers (Dorr and Jones, 1996; Dang et al., <Root> TCM war car migration meal drum time ceremonial migration week month afternoon s p e e c h y e l l i n g Figure 1: TCM for the object slot of the transitive frame of start.
+For German, we obtain a tagging accuracy of 97.24, which is close to the 97.39 achieved by the RFTagger (Schmid and Laws, 2008), which to our knowledge is the best tagger for German.5 The results are not directly comparable to the RFTagger as it was evaluated on a different part of the Tiger Treebank and trained on a larger part of the Treebank.
+The approach works as follows: the system identifies the noun phrases which precede the anaphor within a distance of 2 sentences, checks them for gender and number agreement with the anaphor, and then applies genrespecific antecedent indicators to the remaining candidates (Mitkov, 1998).
+Merlo and Stevenson, 2001 and Stevenson and Joanis, 2003 for English semantic verb classes, or Schulte im Walde, 2006 for German semantic verb classes).
+However, the use of related verbs is similar in spirit to Bean and Riloff’s (2004) use of patterns for inducing contextual role knowledge, and the use of semantic roles is also discussed in Ponzetto and Strube (2006).
+(2009)12 but instead of using the 10-best of each of the best hw , hw +g, and hw -g, we use the 30-best according to hw .13 We use the same sentence-level BLEU calculated in the context of previous 1-best translations as Chiang et al.
+This verb chain transfer module is implemented as a series of ordered replacement rules (Beesley and Karttunen, 2003) using the foma finite-state toolkit (Hulden, 2009).
+Following Green and Manning (2010) and others, sentences headed by X nodes are deleted because the treebank annotators considered them unbracketable or somehow erroneous.
+G U I TA R (Poesio and AlexandrovKabadjov, 2004) is a general-purpose anaphoric resolver that includes an implementation of the Vieira / Poesio algorithm for definite descriptions and of Mitkov’s algorithm for pronoun resolution (Mitkov, 1998).
+This approach is very common in both the NLP and Semantic Web communities (Cimiano and Staab, 2004; Cafarella et al., 2005; Pantel and Pennacchiotti, 2006; Pas¸ca et al., 2006).
+(1996) nor in Ma (1996).
+In other words, meaning of UW can be found generally through cooccurrence words [5].
+Coreference resolution is a field in which major progress has been made in the last decade.
+Overfitting problem often comes when training many features on a small data (Watanabe et al., 880 2007; Chiang et al., 2009).
+Table 1 shows our results and the results of Stevenson and Joanis (2003) on T1 when employing AGG using Ward as the linkage criterion.
+Indeed, such feature-based methods have been widely applied in parsing (Collins 1999; Charniak 2001), semantic role labeling (Pradhan et al 2005), semantic relation extraction (Zhou et al 2005) and co-reference resolution (Lapin and Leass 1994; Aone and Bennett 1995; Mitkov 1998; Yang et al 2004; Luo and Zitouni 2005; Bergsma and Lin 2006).
+In fact, it only requires a procedure for creating pairwise alignments of translations that allow appropriate re-orderings.
+Such utterances are among the most frequent in conversational data (Stolcke et al., 2000).
+Word segmentation accuracy is expressed in terms of recall and precision as is done in the previous research (Sproat et al., 1996).
+To our knowledge, this association measure has not been used yet in translation spotting.
+(2009) define new translational features using neighbouring word contexts of the source phrase, which are directly integrated into the translation model of Hiero system.
+For the discursive analysis of texts, DR metrics rely on the C&C Tools (Curran et al., 2007), specifically on the Boxer component (Bos, 2008).
+We call this selection of highly probable words observation pruning (Tillmann and Ney 2000).
+Bean and Riloff learn these networks from two topic-specific texts and apply them to the problem of anaphora resolution.
+The handicap of using a single reference can be addressed by the construction of a lattice of reference translations.
+A more eNcient unification algorithm would avoid this redundant copying (copying structures that can be shared by the input and resultant graphs) (Kogure, 1990).
+Parallel to (van Halteren et al., 1998), we ran experiments with two stacked classifiers, Memory-Based, and Decision-Tree-Based.
+To investigate the effect of the amount of training data on results, we also train a phrase-based model on more data by adding more aligned headlines originating from data crawled in 2010 and aligned using (i i=LD(1..8) ∗ Ni ∗ N I STi)tf.idf scores over headline clusters and Cosine sim ilarity as described in (Wubben et al., 2009), resulting in an extra 612,158 aligned headlines.
+Zhao and Gildea (2010) instead chose to use Gibbs sampling to approximate these expectations, which allowed them to perform efficient inference with EM for a HMM model with fertility.
+(2005) or kernel based similarity measure with LP for relation extraction.
+However, we found that we achieved better accuracy by using RFTagger (Schmid and Laws, 2008), which tags nouns with their morphological case.
+Consequently, current anaphora resolution methods rely mainly on restrictions and preference heuristics, which employ information originating from morpho-syntactic or shallow semantic analysis, (see Mitkov (1998) for example).
+(2009): • phrase pair count bin features (bins 1, 2, 3, 45, 69, 10+) • target word insertion features • source word deletion features • word translation features • phrase length feature (source, target, both) Table 4:Sparse domain features When combining the domain features and the other sparse features, we see roughly additive gains (Table 5).
+6.1.1 POS Tagging We use RFTagger (Schmid and Laws, 2008) for POS tagging.
+Dorow and Widdows construct a graph for a target word w by taking the sub-graph induced by the neighborhood of w (without w) and clustering it with MCL.
+aimcitation:
+It has shown promise in improving the performance of many tasks such as name tagging (Miller et al., 2004), semantic class extraction (Lin et al., 2003), chunking (Ando and Zhang, 2005), coreference resolution (Bean and Riloff, 2004) and text classification (Blum and Mitchell, 1998).
+As it has been noticed by [Godden 90] and [Kogure 90], the key idea of avoiding "redundant copying" is to do copying lazily.
+Examples for similar phenomena in Arabic may be found in Green and Manning (2010).
+They got substantial gains on articles in two specific domains, terrorism and natural disasters.
+(Stolcke et al., 2000) used it for dialog act classification, where each utterance (or dialog act) is used as the observation.
+Inspired by work of Pang[4] and Su[5], we also use Minimum cut (Mincut) model to optimize the Two-stage SVM result.
+Stolcke et al.
+More generally, as a precursor to the abovementioned work, confusable disambiguation has been investigated in a string of papers discussing the application of various machine learning algorithms to the task (Yarowsky, 1994; Golding, 1995; Mangu and Brill, 1997; Huang and Powers, 2001).
+The data was pre-processed with packages from the Stanford Arabic parser (Green and Manning, 2010).
+Thenthe system ranked the sentences according to a random walk model defined in terms of both the inter-sentence similarities and the similarities of the sentences to the topic description or question.
+Afterwards, our approach is evaluated against two existing approaches, which rely on the conventional semantic network and are able to capture binary relations only.
+Finally, several coreference systems have successfully incorporated anaphoricity determination modules (e.g. Ng and Cardie (2002a) and Bean and Riloff (2004)).
+This is inefficient with many copy operations due to unfications of unnecessary features that do not contribute to successful unification [6].
+(Yu and Hatzivassiloglou, 2003) discusses a necessary component for an opinion question answering system: separating opinions from fact at both the document and sentence level.
+To date, the majority of work on dialogue act modeling has addressed spoken dialogue (Samuel et al., 1998; Stolcke et al., 2000; Surendran and Levow, 2006; Bangalore et al., 2008; Sridhar et al., 2009; Di Eugenio et al., 2010).
+dialogue acts such as statements, questions, backchannels, ... are detected using a language model based detector trained on Switchboard similar to Stolcke et al.
+When a PCFG probability distribution is estimated from training data (in our case the Penn tree-bank) PCFGs de.ne a tight (summing to one) probability distribution over strings [5], thus making them appropriate for language models.
+As for work on Arabic (MSA), results have been reported on the PATB (Kulick, Gabbard, and Marcus 2006; Diab 2007; Green and Manning 2010), the Prague Dependency Treebank (PADT) (Buchholz and Marsi 2006; Nivre 2008) and the CATiB (Habash and Roth 2009).
+A topic-sensitiveLexRank is proposed in (Otterbacher et al., 2005).As in LexRank, the set of sentences in a documentcluster is represented as a graph, where nodes aresentences and links between the nodes are inducedby a similarity relation between the sentences.
+(2000) 5 4Klaus Zechner trained an English part of speech tagger tagger on Switchboard that has been used.
+The other one is based on topic-sensitive LexRank (Otterbacher et al., 2005), called title-sensitive PageRank here.
+We previously showed optimal Berkeley parser (Petrov et al. 2006) parameterizations for both the Arabic (Green and Manning 2010) and French (Green et al. 2011) data sets.19 For Arabic, our pre-processing and parameter settings significantly increased the best-published Berkeley ATB baseline.
+The degree of a given node is an indication of how much important the sentence is. To apply LexRank to query-focused context, a topic-sensitive version of LexRank is proposed in (Otterbacher et al., 2005).
+This follows on from the success of these methods in general NLP (see for example Zhou et al (2005)).
+For English, a number of methods have been proposed to cope with real-word errors in spelling correction (Golding, 1995; Golding and Roth, 1996; Golding and Schabes, 1993; Tong and Evans, 1996).
+Our module used for spelling correction was developed on the basis of works by Brill [1], Brill and Marcus [2), Golding [3), Golding and Schabes [4], and Powers [5).
+They used lexical and syntactic heuristics to identify high-confidence coreference relations and used them as training data for learning contextual role knowledge.
+We lemmatized German articles, adjectives (only positive form), for some pronouns and for nouns in order to remove the lexical redundancy (e.g., Bildes as Bild) by using the finegrained part-of-speech tags generated by RFTagger (Schmid and Laws, 2008).
+Inspired by the idea of graph based algorithms to collectively rank and select the best candidate, research efforts in the natural language community have applied graph-based approaches on keyword selection (Mihalcea and Tarau, 2004), text summarization (Erkan and Radev, 2004; Mi-halcea, 2004), word sense disambiguation (Mihalcea et al., 2004; Mihalcea, 2005), sentiment analysis (Pang and Lee, 2004), and sentence retrieval for question answering (Otterbacher et al., 2005).
+Chi and Geman(1998) studied the question for Maximum Likelihood (ML) estimation, and showed that ML es 1033 timates are always tight for both the supervisedcase (where the input consists of parse trees) andthe unsupervised case (where the input consists ofyields or terminal strings).
+We allow the parser to produce empty elements by means of lattice-parsing (Chappelier et al., 1999), a general processing community (Hall, 2005; Chappelier et al., 1999), and was recently applied to the task of joint clitic-segmentation and syntactic-parsing in Hebrew (Goldberg and Tsarfaty, 2008; Goldberg and Elhadad, 2011) and Arabic (Green and Manning, 2010).
+We report in Section 2 on our experiments on the assignment of part of speech to words in text.
+Godden uses active data structures (Lisp closures) to implement lazy evaluation of copying, and Kogure uses a revised copynode procedure which maintains copy dependency information in order to avoid immediate copying.
+Thus treatments such as strategic unification [6] have been developed.
+Levin's study on diathesis alternations has influenced recent work on word sense disam­ biguation (Dorr and Jones, 1996), machine transla­ tion (Dang et al., 1998), and automatic lexical ac­ quisition (McCarthy and Korhonen, 1998; Schulte im Walde, 1998).
+The HMM has been widely used in many tagging problems.
+These algorithms are all based on the query-sensitive LexRank (OtterBacher et al., 2005).
+There have also been Dialogue Acts modeling approaches for automatic tagging and recognition of conversational speech (Stolcke et al., 2000) and related work in corpus linguistics where machine learning techniques have been used to find conversational patterns in spoken transcripts of dialogue corpus (Shawar and Atwell, 2005).
+Copying of nodes will be delayed until a destructive change is about to take place.
+Considering Question Topic: We first introduce how to incorporate the question topic into the Markov Random Walk model, which is similar as the Topic-sensitive LexRank (Otterbacher et al., 2005).
+Bean and Riloff (2004) present a system, which uses contextual role knowledge to aid coreference resolution.
+Measuring the contextual fitness of a term in its context is a key component in different NLP applications like speech recognition (Inkpen and De´silets, 2005), optical character recognition (Wick et al., 2007), co-reference resolution (Bean and Riloff, 2004), or malapropism detection (Bolshakov and Gelbukh, 2003).
+Similarly, in Kogure's approach, not all redundant copying is avoided in cases where there exists a feature path (a sequence of nodes connected by arcs) to a node that needs to be copied.
+2 The complete set of analyses for this word is provided in Goldberg and Tsarfaty (2008).
+The effectiveness of such models is well known (DeRose 1988; Church 1988; Kupiec 1989; Jelinek 1985), and they are currently in use in parsers (e.g. de Mar­ cken 1990).
+A different body of work (e.g. Golding, 1995; Golding and Roth, 1996; Mangu and Brill, 1997) focused on resolving a limited number of cognitive substitution errors, in the framework of context sensitive spelling correction (CSSC).
+Several unsupervised POS induction systems make use of morphological features (Blunsom and Cohn, 2011; Lee et al., 2010; Berg-Kirkpatrick et al., 2010; Clark, 2003; Christodoulopoulos et al., 2011) and this approach has been empirically proved to be helpful (Christodoulopoulos et al., 2010).
+Halteren et al (1998) compare a number of voting methods including a Majority Vote scheme with other combination methods for part of speech tagging.
+Chinese word segmentation is the initial stage of many Chinese language processing tasks, and has received a lot of attention in the literature (Sproat et al., 1996; Sun and Tsou, 2001; Zhang et al., 2003; Peng et al., 2004).
+Chi and Geman (1998) proved that any PCFG estimated from a treebank with the relative frequency estimator is tight.
+Recently, Green and Manning (2010) analyzed the PATB for annotation consistency, and introduced an enhanced split-state constituency grammar, including labels for short Idafa constructions and verbal or equational clauses.
+A topicsensitive LexRank is proposed in (Otterbacher et al., 2005).
+aimcitation*methodcitation:
+hypothesiscitation*methodcitation:
+methodcitation*resultcitation:
+implicationcitation*methodcitation:
+implicationcitation:
+Although they can be removed using a cut-based method, this requires a predefined cutoff value which is difficult to set (Stevenson and Joanis, 2003).
+tokens, but, because of a 92.5% agreement over all four taggers, it yielded less than 9K tokens of useful training material to resolve disagreements.
+Furthermore, when the UPST (FPT) kernel is com bined with a linear state-of-the-state featurebased kernel (Zhou et al., 2005) into a composite one via polynomial interpolation in a setting similar to Zhou et al.
+Furthermore, the Wotan tagset is a very detailed one, so that the error rate of the individual taggers 9 Compare this to the "tune" set in van Halteren, Zavrel, and Daelemans (1998).
+Using parallel corpora (Kupiec, 1993; Feng et al., 2004), e.g., bilingual Wikipedia entries on the same person, renders high accuracy but suffers from high scarcity.
+The parameters of the model can be estimated from tagged (1, 3, 4, 6, 12] or untagged [2, 9, 11] text.
+Whereas knowledge-based systems like (Carbonell and Brown, 1988) and (Rich and LuperFoy, 1988) combining multiple resolution strategies are expen­ sive in the cost of human effort at development time and limited ability to scale to new domains, more re­ cent knowledge-poor approaches like (Kennedy and Boguraev, 1996) and (Mitkov, 1998) address the problem without sophisticated linguistic knowledge.
+The organizers of MUC 6 did not attempt to compare the difficulty of the MUC 6 task to the previous MUC tasks saying that the problem of coming up with a reasonable, objective way of measuring relative task difficulty has not been adequately addressed [Sundheim1995].
+(2004)) or Wikipedia (Ponzetto and Strube, 2006), and the contextual role played by an NP (see Bean and Riloff (2004)).
+This observation is the basis for a reordering method proposed by Kogure [1990].
+participants — causation, change of state, and others — are central not only in theoretical work on lexical semantics, but in computational approaches to the lexicon, as well (e.g.
+In addition, there is no commonly accepted standard for evaluating the performance of word extraction methods, and it is very hard to decide whether a word is meaningful or not (Sproat et al. 1996).
+To exploit topic information for statistical machine translation (SMT), researchers have proposed various topic-specific lexicon translation models (Zhao and Xing, 2006; Zhao and Xing, 2007; Tam et al., 2007) to improve translation quality.
+We created a hierarchy of actions, exploiting the idea that verbs can be represented in a lattice that allows semantically similar verbs, such as motion verbs or verbs of contact, to be closely associatedwith each other under a common parent that cap tures the properties these verbs all share (Dang et al., 1998).
+However it is reported (Zhou et al., 2005; Kambhatla, 2004) that hierarchical structured syntactic features contributes less to performance improvement.
+(1996) can be taken as an evidence that the hypothesis of one tokenization per source has already in practical use.
+“ENQUIRIES” follows “RAIL” with a very high probability when it is preceded by “BRITISH.” However, when “RAIL” is preceded by words other than “BRITISH,” “ENQUIRIES” does not occur, but words like “TICKET” or “JOURNEY” may. Thus, the bigram “RAIL ENQUIRIES” gives a misleading probability that “RAIL” is followed by “ENQUIRIES” irrespective of what precedes it.
+Supervised methods for automatic verb classification have been extensively investigated (Stevenson et al., 1999; Stevenson and Merlo, 1999; Merlo and Stevenson, 2001; Stevenson and Joanis, 2003; Joanis and Stevenson, 2003; Joanis et al., 2008).
+In addition, a significant amount of information is lost in pairwise clustering.
+They are automatically derived based on the correlation metric value used in (Chieu and Ng, 2002a).
+Gold standards, however, 435 cannot be uniﬁed into a single standard (Fung and Wu 1994; Sproat et al. 1996).
+We follow Pantel and Lin (2002) and Dorow and Widdows (2003) using the sentence as contexts and all words with a dependency path of length 3 or less, with the last word and its relation as a feature.
+The significance of inference rules has led to substantial effort into developing algorithms that automatically learn inference rules (Lin and Pantel, 2001; Sekine, 2005; Schoenmackers et al., 2010), and generate knowledge resources for inference systems.
+A better method would avoid (eliminate) such redundant copying as it is called by [Kogure 90].
+al, 1996; Brent, 1996; de Marcken, 1996) or on tokenizing Asian and Indian languages that do not normally include word delimiters in their orthography (Sproat, et al, 1996; Ponte and Croft 1996; Shimohata, 1997; Teahan, et al., 2000; and many others).
+, 1990, Dang et al , 1998) To address these 1ssues, we suggest that one can tram an automatic classifier for verbs on the bast'S of stattst1cal apprm..
+This was suspected to be the main reason for the relative lack of performance by the more sophisticated combiners.
+Since open-domain semantic parsers are able to produce formal semantic representations nowadays (Bos, 2008; Butler and Yoshimoto, 2012), it would be natural to see generation as a reversed process, and consider such semantic representations as input of a surface realization component.
+Some of these studies have concentrated on finite-state or extended finite-state machinery, such as (Vilar and others, 1999), others have chosen models closer to context-free grammars and context-free transduction, such as (Alshawi et al., 2000; Watanabe et al., 2000; Yamamoto and Matsumoto, 2000), and yet other studies cannot be comfortably assigned to either of these two frameworks, such as (Brown and others, 1990) and (Tillmann and Ney, 2000).
+We agree with Sekine (2005) who claims that several different methods are required to discover a wider variety of paraphrases.
+(1996) system can successfully recognize OOVs of strong patterns, such as Chinese personal names, transliterations, using finite-state techniques.
+(2006) were proposed.
+In explormg these quest1ons, we focus on verb clas­ Sificatwn for several reasons Verbs are very Impor­ tant sources of knowledge m many language eng1neermg tasks, and the relat10nsh1ps among verbs ap­ pear to play a maJor role m the orgamzatwn and use of this knowledge h.nowledge about verb classe 1s cruc1al for lexical acqu1srt10n m support of language generatiOn and machme translatiOn (Dorr, 1997) and document clC!bsrficatwn (Klavans and Kan, 1998), :yet manual class1ficatwn of large numbers of verb'S 1s a d1fficult and resource mtens1ve task (Levm, 1993 MJ!ler et a!
+Named Entity evaluation began as a part of recent Message Understanding Conferences (MUC), whose objective was to standardize the evaluation of IE tasks (Sundheim, 1995b).
+For German, the POS and morphological tags were obtained from RFTagger (Schmid and Laws, 2008) which provides morphological information such as case, number and gender for nouns and tense for verbs.
+The principal work on segmentation has focused either on identifying words in phonetic streams (Saffran, et.
+The actual implementation of the weighted finite­ state transducer by Sproat et al.
+There are two approaches to solve this problem: to increase the coverage of the dictionary (Fung and Wu, 1994; Chang et al., 1995; Mori and Nagao, 1996) and to design a better model for unknown words (Nagata, 1996; Sproat et al., 1996).
+The traditional approch to translation extraction from comparable corpora and most of its extensions (Fung, 1998; Rapp, 1999; Shao and Ng, 2004; Otero, 2007; Yu and Tsujii, 2009; Marsi and Krahmer, 2010) presuppose the availability of a bilingual lexicon for translating source vectors into the target language.
+Composite Kernel In this paper, a composite kernel via polynomial interpolation, as described Zhang et al (2006), is applied to integrate the proposed c ontextsensitive convolution tree kernel with a state -of the-art linear kernel (Zhou et al 2005) 7 : P per formance by ~1.2 in F-measure6 . This suggests the K1 ( , ) a K L ( , ) (1 a ) K C ( , ) (5) usefulness of extending the tree span beyond SPT for the “predicate-linked” tree span category.
+One major challenge in relation extraction is due to the data sparseness problem (Zhou et al 2005).
+The convergence is quicker for X2 than G2.” In addition, Pedersen (2001) questions whether one statistic should be preferred over the other for the bigram acquisition task and cites Cressie and Read (1984), who argue that there are some cases where the Pearson statistic is more reliable than the log-likelihood statistic.
+This consisted of 114K.
+It is well known that the number of the instances for each relation type in the ACE RDC corpora is greatly unbalanced (Zhou et al., 2005) as shown in Table 1 for the ACE RDC 2004 corpus.
+Some attempts were made to let annotators judge rule correctness directly, that is by asking them to judge the correctness of a given rule (Shinyama et al., 2002; Sekine, 2005).
+2In the large-scale HPSG-based spoken Japanese analysis system developed at ATR, sometimes 98 percent of the elapsed time is devoted to graph unification ([Kogure, 1990]).
+(Pustejovsky, 1991; Dorr, 1993; Wu and Palmer, 1994; Dang et al., 1998)).
+As (Sproat ct a.l., 1996) testify, several native Chinese speakers do not always agree on one unique tokeniza.tion for a. given sentence.
+Since the so-called integrative approach to anaphor resolution was developed in the late 1980s (Carbonell and Brown 1988; Rich and LuperFoy 1988; Asher and Wada 1989), and its practical viability extensively tested (e.g., Lappin and Leass 1994; Mitkov 1997, 1998), it has been common wisdom that factors determining the antecedentsof anaphors divide into filters and preferences.
+For example, the Sproat et al.
+Indeed, existing learning-based approaches to anaphor resolution have performed reasonably well using limited and shallow knowledge (e.g., Mitkov (1998), Soon et al.
+While an improvement over simple destructive unification, Tomabechi's approach still suffers from what Kogure (Kogure, 1990) calls redundant copying.
+Among them, feature-based methods (Kambhatla 2004; Zhou et al., 2005) achieve certain success by employing a large amount of diverse linguistic features, varying from lexical knowledge, entityrelated information to syntactic parse trees, dependency trees and semantic information . How ever, it is difficult for them to effectively capture struc tured parse tree information (Zhou et al 2005), which is critical for further performance improvement in relation extraction.
+Consequently, many strategies are proposed to balance the IV and OOV performance (Goh et al., 2005), (Zhang et al., 2006a).
+A technique that many previous approaches have used is shallow parsing (Koike et al., 2003; Yao et al., 2004; Zhou et al., 2005).
+Indeed, the prominent approach for evaluating the quality of rule acquisition algorithms is by human judgment of the learned rules (Lin and Pantel, 2001; Shinyama et al., 2002; Barzilay and Lee, 2003; Pang et al., 2003; Szpektor et al., 2004; Sekine, 2005).
+Assuming each bilingual sentence constitutes a mixture of hidden topics and each word pair follows a topic-specific bilingual translation model, Zhao and Xing (2006,2007) presented a bilingual topical admixture formalism to improve word alignment by capturing topic sharing at different levels of linguistic granularity.
+To alleviate such scarcity, (Fung and Yee, 1998; Shao and Ng, 2004) explore a more vast resource of comparable corpora, which share no parallel documentor sentence-alignments as in parallel corpora but describe similar contents in two languages, e.g., news articles on the same event.
+As even human judges differ when facing the task of segmenting a text into words and test corpora differ from system to system (Sproat et al. 1996), it is very difficult to compare two methods.
+Often domain-specific heuristics are used for anaphora resolution and fine tuned to perform well on a limited corpus, such as in (Mitkov, 1998).
+Purely statistical methods of word segmentation (e.g. de Marcken 1996, Sproat et al 1996, Tung and Lee 1994, Lin et al (1993), Chiang et al (1992), Lua, Huang et al, etc.) often fail to identify those words because of the sparse data problem, as the likelihood for those words to appear in the training texts is extremely low.
+This problem happens not only with word-token corpora but also with corpora in which all the compounds are tagged as units since overlapping Ngrams still appear, therefore corresponding solutions such as those of Zhang et al.
+There are many other OOV recognition methods proposed in literature before the rise of machine learning in the field.
+hypothesiscitation*aimcitation:
+resultcitation*methodcitation:
+hypothesiscitation:
+Palmer (1999) and Dang et a!.
+(Pinker, 1989; Jackendoff, 1990; Levin, 1993; Dorr, 1997; Dang et al., 1998; Merlo and Stevenson, 2001)).
+Classifications which aim to capture the close relation between the syntax and semantics of verbs have attracted a considerable research interest in both linguistics and computational linguistics (e.g.
+Dang et al.
+Lexical-semantic classes which aim to capture the close relationship between the syntax and semantics of verbs have attracted considerable interest in both linguistics and computational linguistics (e.g.
+This lexicon exploits the systematic link between syntax and semantics that motivates the Levin classes, and thus provides a clear and regular association between syntactic and semantic properties of verbs and verb classes, [Dang, et al, 98, 00, Kipper, et al. 00].
+(Stevenson and Joanis, 2003) investigate the applicability of this general feature space to unsupervised verb clustering tasks.
+(Jackendoff, 1990; Levin, 1993; Pinker, 1989; Dang et al., 1998; Dorr, 1997; Merlo and Stevenson, 2001)).
+(1998), for example, have refined the current classification by creating intersective classes for those verbs which share membership of more than one Levin class.
+The practical effect of this is that Troll implements an exhaustive typing strategy which provides the stronger kind of inferencing over descriptions (Gerdemann and King, 1993, 1994) required by standard HPSG theories.
+(1998) argue that syntactic frames and verb classes are useful for developing principled classifications of verbs.
+This constraint of having the same semantic roles is further ensured inside the VerbNet lexi con that is constructed based on a more refined version of the Levin classification called Intersective Levin classes (Dang et al., 1998).
+BB task example Ureaplasma parvum is a mycoplasma and a pathogenic biology challenges (Kim et al., 2010) and geographical locations (Zhou et al., 2005).
+MBL, by using long and very specialized conjunctions (DBZ99) and decision lists, due to their functional form a linear function with exponentially decreasing weights at the cost of predicting with a single feature, rather than a combination (Gol95).
+(1998) argue that the use of syntactic frames and verb classes can sim­ plify the definition of different verb senses.
+In many cases, the additional information that VerbNet provides for each class has caused it to subdivide, or use intersections of, Levin’s original classes, adding an additional level to the hierarchy (Dang et al. 1998).
+Palmer (2000) and Dang et al.
+methodcitation*implicationcitation:
+implicationcitation*resultcitation:
+resultcitation*implicationcitation:
+methodcitation*aimcitation:
+aimcitation*resultcitation:
