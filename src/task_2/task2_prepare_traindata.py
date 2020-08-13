@@ -22,6 +22,10 @@ with open("%sprocessed-data-2018-clean.pkl" % root_path, 'rb') as f:
 facet_map = {}
 facet_count = {}
 facet_to_sentences = {}
+full_facet_to_ref_section_names = {}
+full_facet_to_ref_section_names_freq_count = {}
+all_sections = set()
+all_ref_sections = set()
 for data in tqdm.tqdm(dataset):
     citing_article = data.cite
     cite_id = citing_article.id
@@ -33,7 +37,8 @@ for data in tqdm.tqdm(dataset):
     offsets = data.offsets
     citing_sentence_ids = offsets.cite
     ref_sentence_ids = offsets.ref
-    section = citing_article.sections[citing_sentence_ids[0]]
+    ref_section = ref_article.sections[ref_sentence_ids[0]].lower()
+    all_ref_sections.add(ref_section)
     new_ids = [x for x in citing_sentence_ids]
     facets = [facet.lower().replace("_", "").replace(" ", "").replace("results", "result") for facet in facets]
 
@@ -47,13 +52,31 @@ for data in tqdm.tqdm(dataset):
     facet_name = "*".join(facets)
     if facet_name not in facet_map:
         facet_map[facet_name] = len(facet_map.keys())
+        if len(facets) == 1:
+            full_facet_to_ref_section_names[facet_name] = [ref_section]
+    else:
+        if len(facets) == 1:
+            full_facet_to_ref_section_names[facet_name].append(ref_section)
+
     facet_count[facet_name] = facet_count.get(facet_name, 0) + 1
 
-# print("facet count: ", facet_count)
-# print("facet map: ", facet_map)
-# print("facet to sentences:", facet_to_sentences)
+for facet_name in full_facet_to_ref_section_names:
+    full_facet_to_ref_section_names_freq_count[facet_name] = {}
+    for ref_section_name in full_facet_to_ref_section_names[facet_name]:
+        full_facet_to_ref_section_names_freq_count[facet_name][ref_section_name] = \
+            full_facet_to_ref_section_names_freq_count[facet_name].get(ref_section_name, 0) + 1
+
+for facet in facet_map:
+    if facet in full_facet_to_ref_section_names_freq_count:
+        sorted_section_names = sorted(full_facet_to_ref_section_names_freq_count[facet],
+                                      key=full_facet_to_ref_section_names_freq_count[facet].get, reverse=True)
+        sum_for_facet = 0
+        for name in sorted_section_names:
+            sum_for_facet += full_facet_to_ref_section_names_freq_count[facet][name]
+        for section_name in sorted_section_names:
+            full_facet_to_ref_section_names_freq_count[facet][section_name] /= sum_for_facet
+
 stop_words = set(stopwords.words('english'))
-# print(stop_words)
 
 facet_word_freq = {}
 facet_word_count = {}
@@ -91,8 +114,13 @@ with open("%straindata.csv" % root_path, "w") as f:
         citing_sentence_ids = offsets.cite
         ref_sentence_ids = offsets.ref
         section = citing_article.sections[citing_sentence_ids[0]]
+        ref_sections = set([ref_article.sections[id].lower() for id in ref_sentence_ids])
         new_ids = [x for x in citing_sentence_ids]
         facets = [facet.lower().replace("_", "").replace(" ", "").replace("results", "result") for facet in facets]
+
+        facet_y = {k: 0 for k in facet_word_freq.keys()}
+        for facet in facets:
+            facet_y[facet] = 1
 
         isPercentPresent = False
         isFloatingPointPresent = False
@@ -114,6 +142,16 @@ with open("%straindata.csv" % root_path, "w") as f:
         facet_prob = {k: str(v) for k, v in facet_prob.items()}
         # TODO: should divide by number of words/ sentences?
 
+        # features for prob distribution of section in different facets
+        facet_section_prob = {k: 0 for k in facet_word_freq.keys()}
+        for section in ref_sections:
+            for facet in facet_word_freq:
+                if section in full_facet_to_ref_section_names_freq_count[facet]:
+                    facet_section_prob[facet] += full_facet_to_ref_section_names_freq_count[facet][section]
+
+        facet_prob = {k: str(v) for k, v in facet_prob.items()}
+        # TODO: should divide by number of words/ sentences?
+
         # line ratio for first line in citing sentence
         cite_line_ratio = citing_sentence_ids[0]/len(citing_article.sentences)
 
@@ -121,11 +159,19 @@ with open("%straindata.csv" % root_path, "w") as f:
         ref_line_ratio = ref_sentence_ids[0] / len(ref_article.sentences)
 
         print(cite_id, ref_id, cite_line_ratio, ref_line_ratio, isPercentPresent,
-                          isFloatingPointPresent, facet_prob["aimcitation"],
-                          facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
-                          facet_prob["methodcitation"], facet_prob["resultcitation"])
+              isFloatingPointPresent, facet_prob["aimcitation"],
+              facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
+              facet_prob["methodcitation"], facet_prob["resultcitation"],
+              facet_section_prob["aimcitation"], facet_section_prob["hypothesiscitation"],
+              facet_section_prob["implicationcitation"], facet_section_prob["methodcitation"],
+              facet_section_prob["resultcitation"], facet_y["aimcitation"], facet_y["hypothesiscitation"],
+              facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"])
         writer.writerow([cite_id, ref_id, str(cite_line_ratio), str(ref_line_ratio), str(isPercentPresent),
-                          str(isFloatingPointPresent), facet_prob["aimcitation"],
-                          facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
-                          facet_prob["methodcitation"], facet_prob["resultcitation"]])
+                         str(isFloatingPointPresent), facet_prob["aimcitation"],
+                         facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
+                         facet_prob["methodcitation"], facet_prob["resultcitation"],
+                         facet_section_prob["aimcitation"], facet_section_prob["hypothesiscitation"],
+                         facet_section_prob["implicationcitation"], facet_section_prob["methodcitation"],
+                         facet_section_prob["resultcitation"], facet_y["aimcitation"], facet_y["hypothesiscitation"],
+                         facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"]])
 print("ok")
