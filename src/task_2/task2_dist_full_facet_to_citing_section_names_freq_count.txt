@@ -1,0 +1,349 @@
+resultcitation:
+	- introduction: 0.22784810126582278
+	- related work. : 0.08860759493670886
+	- experiments. : 0.0759493670886076
+	- context-sensitive spelling correction. : 0.0379746835443038
+	- results on test corpus. : 0.02531645569620253
+	- the words called inna and her sisters are labeled inna. : 0.02531645569620253
+	- system description. : 0.02531645569620253
+	- previous  work. : 0.02531645569620253
+	- evaluation. : 0.02531645569620253
+	- results. : 0.02531645569620253
+	- modern hebrew. : 0.012658227848101266
+	- joint segmentation and parsing. : 0.012658227848101266
+	- related work in parsing of morphologically rich languages. : 0.012658227848101266
+	- context-free parsing model: stanford parser. : 0.012658227848101266
+	- training data and morphological analyzers. : 0.012658227848101266
+	- related works. : 0.012658227848101266
+	- words, constructions, and the lexicon. : 0.012658227848101266
+	- the task: 0.012658227848101266
+	- morphological processing. : 0.012658227848101266
+	- word segmentation. : 0.012658227848101266
+	- motivation: 0.012658227848101266
+	- previous work. : 0.012658227848101266
+	- experimentation. : 0.012658227848101266
+	- relation extraction. : 0.012658227848101266
+	- introduction. : 0.012658227848101266
+	- set q = 2;. : 0.012658227848101266
+	- conclusion. : 0.012658227848101266
+	- our word segmentation system. : 0.012658227848101266
+	- discrimination features. : 0.012658227848101266
+	- multilingual subjectivity  sense learning. : 0.012658227848101266
+	- models for classi.er combination. : 0.012658227848101266
+	- system architecture. : 0.012658227848101266
+	- combining techniques. : 0.012658227848101266
+	- combination  in detail. : 0.012658227848101266
+	- experimental setup. : 0.012658227848101266
+	- overall results. : 0.012658227848101266
+	- background. : 0.012658227848101266
+	- these figures are not particularly impressive because our. : 0.012658227848101266
+	- lexical acquisition of animacy. : 0.012658227848101266
+	- source parse structure modeling. : 0.012658227848101266
+	- cocktail. : 0.012658227848101266
+	- preliminary  empirical work. : 0.012658227848101266
+	- event scope and representation. : 0.012658227848101266
+methodcitation:
+	- introduction: 0.23597678916827852
+	- related work. : 0.11218568665377177
+	- experiments. : 0.029013539651837523
+	- results. : 0.015473887814313346
+	- previous work. : 0.01160541586073501
+	- model. : 0.009671179883945842
+	- system description. : 0.009671179883945842
+	- experimental evaluation. : 0.007736943907156673
+	- feature representation. : 0.007736943907156673
+	- approach. : 0.007736943907156673
+	- background. : 0.005802707930367505
+	- evaluation. : 0.005802707930367505
+	- the spmrl 2013 data sets. : 0.005802707930367505
+	- initial word frequency estimation. : 0.005802707930367505
+	- relation extraction system. : 0.005802707930367505
+	- background: 0.005802707930367505
+	- method. : 0.005802707930367505
+	- anaphora resolution in bulgarian. : 0.005802707930367505
+	- using anaphora resolution for. : 0.005802707930367505
+	- output  m-best  translations  which  are  not. : 0.0038684719535783366
+	- decoding. : 0.0038684719535783366
+	- abstract: 0.0038684719535783366
+	- the system combination approach. : 0.0038684719535783366
+	- es for entity extraction. : 0.0038684719535783366
+	- the learning by reading architecture and modules. : 0.0038684719535783366
+	- prior work. : 0.0038684719535783366
+	- the  boy pulled  at  the  rope ......  the  boy pulled. : 0.0038684719535783366
+	- compositionality of mwes. : 0.0038684719535783366
+	- the task: 0.0038684719535783366
+	- ontologies and annotations. : 0.0038684719535783366
+	- corpora and data pre-processing. : 0.0038684719535783366
+	- online identification from a short text is even harder,. : 0.0038684719535783366
+	- further discussion. : 0.0038684719535783366
+	- class model probabilities. : 0.0038684719535783366
+	- feature space for relation extraction. : 0.0038684719535783366
+	- results and discussion. : 0.0038684719535783366
+	- the structure sharing proi1lem. : 0.0038684719535783366
+	- 40.3: 0.0038684719535783366
+	- phrase penalty: (always exp(1) = 2.718). : 0.0038684719535783366
+	- conclusion and future work. : 0.0038684719535783366
+	- decoding algorithms. : 0.0038684719535783366
+	- experimental results. : 0.0038684719535783366
+	- different part of speech such as “แหน”  is pro-. : 0.0038684719535783366
+	- context-sensitive spelling correction. : 0.0038684719535783366
+	- bayes. : 0.0038684719535783366
+	- target classification and test sets. : 0.0038684719535783366
+	- background: entailment rules and their. : 0.0038684719535783366
+	- apart from muc coreference resolution systems which. : 0.0038684719535783366
+	- coreference  resolution. : 0.0038684719535783366
+	- using text topics for segmentation. : 0.0038684719535783366
+	- methods. : 0.0038684719535783366
+	- hmm alignment. : 0.0038684719535783366
+	- fertility distribution parameters. : 0.0038684719535783366
+	- iimm alignment. : 0.0038684719535783366
+	- bootstrapping in pronoun resolution. : 0.0038684719535783366
+	- models. : 0.0019342359767891683
+	- evaluation set-up. : 0.0019342359767891683
+	- aligning predicates across texts. : 0.0019342359767891683
+	- acquiring parallel data automatically. : 0.0019342359767891683
+	- data collection. : 0.0019342359767891683
+	- corpus. : 0.0019342359767891683
+	- paraphrase generation. : 0.0019342359767891683
+	- semantic classification task. : 0.0019342359767891683
+	- conclusions. : 0.0019342359767891683
+	- conclusion and outlook. : 0.0019342359767891683
+	- a corpus-based model: 0.0019342359767891683
+	- smt. : 0.0019342359767891683
+	- combination by confusion network. : 0.0019342359767891683
+	- all confusion networks are connected into a single  lattice.. : 0.0019342359767891683
+	- terp alignment. : 0.0019342359767891683
+	- incremental ter alignment. : 0.0019342359767891683
+	- ter and terp. : 0.0019342359767891683
+	- hmm alignment model. : 0.0019342359767891683
+	- our models for opinion. : 0.0019342359767891683
+	- rewos: paired general and specific. : 0.0019342359767891683
+	- seed diversity. : 0.0019342359767891683
+	- j - vote petitioner - speak to respondent’s l: 0.0019342359767891683
+	- trends in nlp research. : 0.0019342359767891683
+	- joint segmentation and parsing. : 0.0019342359767891683
+	- related work in parsing of morphologically rich languages. : 0.0019342359767891683
+	- 83.6   91.4: 0.0019342359767891683
+	- context-free parsing model: stanford parser. : 0.0019342359767891683
+	- the challenge: evaluation for mrls. : 0.0019342359767891683
+	- assign a label l to the anchor (affixes are automatically. : 0.0019342359767891683
+	- reranking method. : 0.0019342359767891683
+	- incident: date                                  19-jan-89. : 0.0019342359767891683
+	- restoring case information. : 0.0019342359767891683
+	- implementation. : 0.0019342359767891683
+	- words, constructions, and the lexicon. : 0.0019342359767891683
+	- application to lingala. : 0.0019342359767891683
+	- stems  as  multi-part constructs of  a  root,. : 0.0019342359767891683
+	- an example: the akkadian verb. : 0.0019342359767891683
+	- the features for  classification. : 0.0019342359767891683
+	- limitations and future work. : 0.0019342359767891683
+	- linking framenet to verbnet and. : 0.0019342359767891683
+	- issue and previous work. : 0.0019342359767891683
+	- discussion. : 0.0019342359767891683
+	- ucs: http://www.collocations.de/software.html. : 0.0019342359767891683
+	- objectives. : 0.0019342359767891683
+	- parameters for dialogue tagging. : 0.0019342359767891683
+	- map estimation. : 0.0019342359767891683
+	- methodology. : 0.0019342359767891683
+	- google’s acquisition of youtube. : 0.0019342359767891683
+	- metric description. : 0.0019342359767891683
+	- motivation and related work. : 0.0019342359767891683
+	- 98.94: 0.0019342359767891683
+	- andrew moore:. : 0.0019342359767891683
+	- sentence ordering experiments. : 0.0019342359767891683
+	- processing linguistic annotations. : 0.0019342359767891683
+	- german-english systems. : 0.0019342359767891683
+	- data pre-processing and selection. : 0.0019342359767891683
+	- classification approach. : 0.0019342359767891683
+	- word reordering. : 0.0019342359767891683
+	- language models. : 0.0019342359767891683
+	- russian/english experiments. : 0.0019342359767891683
+	- french to english. : 0.0019342359767891683
+	- english to french. : 0.0019342359767891683
+	- russian-english. : 0.0019342359767891683
+	- architecture. : 0.0019342359767891683
+	- projection-based variants. : 0.0019342359767891683
+	- context-similarity-based extraction. : 0.0019342359767891683
+	- chinese experiments. : 0.0019342359767891683
+	- previous  methods for segmenting chinese. : 0.0019342359767891683
+	- proposed approach. : 0.0019342359767891683
+	- previous  work. : 0.0019342359767891683
+	- all nws belong  to a class.. : 0.0019342359767891683
+	- propagate scores of all the candidate translit-. : 0.0019342359767891683
+	- experiment and results. : 0.0019342359767891683
+	- in the literature (knight  and  graehl,1998; qu et al., 2003),. : 0.0019342359767891683
+	- chinese word segmentation (cws). : 0.0019342359767891683
+	- roughly  a four-character fragment abed, where a, b,. : 0.0019342359767891683
+	- 6  10: 0.0019342359767891683
+	- segmentation as tagging. : 0.0019342359767891683
+	- arabic. : 0.0019342359767891683
+	- literature review. : 0.0019342359767891683
+	- jelinek (2004) attributes this position to mercer (1985). : 0.0019342359767891683
+	- experimentation. : 0.0019342359767891683
+	- underlying supervised learning. : 0.0019342359767891683
+	- extraction in maytag. : 0.0019342359767891683
+	- analysis of data annotation. : 0.0019342359767891683
+	- update the hypothesis according to. : 0.0019342359767891683
+	- 12.5 13.0: 0.0019342359767891683
+	- relation extraction framework. : 0.0019342359767891683
+	- relationship extraction. : 0.0019342359767891683
+	- control information in conjunctions. : 0.0019342359767891683
+	- the use of disjunctions and. : 0.0019342359767891683
+	- motivation: 0.0019342359767891683
+	- word segmentation. : 0.0019342359767891683
+	- results and. : 0.0019342359767891683
+	- comparison with previous work. : 0.0019342359767891683
+	- cws specifications and corpora from. : 0.0019342359767891683
+	- effect of combining multiple cws. : 0.0019342359767891683
+	- optimization via pairwise ranking. : 0.0019342359767891683
+	- the parser used for arabic-english  had a different nonter-. : 0.0019342359767891683
+	- experiments in dialectal arabic-english. : 0.0019342359767891683
+	- multi-objective algorithms. : 0.0019342359767891683
+	- learning in smt. : 0.0019342359767891683
+	- the relative margin machine in smt. : 0.0019342359767891683
+	- diversified word alignments. : 0.0019342359767891683
+	- initial system development. : 0.0019342359767891683
+	- baseline model. : 0.0019342359767891683
+	- we demonstrate that our proposed method. : 0.0019342359767891683
+	- as a further analysis, we are interested in see-. : 0.0019342359767891683
+	- past work. : 0.0019342359767891683
+	- annotation of the remaining (unsignalled). : 0.0019342359767891683
+	- the  clearest cases  are subjunctors,  which  always. : 0.0019342359767891683
+	- overview  of  chinese  rst  treebank. : 0.0019342359767891683
+	- underspecified discourse representation. : 0.0019342359767891683
+	- use cases. : 0.0019342359767891683
+	- application and evaluation. : 0.0019342359767891683
+	- sdrt in newspaper text. : 0.0019342359767891683
+	- potsdam commentary corpus. : 0.0019342359767891683
+	- the situation today. : 0.0019342359767891683
+	- case study. : 0.0019342359767891683
+	- motivation. : 0.0019342359767891683
+	- overview. : 0.0019342359767891683
+	- nlp experiments. : 0.0019342359767891683
+	- statistical machine translation. : 0.0019342359767891683
+	- introduction. : 0.0019342359767891683
+	- search. : 0.0019342359767891683
+	- reorder  chunks. all  of  the  chunks  are. : 0.0019342359767891683
+	- translation experiments. : 0.0019342359767891683
+	- search problem. : 0.0019342359767891683
+	- agreement among systems. : 0.0019342359767891683
+	- learning algorithms. : 0.0019342359767891683
+	- a large evaluation error corpus: 0.0019342359767891683
+	- we show that the impact of parse features can. : 0.0019342359767891683
+	- corpus-based statistical  sense  identification. : 0.0019342359767891683
+	- confusion set disambiguation. : 0.0019342359767891683
+	- find   the   n-best   word  sequences:. : 0.0019342359767891683
+	- the system architecture. : 0.0019342359767891683
+	- variants of the rntn model. : 0.0019342359767891683
+	- related  work. : 0.0019342359767891683
+	- called the goodfor/badfor  corpus in that paper.. : 0.0019342359767891683
+	- stochastic language model based. : 0.0019342359767891683
+	- nonterminal end node p to terminal node i.. : 0.0019342359767891683
+	- contextual models. : 0.0019342359767891683
+	- combining techniques. : 0.0019342359767891683
+	- experiments and results. : 0.0019342359767891683
+	- related research. : 0.0019342359767891683
+	- combination methods. : 0.0019342359767891683
+	- experimental setup. : 0.0019342359767891683
+	- wish: erhoffen, wollen,  wu¨ nschen  (hope,  want,  wish). : 0.0019342359767891683
+	- these figures are not particularly impressive because our. : 0.0019342359767891683
+	- inducing verb classes with. : 0.0019342359767891683
+	- a satisfiability algorithm : 0.0019342359767891683
+	- overview of methods. : 0.0019342359767891683
+	- the bad tool. : 0.0019342359767891683
+	- the illustration roughly follows (kager, 1999), p. 42.. : 0.0019342359767891683
+	- manual:  the documents that were not matched. : 0.0019342359767891683
+	- the fst grammar. : 0.0019342359767891683
+	- in the event that the lookup fails, the analyzer. : 0.0019342359767891683
+	- form of the model. : 0.0019342359767891683
+	- see fig. 3 in smith and eisner (2006) for illustrations.. : 0.0019342359767891683
+	- paraphrasing with corpora. : 0.0019342359767891683
+	- details of components. : 0.0019342359767891683
+	- experimental  settings. : 0.0019342359767891683
+	- lingua - an architecture for. : 0.0019342359767891683
+	- factors in pronoun resolution. : 0.0019342359767891683
+	- summarisation techniques. : 0.0019342359767891683
+	- for pronoun des, the id of the correct an­. : 0.0019342359767891683
+	- factors  that  play  vital  role  in  urdu. : 0.0019342359767891683
+	- comparison with other approaches to anaphora resolution. : 0.0019342359767891683
+	- reporting  pronoun resolution performance. : 0.0019342359767891683
+	- for example, the antecedent indicator section. : 0.0019342359767891683
+	- applying the semantic compatibility. : 0.0019342359767891683
+	- otherwise, classify the d d as anaphoric.. : 0.0019342359767891683
+	- naive character building: this refers to a naive. : 0.0019342359767891683
+	- the anaphora resolution algorithms. : 0.0019342359767891683
+	- description of topicoll. : 0.0019342359767891683
+	- proposed algorithm. : 0.0019342359767891683
+	- principles. : 0.0019342359767891683
+	- proposed method. : 0.0019342359767891683
+	- robust topic segmentation for spoken multimedia contents. : 0.0019342359767891683
+	- a generative word alignment model: 0.0019342359767891683
+	- parameter estimation. : 0.0019342359767891683
+	- for. : 0.0019342359767891683
+	- see    http://www.itl.nist.gov/iad/894.01/. : 0.0019342359767891683
+	- learning-based coreference models. : 0.0019342359767891683
+	- extracting world knowledge. : 0.0019342359767891683
+	- theoretical basis of our analysis. : 0.0019342359767891683
+	- event scope and representation. : 0.0019342359767891683
+aimcitation:
+	- introduction: 0.28205128205128205
+	- related work. : 0.1794871794871795
+	- experiments. : 0.05128205128205128
+	- our models for opinion. : 0.02564102564102564
+	- sa performs positive reinforcement on its own internally;. : 0.02564102564102564
+	- graph-based random walk model for. : 0.02564102564102564
+	- evaluation. : 0.02564102564102564
+	- smrž (2007) uses the term illusory for surface features.. : 0.02564102564102564
+	- method. : 0.02564102564102564
+	- the challenge: evaluation for mrls. : 0.02564102564102564
+	- the task: 0.02564102564102564
+	- in contrast to (ries. : 0.02564102564102564
+	- speaker role identification approaches. : 0.02564102564102564
+	- background. : 0.02564102564102564
+	- the immediate-head parsing model. : 0.02564102564102564
+	- german-english. : 0.02564102564102564
+	- sentence analysis as argmnentation. : 0.02564102564102564
+	- find   the   n-best   word  sequences:. : 0.02564102564102564
+	- abstract: 0.02564102564102564
+	- sentiment analysis on product reviews in microblog system. : 0.02564102564102564
+	- combining classifiers. : 0.02564102564102564
+	- coreference subtask analysis. : 0.02564102564102564
+implicationcitation:
+	- introduction: 0.38
+	- related work. : 0.06
+	- experimentation. : 0.04
+	- the learning approach. : 0.02
+	- linguistic motivation. : 0.02
+	- par representation. : 0.02
+	- wh1ch frequency  d1stnbut1ons work best to dls­. : 0.02
+	- baseline system. : 0.02
+	- processing a  document. : 0.02
+	- experimental results. : 0.02
+	- conclusion. : 0.02
+	- many approaches process  characters with different strategies according. : 0.02
+	- discussion. : 0.02
+	- previous approaches. : 0.02
+	- experiments. : 0.02
+	- bootstrapping & stratified sampling. : 0.02
+	- full parsing. : 0.02
+	- precompiling the lexicon. : 0.02
+	- control information in conjunctions. : 0.02
+	- motivation: 0.02
+	- methodology. : 0.02
+	- modeling context. : 0.02
+	- using a chi-square test to compare  probabilities. : 0.02
+	- experimental setup. : 0.02
+	- method. : 0.02
+	- background: entailment rules and their. : 0.02
+	- experiment. : 0.02
+	- related research. : 0.02
+	- the named entity task. : 0.02
+hypothesiscitation:
+	- introduction: 0.4166666666666667
+	- lexicon guidelines. : 0.08333333333333333
+	- semantic roles  and  syntactic alternation. : 0.08333333333333333
+	- instrument subject alternation:. : 0.08333333333333333
+	- linking   framenet  to  verbnet  and. : 0.08333333333333333
+	- motivation. : 0.08333333333333333
+	- learning linear classifiers. : 0.08333333333333333
+	- if so, what are the alternations responsible for. : 0.08333333333333333
