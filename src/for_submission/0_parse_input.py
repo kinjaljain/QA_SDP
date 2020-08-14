@@ -116,6 +116,13 @@ def get_similarity_score(sentence1, sentence2):
     return len(tokens1.intersection(tokens2)) / len(tokens1.union(tokens2))
 
 
+# def encode(sentence):
+#     return fast_model.get_sentence_vector(sentence)
+#
+#
+# def get_similarity_score(vec1, vec2):
+#     return cosine_similarity(vec1, vec2)
+
 # from sentence_transformers import SentenceTransformer
 # model = SentenceTransformer('bert-base-nli-mean-tokens')
 
@@ -287,7 +294,7 @@ def write_out_2018_test(path, ref_id, results, ref_article, cite_texts = None):
                 cite_ids = ""
             new_rows[-1][-3] = cite_ids
             sents = ['<S ssid="1" sid="' + str(x) + '">' + ref_article.sentences[x] + '</S>' for x in result]
-            new_rows[-1][-2] = ''.join(sents) # Hopefully unused
+            new_rows[-1][-2] = ''.join(sents)
             new_rows[-1][-1] = "methodcitation"
     with open("./run1/Task1/" + ref_id+".csv", "w") as f:
         writer = csv.writer(f)
@@ -316,6 +323,7 @@ def write_out_2018_train(path, ref_id, results, ref_article, cite_texts):
             else:
                 print("Skipping ", ref_id, " ", cite_uniq)
                 cite_ids = ""
+                result = []
             # VERY IMP LINE
             cite_data['Reference Offset'] = cite_ids
             sents = ['<S ssid="1" sid="'+str(x)+'">' + ref_article.sentences[x]+'</S>' for x in result]
