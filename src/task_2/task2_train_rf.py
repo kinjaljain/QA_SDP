@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_recall_fscore_support, classification_report
 
 
-root_path = "/Users/kinjal/Desktop/Spring2020/11797/QA_SDP/src/task_2/"
+root_path = "./"
 train = pd.read_csv("%straindata.csv" % root_path, header=None)
 test = pd.read_csv("%stestdata.csv" % root_path, header=None)
 
@@ -27,8 +27,13 @@ test.columns = ['cite_id', 'ref_id', 'cite_line_ratio', 'ref_line_ratio', 'isPer
 # print(dataset.head())
 
 # train, test = train_test_split(dataset, test_size=0.2)
+ids_train = train.iloc[:, :2].to_numpy().tolist()
+
 x_train = train.iloc[:, 2:16]
 y_train = train.iloc[:, 16:]
+
+ids_test = test.iloc[:, :2].to_numpy().tolist()
+
 x_test = test.iloc[:, 2:16]
 y_test = [test.iloc[i, 16:].tolist() for i in range(0, len(x_test))]
 
@@ -69,11 +74,43 @@ print('MICRO F1score:', F1metrics[2])
 # y_pred = rfc.predict(x_test)
 y_pred = clf.predict(x_test)
 
+
+
 # print(len(y_pred), y_pred)
 # print(len(y_test), y_test)
 # print(len(x_test))
 # num_correct = (y_pred == y_test).sum().item()
 # print("Test Accuracy : ", num_correct / len(x_test))
+
+
+def make_pred_json(ids, y_pred):
+    results_task2 = {}
+    for i in range(len(ids)):
+        cite, ref = ids[i]
+        pred = y_pred[i]
+
+        if (ref, cite) not in results_task2:
+            results_task2[(ref, cite)] = [pred]
+        else:
+            current = results_task2[(ref, cite)]
+            current.append(pred)
+    return results_task2
+
+results_train = make_pred_json(ids_train, y_pred_train)
+results_test = make_pred_json(ids_test, y_pred)
+
+results_task2 = {**results_train, **results_test}
+
+import pickle
+with open('results_task2.pkl', 'wb') as f:
+    pickle.dump(results_task2, f)
+
+import numpy as np
+y_test.extend(y_train)
+y_pred = y_pred.tolist()
+y_pred_train = y_pred_train.tolist()
+y_pred.extend(y_pred_train)
+
 print("Classification Report: ", classification_report(y_test, y_pred))
 F1metrics = precision_recall_fscore_support(y_test, y_pred, average='macro')
 print('MACRO F1score:', F1metrics[2])

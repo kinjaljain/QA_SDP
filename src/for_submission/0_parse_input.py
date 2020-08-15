@@ -30,7 +30,7 @@ Article = namedtuple('Article', 'id xml sentences sections')
 stop = set(stopwords.words('english'))
 rakey = Rake(max_length=1, ranking_metric=0)
 memo_id_2_score = {}
-
+id2facet = [ "aimcitation", "hypothesiscitation", "implicationcitation", "methodcitation", "resultcitation" ]
 ###########SUPPORT FUNCTIONS##################
 
 def has_multiple_cites(sentence):
@@ -200,6 +200,7 @@ def get_best_cites(ref_article, complete_citing_sentence):
     return sim_score_jugaad(ref_article, similarity_score, complete_citing_sentence)
 
 
+#TODO: Few things
 def get_cite_texts_csv(path, ref_id):
     annotation_file = path + "/Citance_XML/citing_sentences.json"
     cite_texts = {}
@@ -254,9 +255,11 @@ def get_cite_texts_ann(path, ref_id):
                 citation_text_clean = "dummy"  # Hopefully not used
 
                 ref_offsets = parts[7].split(":")[1].strip()
-                ref_text = "dummy"  # Hopefully not used
-
-                facet = "methodcitation" # Hopefully not used
+                ref_text = parts[8].split(":")[1].strip()  # Hopefully not used
+                facets = parts[9].split(":")[1].strip()
+                facets = [facets] if '[' not in facets else eval(facets)
+                facets = [facet.lower().replace("_", "").replace(" ", "").replace("results", "result") for facet in
+                          facets]
 
                 '''
                 Citance Number,Reference Article,Citing Article,Citation Marker Offset,Citation Marker,Citation Offset,Citation Text,
@@ -266,7 +269,7 @@ def get_cite_texts_ann(path, ref_id):
                 d = {'Citance Number' : cite_no, 'Reference Article' : ref_article, 'Citing Article' : cite_article,
                      'Citation Marker Offset' : marker_offset, 'Citation Marker' : marker, 'Citation Offset' : citation_offsets,
                      'Citation Text' : citation_text, 'Citation Text Clean' : citation_text_clean, 'Reference Offset' : ref_offsets,
-                     'Reference Text' : ref_text, 'Discourse Facet' : facet, 'cite_text' : cite_text}
+                     'Reference Text' : ref_text, 'Discourse Facet' : facets, 'cite_text' : cite_text}
                 cite_texts[cite_no + "-" + str(uniq)] = d
             except Exception as e:
                 raise e
@@ -317,17 +320,19 @@ def write_out_2018_train(path, ref_id, results, ref_article, cite_texts):
             cite_data = cite_texts[cite_uniq]
             del cite_data['cite_text']
             if cite_uniq in results and len(results[cite_uniq]) > 0:
-                result = results[cite_uniq]
+                result = results[cite_uniq][0]
                 cite_ids = ["'"+str(x)+"'" for x in result]
                 cite_ids = ','.join(cite_ids)
             else:
                 print("Skipping ", ref_id, " ", cite_uniq)
                 cite_ids = ""
                 result = []
-            # VERY IMP LINE
+            # VERY IMP LINES
             cite_data['Reference Offset'] = cite_ids
             sents = ['<S ssid="1" sid="'+str(x)+'">' + ref_article.sentences[x]+'</S>' for x in result]
             cite_data["Reference Text"] = ''.join(sents)
+            cite_data['Discourse Facet'] = str(results[cite_uniq][1])
+
             current_row = [cite_data[key] for key in keys]
             writer.writerow(current_row)
 ################Strategy-hack################
@@ -336,13 +341,34 @@ get_cite_texts = get_cite_texts_csv
 
 
 
+
 write_out = write_out_2018_test
 
 if training_set:
     get_cite_texts = get_cite_texts_ann
     write_out = write_out_2018_train
+
+#############Task 2 stuff############
+import pickle
+with open('../task_2/results_task2.pkl', 'rb') as f:
+    results_task2 = pickle.load(f)
+
+def get_task2_result(ref_id, cite_id, results_task2):
+    current = results_task2[(ref_id, cite_id)]
+    pred = current.pop()
+    return pred
+
 ###########Main loop##################
+
+
+
+
+
 sk = 0
+
+
+
+
 for file in os.listdir(root):
     results = {}
     sk += 1
@@ -357,6 +383,13 @@ for file in os.listdir(root):
     for cite_id in cite_texts:
         cite_text = cite_texts[cite_id]['cite_text']
         best_cites = get_best_cites(ref_article, cite_text)
-        results[cite_id] =  [x for x in best_cites.keys()]
+        one_result_task2 = get_task2_result(cite_texts[cite_id]['Reference Article'], cite_texts[cite_id]['Citing Article'], results_task2)
+        facets = [id2facet[i] for i,x in enumerate(one_result_task2) if x == 1]
+        results[cite_id] =  ([x for x in best_cites.keys()], facets)
     write_out(path, ref_id, results, ref_article, cite_texts)
 
+# RUN THIS:
+
+'''
+rm -rf ./src/for_submission/2018-evaluation-script/eval_dirs/res/Task1/ && cp -r ./src/for_submission/runtrain/Task1 ./src/for_submission/2018-evaluation-script/eval_dirs/res
+'''
