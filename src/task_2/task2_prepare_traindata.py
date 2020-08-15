@@ -11,7 +11,7 @@ from summa import summarizer
 
 root_path = "/Users/kinjal/Desktop/Spring2020/11797/QA_SDP/src/task_2/"
 
-Datum = namedtuple('Datum', 'ref cite offsets author is_test facet year')
+Datum = namedtuple('Datum', 'cite_num ref cite offsets author is_test facet year')
 Offsets = namedtuple('Offsets', 'marker cite ref')
 Article = namedtuple('Article', 'id xml sentences sections')
 
@@ -117,7 +117,7 @@ for data in tqdm.tqdm(dataset):
     facets = data.facet
     ref_article = data.ref
     ref_id = data.ref.id
-    if ref_id not in dev_ids:
+    if ref_id in dev_ids:
         continue
     offsets = data.offsets
     citing_sentence_ids = offsets.cite
@@ -187,15 +187,16 @@ for facet in facet_word_freq:
         facet_word_freq[facet][word] /= facet_word_count[facet]
     sorted_facet_words = sorted(facet_word_freq[facet].items(), key=lambda x: x[1], reverse=True)
 
-with open("%stestdata.csv" % root_path, "w") as f:
+with open("%straindata.csv" % root_path, "w") as f:
     writer = csv.writer(f)
     for data in tqdm.tqdm(dataset):
+        cite_num = data.cite_num
         citing_article = data.cite
         cite_id = citing_article.id
         facets = data.facet
         ref_article = data.ref
         ref_id = data.ref.id
-        if ref_id not in dev_ids:
+        if ref_id in dev_ids:
             continue
         offsets = data.offsets
         citing_sentence_ids = offsets.cite
@@ -245,7 +246,7 @@ with open("%stestdata.csv" % root_path, "w") as f:
         # line ratio for first line in reference sentence
         ref_line_ratio = ref_sentence_ids[0] / len(ref_article.sentences)
 
-        print(cite_id, ref_id, cite_line_ratio, ref_line_ratio, isPercentPresent,
+        print(cite_num, cite_id, ref_id, cite_line_ratio, ref_line_ratio, isPercentPresent,
               isFloatingPointPresent, facet_prob["aimcitation"],
               facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
               facet_prob["methodcitation"], facet_prob["resultcitation"],
@@ -253,7 +254,7 @@ with open("%stestdata.csv" % root_path, "w") as f:
               facet_section_prob["implicationcitation"], facet_section_prob["methodcitation"],
               facet_section_prob["resultcitation"], facet_y["aimcitation"], facet_y["hypothesiscitation"],
               facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"])
-        writer.writerow([cite_id, ref_id, str(cite_line_ratio), str(ref_line_ratio), str(isPercentPresent),
+        writer.writerow([cite_num, cite_id, ref_id, str(cite_line_ratio), str(ref_line_ratio), str(isPercentPresent),
                          str(isFloatingPointPresent), facet_prob["aimcitation"],
                          facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
                          facet_prob["methodcitation"], facet_prob["resultcitation"],

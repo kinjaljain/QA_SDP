@@ -47,7 +47,7 @@ def encode(sentence):
 
 global tf_vectorizer
 
-root_path = "/Users/kradhakrishnan/PycharmProjects/qa/QA_SDP/src/dataloaders/"
+root_path = "/Users/kinjal/Desktop/Spring2020/11797/QA_SDP/src/dataloaders"
 
 
 def build_model(cite_paper, ref_paper, n=1):

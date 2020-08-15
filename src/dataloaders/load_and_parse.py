@@ -14,10 +14,49 @@ import re
 import requests
 import numpy as np
 
+import nltk
+nltk.download('words')
+from nltk.corpus import words as words1
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+
+lmtzr = WordNetLemmatizer()
+
+def clean_sentence(sentence):
+    sentence = sentence.encode('unicode_escape').decode()
+    if re.search(r"\\u....", sentence):
+        sentence = re.sub(r"\\u....", "", sentence)
+    sentence = re.sub(r"\\\\xad", "-", sentence)
+    sentence = re.sub(r"\\\\xa7.", "", sentence)
+    sentence = re.sub(r"\\\\xa.", "", sentence)
+    sentence = re.sub(r"\\\\xd7", "*", sentence)
+    sentence = re.sub(r"\\\\xd.", "", sentence)
+    sentence = re.sub(r"\\\\xe1", "a", sentence)
+    sentence = re.sub(r"\\\\xb.", "", sentence)
+    sentence = re.sub(r"\\\\x..", "", sentence)
+    sentence = re.sub(r"\\xad", "-", sentence)
+    sentence = re.sub(r"\\xa7.", "", sentence)
+    sentence = re.sub(r"\\xa.", "", sentence)
+    sentence = re.sub(r"\\xd7", "*", sentence)
+    sentence = re.sub(r"\\xd.", "", sentence)
+    sentence = re.sub(r"\\xe1", "a", sentence)
+    sentence = re.sub(r"\\xb.", "", sentence)
+    sentence = re.sub(r"\\x..", "", sentence)
+    sentence = re.sub(r"\\\\", "", sentence)
+
+    if re.search(r"(\w+)- (\w+)", sentence):
+      for m in re.finditer(r"(\w+)- (\w+)", sentence):
+        if ((lmtzr.lemmatize(m.group(1).lower()) in words1.words()) and (lmtzr.lemmatize(m.group(2).lower()) in words1.words())):
+          sentence = re.sub(m.group(0), m.group(1) + "-" + m.group(2), sentence)
+        else:
+          sentence = re.sub(m.group(0), m.group(1) + m.group(2), sentence)
+
+    return sentence
+
 from collections import namedtuple
 d = enchant.Dict("en_US")
 
-Datum = namedtuple('Datum', 'ref cite offsets author is_test facet year')
+Datum = namedtuple('Datum', 'cite_num ref cite offsets author is_test facet year')
 Offsets = namedtuple('Offsets', 'marker cite ref')
 Article = namedtuple('Article', 'id xml sentences sections')
 
@@ -101,6 +140,7 @@ def load_folder_data(annotation_file, articles, is_test=False):
                 parts = [part.strip() for part in parts]
                 ref_article_name = parts[1].split(":")[1].strip().upper().replace(".XML", "").replace(".TXT", "")
                 ref_article = articles[ref_article_name]
+                cite_num = int(parts[0].split(":")[1].strip())
                 cite_article = articles["-".join(
                     parts[2].split(":")[1].strip().upper().replace("_", "-").replace(".XML", "").replace(".TXT",
                                                                                                          "").split("-")[
@@ -129,14 +169,15 @@ def load_folder_data(annotation_file, articles, is_test=False):
                 year = author_info[-2]
                 # author = '' if len(parts) < 10 or ":" not in parts[10] else parts[10].split(":")[1].replace("|",
                 #                                                                                             "").strip()
-                #reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
-                                                         #author, year)
-                reference, cite = ref_article, cite_article
-                d = Datum(reference, cite, Offsets(marker_offset, citation_offsets, ref_offsets), author,
+                reference, cite = get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offsets,
+                                                         author, year)
+                # reference, cite = ref_article, cite_article
+                d = Datum(cite_num, reference, cite, Offsets(marker_offset, citation_offsets, ref_offsets), author,
                           is_test, facet, year)
                 data.append(d)
             except Exception as e:
                 l.error(e)
+                raise e
                 annotation_load_fail += 1
     return data
 
@@ -191,7 +232,7 @@ def get_clean_cite_and_ref(ref_article, cite_article, ref_offsets, citation_offs
         for key, sentence in ref.sentences.items():
             meaningful, s = filter_meaningless(ref.sentences, key, jargon)
             if not meaningful and key in ref_offsets:
-                if ref.sentences[key] != s:
+                if s and ref.sentences[key] != s:
                     bad_count += 1
                     positives_replaced_file.write(ref.sentences[key] + "\n")
                     positives_replaced_file.write(s + "\n\n")
@@ -260,20 +301,45 @@ def get_formatted_author_info(author_info):
 
 
 def get_cites(sentence, mask = " "):
-
     if sentence:
         regex = r"\(\D*\d{4}(;\D*\d{4})*\)"
         sentence = re.sub(regex, mask, sentence)
-    if "Beesley and Karttunen" in sentence:
-        print(sentence)
     return sentence
 
 
 def filter_meaningless(ref_article, i, jargon):
     line = ref_article[i]
     # line.replace(";", " ").replace(",", " ")
+
+    #todo: check whether or not I should include this
     enc_line = line.encode('unicode_escape').decode()
+
     line = re.sub(r"\\u....", "", enc_line)
+    line = re.sub(r"\\\\xad", "-", line)
+    line = re.sub(r"\\\\xa7.", "", line)
+    line = re.sub(r"\\\\xa.", "", line)
+    line = re.sub(r"\\\\xd7", "*", line)
+    line = re.sub(r"\\\\xd.", "", line)
+    line = re.sub(r"\\\\xe1", "a", line)
+    line = re.sub(r"\\\\xb.", "", line)
+    line = re.sub(r"\\\\x..", "", line)
+    line = re.sub(r"\\xad", "-", line)
+    line = re.sub(r"\\xa7.", "", line)
+    line = re.sub(r"\\xa.", "", line)
+    line = re.sub(r"\\xd7", "*", line)
+    line = re.sub(r"\\xd.", "", line)
+    line = re.sub(r"\\xe1", "a", line)
+    line = re.sub(r"\\xb.", "", line)
+    line = re.sub(r"\\x..", "", line)
+    line = re.sub(r"\\\\", "", line)
+
+    if re.search(r"(\w+)- (\w+)", line):
+      for m in re.finditer(r"(\w+)- (\w+)", line):
+        if ((lmtzr.lemmatize(m.group(1).lower()) in words1.words()) and (lmtzr.lemmatize(m.group(2).lower()) in words1.words())):
+          line = re.sub(m.group(0), m.group(1) + "-" + m.group(2), line)
+        else:
+          line = re.sub(m.group(0), m.group(1) + m.group(2), line)
+
     # Table caption
     if re.search(r'Table [0-9]+: ', line):
         start_idx = line.index("Table ")
@@ -287,13 +353,16 @@ def filter_meaningless(ref_article, i, jargon):
         return True, line
 
     words = np.array(nltk.word_tokenize(ref_article[i]))
+    if len(words) == 0:
+      return False, line
     num_singles = np.array([len(word) < 2 for word in words])
     count = words[num_singles].shape[0]
     ratio = count / len(words)
 
     if ratio > 0.53:
+        # ff.write(ref_article[i])
         alphabet_file.write(ref_article[i] + "\n")
-        return False, ""
+        return False, line
 
     is_valid = []
     check = words
@@ -306,9 +375,11 @@ def filter_meaningless(ref_article, i, jargon):
     check = np.array(check)
     count = check[is_valid].shape[0]
     ratio = count / check.shape[0]
+    # print(ratio, line)
     if ratio <= 0.72:
-        meaningless_file.write(ref_article[i] + "\n")
-        return False, ""
+        # print("Ignoring Meaningless Sentence with ratio:", ratio, line)
+        meaningless_file.write(ref_article[i] +  "\n")
+        return False, line
     return True, line
 
 
@@ -327,5 +398,5 @@ if __name__ == "__main__":
 
     print("dumping")
     import pickle
-    with open('processed-data-2018-nonclean.pkl', 'wb') as f:
+    with open('processed-data-2018-clean.pkl', 'wb') as f:
         pickle.dump(dataset, f)

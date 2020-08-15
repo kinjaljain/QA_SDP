@@ -274,9 +274,13 @@ def get_cite_texts_ann(path, ref_id):
             except Exception as e:
                 raise e
     return cite_texts
-
-
-
+#
+# {
+#     "ACL-1234" : {
+#         "ACL-2345-citance_id" : ["23", "42"]
+#     }
+# }
+#
 
 def write_out_2018_test(path, ref_id, results, ref_article, cite_texts = None):
     ann_out_template = path +"/annotation/" + ref_id +".csv"
@@ -353,8 +357,8 @@ import pickle
 with open('../task_2/results_task2.pkl', 'rb') as f:
     results_task2 = pickle.load(f)
 
-def get_task2_result(ref_id, cite_id, results_task2):
-    current = results_task2[(ref_id, cite_id)]
+def get_task2_result(ref_id, cite_id, cite_num, results_task2):
+    current = results_task2[(cite_num, ref_id, cite_id)]
     pred = current.pop()
     return pred
 
@@ -383,9 +387,11 @@ for file in os.listdir(root):
     for cite_id in cite_texts:
         cite_text = cite_texts[cite_id]['cite_text']
         best_cites = get_best_cites(ref_article, cite_text)
-        one_result_task2 = get_task2_result(cite_texts[cite_id]['Reference Article'], cite_texts[cite_id]['Citing Article'], results_task2)
-        facets = [id2facet[i] for i,x in enumerate(one_result_task2) if x == 1]
-        results[cite_id] =  ([x for x in best_cites.keys()], facets)
+        one_result_task2 = get_task2_result(cite_texts[cite_id]['Reference Article'],
+                                            cite_texts[cite_id]['Citing Article'],
+                                            cite_texts[cite_id]['Citance Number'], results_task2)
+        facets = [id2facet[i] for i, x in enumerate(one_result_task2) if x == 1]
+        results[cite_id] = ([x for x in best_cites.keys()], facets)
     write_out(path, ref_id, results, ref_article, cite_texts)
 
 # RUN THIS:

@@ -1,0 +1,470 @@
+Note that while the standard HMM, has O(K n) emission parameters, our model has O(n) effective parameters.3 Token Component Once HMM parameters (φ, θ) have been drawn, the HMM generates a token-level corpus w in the standard way: P (w, t|φ, θ) = P (T , W , θ, ψ, φ, t, w|α, β) = P (T , W , ψ|β) [Lexicon]  n n  (w,t)∈(w,t) j  P (tj |φtj−1 )P (wj |tj , θtj ) P (φ, θ|T , α, β) [Parameter] P (w, t|φ, θ) [Token] We refer to the components on the right hand side as the lexicon, parameter, and token component respectively.
+P St = n. β T VARIABLES ψ Y W : Word types (W1 ,.
+.., Wn ) (obs) P T : Tag assigns (T1 ,.
+The P (W |T , ψ) term in the lexicon component now decomposes as: n P (W |T , ψ) = n P (Wi|Ti, ψ) i=1 n   tions are not modeled by the standard HMM, which = n  n P (v|ψTi f ) instead can model token-level frequency.
+i=1 (f,v)∈Wi
+t(i).
+ .
+ .
+ .
+La ng ua ge 1T W + P RI O R + F E A T S E ng lis h D a ni s h D u tc h G e r m a n P or tu g u e s e S p a ni s h S w e di s h 2 1.
+1 1 0.
+1 2 3.
+8 1 2.
+8 1 8.
+C O R P U S D O C S . S E N T S . WO R D S B N C 4 1 2 4 6 . 2 M 1 1 4 M R C V1 8 0 6 7 9 1 8 . 1 M 2 0 7 M C S R -I I I 4 9 1 3 4 9 9 . 3 M 2 2 6 M NA N T C 9 3 0 3 6 7 2 3.
+2 M 5 5 9 M NA N T S 9 4 2 1 6 7 2 5.
+2 M 5 0 7 M AC QU A I N T 1 03 3 46 1 2 1.
+where wgt(w, r, wt ) is the weight function for relation (w, r, wt ).
+This consists of five passes over each sentence that first identify noun and verb phrase heads and p(w, r, wt ) − p(∗, r, wt )p(w, ∗, ∗) p(∗, r, wt )p(w, ∗, ∗) (2) then collect grammatical relations between each common noun and its modifiers and verbs.
+The cat (2) sat (1) on (2) the (2) mat (3) TER score is computed as follows 1 2 3 4 5 6 (3) hat (1) sitting (1) a (1) where is the reference length.
+• A parallel corpus C is a collection of M parallel document-pairs: {(Fd, Ed)}.
+J I 3.1 BiTAM1: The Frameworks p(f |e) = n ) p(fj |ei ) · p(ei |e).
+2.
+3.
+Given the parameters α, B, and the English part E, the joint conditional distribution of the topic-weight vector θ, the topic indicators z, the alignment vectors A, and the document F can be written as: Γ( K αk ) p(θ|α) = k=1 θα1 −1 · · · θαK −1 , (3) p(F,A, θ, z|E, α, B) = k=1 Γ(αk ) N (4) where the hyperparameter α is a K -dimension vector with each component αk >0, and Γ(x) is the Gamma function.
+5.
+To approximate: p(θ, z, A|E, F, α, B), the joint posterior, we use the fully factorized distribution over the same set of hidden variables: q(θ,z, A) ∝ q(θ|γ, α)· from a topic-based language model β, instead of a N Jn (7) uniform distribution in BiTAM1.
+exp ( ) ) ϕdnji log Bf ,e ,k (9) j i j=1 i=1 K ( This gives rise to our BiTAM3.
+In the M-step, we update α and B so that they improve a lower bound of the log-likelihood defined bellow: L(γ, φ, ϕ; α, B) = Eq [log p(θ|α)]+Eq [log p(z|θ)] +Eq [log p(a)]+Eq [log p(f |z, a, B)]−Eq [log q(θ)] −Eq [log q(z)]−Eq [log q(a)].
+Empirically, we can employ a linear interpolation with IBM1 to avoid overfitting: Bf,e,k = λBf,e,k +(1−λ)p(f |e).
+(14) i∈[1,Idn ] icon’s strength.
+IBM 1 H M M IBM 4 p( Ch ao Xi an (Ji!
+$) |K ore an) 0.
+� )|K ore an) 0.
+�).
+45 8 15 .7 0 6.
+82 2 17 .7 0 6.
+92 6 18 .2 5 6.
+5).
+Note that, the boosted BiTAM3 us SE T TI N G IBM 1 H M M IBM 4 B I T A M 3 U D A BDA BUDA B BDA C E ( % ) E C ( % ) 46 .7 3 44 .3 3 49 .1 2 54 .5 6 54 .1 7 55 .0 8 50 .55 56.27 55.80 57.02 51 .59 55.18 54.76 58.76 R E FI N E D ( % ) U N I O N ( % ) I N T E R ( % ) 54 .6 4 42 .4 7 52 .2 4 56 .3 9 51 .5 9 54 .6 9 58 .4 7 52 .6 7 57 .7 4 56 .45 54.57 58.26 56.23 50 .23 57.81 56.19 58.66 52 .44 52.71 54.70 55.35 N I S T B L E U 7.
+5 9 19 .1 9 7.
+7 7 21 .9 9 7.
+8 3 23 .1 8 7.
+1.
+4.
+B is also a square matrix such that eachentry B(i, j) is proportional to sim(i, j).
+Table 5.
+rπ(p) ranges from [0,1].
+The pointwise mutual information between instance i = {x, y} and pattern p is estimated using the following formula: pmi(i, p) = log x, p, y x,*, y *, p,* where |x, p, y| is the frequency of pattern p instantiated with terms x and y and where the asterisk (*) represents a wildcard.
+Table 1.
+Table 2.
+Table 3.
+SYS TE M IN ST AN CE S PR EC ISI ON * RE L RE CA LL† SYS TE M IN ST AN CE S PR EC ISI ON * RE L RE CA LL† RH 02 5 7 , 5 2 5 2 8 . 0 % 5 . 3 1 RH 02 2 5 5 6 2 5 . 0 % 3 . 7 6 PR 04 1 , 5 0 4 4 7 . 0 % 0 . 2 3 PR 04 1 0 8 4 0 . 0 % 0 . 2 5 ES P 4 , 1 5 4 7 3 . 0 % 1 . 0 0 ES P 2 0 0 8 5 . 0 % 1 . 0 0 * Precision estimated from 50 randomly sampled instances.
+Table 5.
+SYS TE M IN ST AN CE S PR EC ISI ON * RE L RE CA LL† SYS TE M IN ST AN CE S PR EC ISI ON * RE L RE CA LL† RH 02 1 2 , 8 2 8 3 5 . 0 % 4 2 . 5 2 RH 02 1 1 , 5 8 2 3 3 . 8 % 5 8 . 7 8 ES P 1 3 2 8 0 . 0 % 1 . 0 0 ES P 1 1 1 6 0 . 0 % 1 . 0 0 * Precision estimated from 50 randomly sampled instances.
+Table 7.
+SYS TE M IN ST AN CE S PR EC ISI ON * RE L RE CA LL† SYS TE M IN ST AN CE S PR EC ISI ON * RE L RE CA LL† RH 02 4 9 , 7 9 8 2 . 0 % 3 6 . 9 6 RH 02 6 , 0 8 3 3 0 % 5 3 . 6 7 ES P 5 5 4 9 . 0 % 1 . 0 0 ES P 4 0 8 5 % 1 . 0 0 * Precision estimated from 50 randomly sampled instances.
+segmentation (Table 2).
+phrase (markContainsVerb).
+ .
+For Arabic we M o d e l S y s t e m L e n g t h L e a f A n c e s t o r Co rpu s Sent Exact E v a l b L P LR F1 T a g % B a s e l i n e 7 0 St an for d (v 1.
+95 B a s e li n e ( S e lf t a g ) 70 a l l B i k e l ( v 1 . 2 ) B a s e l i n e ( P r e t a g ) 7 0 a l l G o l d P O S 70 0.7 70 0.801 278 0.7 52 0.794 278 0.7 71 0.804 295 0.7 52 0.796 295 0.7 75 0.808 309 77.
+60 ( P e tr o v, 2 0 0 9 ) all B e r k e l e y ( S e p . 0 9 ) B a s e l i n e 7 0 a l l G o l d P O S 70 — — — 0 . 8 0 9 0.839 335 0 . 7 9
+0 . 8 3 1 0.859 496 76.
+3.
+Various verbal (e.g., �, .::) and adjectival.
+Formally, for a lexicon L and segments I ∈ L, O ∈/ L, each word automaton accepts the language I∗(O + I)I∗.
+(1) CEO of McCann . . .
+”).
+2.
+3.
+2.
+Lexical: k t b =Root C V C V C =Template a + =Voc Surface: ^[ k t b .m>.
+C V C V C .<m. a + ^] Lexical: k t b =Root C V C V C =Template u * i =Voc Surface: ^[ k t b .m>.
+C V C V C .<m. u * i ^] Lexical: d r s =Root C V V C V C =Template u * i =Voc Surface: ^[ d r s .m>.
+The expression [A .<m. B] represents the same merge operation as [B .m>.
+A].
+C V V C V C .<m. u* i As we have defined them, .<m. and .m>.
+C t V C V C .<m. a+ produces the desired result, ktatab, without any additional mechanism.
+5 Conclusion.
+1. Enumerate all sets S = {c1, ...
+2.
+,en}, define an.
+1.
+2.
+Second, since the translation map­ pings may often be many-to-many, the alterna re bat er (bo unc e) flut uar (flo at) rola r (rol l) desl izar (sli de) deri var (dr ift) pla nar (gli de) dati ve • c o n a t i v e c a u s . / i n c h . m i d d l e acc ept.
+y e s n o y e s y e s y e s y e s n o y e s y e s y e s y e s n o y e s y e s y e s cau s:f mc h. res ulta tive adj ect.
+par t. y e s y e s y e s y e s y e s ye s ye s ye s y e s y e s y e s y e s y e s y e s y e s ind. acti on loc at.
+This dictio #Retrieved #Relevant n #Retrieved Recall(R) = #Relevant (1) (2) nary, was called D6 and contains 254 expressions.
+For each dictionary, an index was created in 1 M AP (Q) = |Q| mj 1 P (R ) (3) the IR system.
+2.
+3.
+6.
+7.
+8.
+10 11 B C N 0.
+09 39 W C N 0.
+12 24 G S 0.
+23 93 D T 0.
+11 93 M 1 0.
+12 62 M 2 0.
+Po sit io n D o c u m e n t S c o r e P 1 L A 04 30 94 02 30 0.
+B STATEMENT N C State.
+5% I can imagine.
+2% <Laughter>, < Throat_clearing> 2% Yes.
+1% No. 1% Oh, okay.
+<.1% I'm sorry.
+Applying Bayes' rule we get U* = argmaxP(UIE ) U P(U)P(ElU) = argmax u P(E) = argmaxP(U)P(ElU) (1) U Here P(U) represents the prior probability of a DA sequence, and P(EIU ) is the like- Table 4 Summary of random variables used in dialogue modeling.
+~ T Ui ~ ....
+Table 6).
+A1 Ai An T 1 1 Wl Wi W,, T T t <start> -, 0"1 , ...---* U/ , ...
+Assign probability p to the first production (A ~ AA) and q = 1 -p to the second (A ~ a).
+In general, Sh+l = q + pSi.
+Hence f(A ~ AA; Odi) < f(A ~ a; odi) for each wi.
+Consequently: f(A ---+AA;wi) < l[f(A ~ AA;~i) + f(A ~ a;wi)] for each wi, and ~ < .
+(1) orE(rUT)* s.t.
+(2) AEV a s.t. i=1 The function p : R ~ [0,1] subject to (1) that maximizes (2) satisfies: 6 AAp(A ~ a) + f(A ~ a;cai)logp(A ~ a) = 0 AEV   i=1 (A~o~)ER V(B ~/3) E R where {AA}AEV are Lagrange multipliers.
+Denote the maximum-likelihood estimator by fi: n B AB q- ~i=lf( --+ /3;ca;) = 0 V(S ~ /3) E R f,(B +/3) Since ~ fi(B+/3)=l) fl sA.
+Y(wn) (Y(wi) E T* for each 1 < i < n).
+The likelihood is substantially more complex, since p(Y(w)) is now a marginal probability; we need to sum over the set of w E f~ that yield Y(w): p(Y(w)) = E p(Y(w')).
+Hopcroft & Ullman [1979], Theorem 4.4).
+Define a sequence of probabilities, ~n, by the iteration ~n+i(B ~ fl) = ~i'=1E~,[f(B ~ fl;w)iw E fly(w,)] (5) ~ ~" ~7=, E~,[f(B ~ a;wliw E aY(o,D] (8~a)ER The right-hand side is manageable, as long as we can manageably compute all possible parses of a sentence (yield) Y(w).
+Given a context-free grammar G = (V, T, R, S), let f2 be the set of finite parse trees, let p : R ~ [0,1] be a system of production probabilities satisfying (1), and let wl, w2,.
+, w,.)
+For any A E V: qA = p(UBEv U ..... t~,~ U i s,t. oti=B{Olifails to terminate}) -~ Z p(U a s.t. B~c, [-Ji s.t. o~i=B {Oli fails to terminate}) (A~c,)ERBEV = Z Z fi(A ~ c~)~(Ui s.t. ozi=B{Olifails to terminate}lA ~ ol) BEV a s.t. B~c, (A~c~)ER < ~ ~ ~(A~cz)nB(eOqB BEV a s.t. aEc~ { Y]~, .~, nB(a) Y'~i__,f(A ---* ol;wi) } .... n s, " a B*V E(A~,e a ~i=lf( ----r OGWi) { ~in=l E .....
+,~,~ nB(ol)f(A --'~ Ol;Wi) } qB n BEV Ei=I Z ,Z~'i~af(A ~ Gwi) { ~in=l ~ ~.'.
+"E~ nn(ol)f(A "---~ Ol;Wi) } Z (A~cQER = qB n BEV Zi=I F(A;0i) yt qA Z F(A; wi) Z qB ~ Z nB(OOf(m ~ OGCdi) i=1 BEV i=1 a s.t. Be~ (A~o,)ER Computational Linguistics Volume 24, Number 2 Sum over A E V: E qA E F(A;wi) AEV i~-1 _< E qB ~ E E nB(ol)f(A ~ BEV i=1 AEV c~ s.t. B~a (A~c~)ER c~;wi) n = ~ qB ~l:(B;wi) BEV i=1 i.e./ H qA E(Ie(A;wi) -F(A;wi)) ~ 0 AEV i=1 Clearly, for every i = 1,2,...,n F(A;wi) = F(A;wi) whenever A # S and F(S;wi) < F(S; wi).
+Proof Almost identical, except that we use (5) in place of (3) and end up with: n E qA EEG_1[F(A;wi) -F(A;wi)lw C fly(w,)] ~ 0.
+Furthermore, F(A; w) and F(A; ~) satisfy the same conditions as before: I:(A; w) = F(A; w) except when A = S, in which case F(A; w) < F(A; w).
+2.
+3.
+<expe > ::= <ref> <expt > ::= <drs> <ref>∗ <drs> ::= <condition>∗ <condition> ::= <basic> | <complex> <basic> ::= <sym1 >(<expe >) | <sym2 >(<expe >,<expe >) | <named>(<expe >,<nam>,<sort>) <complex> ::= <expt > | <expt >⇒<expt > | <expt >∨<expt > | <ref>:<expt > DRSs are structures comprising two parts: 1) a set of discourse referents; and 2) a set of conditions constraining the interpretation of the discourse referents.
+UDRSs are either ordinarly DRSs, DRSs conjoined by the merge (for which we use the semicolon), or NP/N: A N/N: record N: date λq.λp.( x ;q@x;p@x) λp.λx.( y record(y) nn(y,x) ;p@x) λx. date(x) [fa] N: record date y λx.( record(y) nn(y,x) ; ) date(x) . . .
+[merge] y λx. record(y) nn(y,x) date(x) [fa] NP: A record date y λp.( x ; record(y) nn(y,x) date(x) ;p@x) . . .
+bin/boxer --input working/step/text2.ccg --semantics drs --box --resolve --roles verbnet --format no %%% %%% | x0 x1 x2 | | x3 x4 x5 | | x6 x7 | | x8 x9 x10 x11 | | x13 x14 x15 x16 x17 | %%% |------------| |--------------| |--------------| |------------------------| |---------------------| %%% (| thing(x0) |+(| cancer(x3) |+(| know(x6) |+(| lead(x8) |+| researcher(x13) |)))) %%% | neuter(x1) | | cervical(x3) | | time(x7) | | vaccine(x9) | | look(x14) | %%% | neuter(x2) | | cause(x4) | | event(x6) | | seem(x10) | | agent(x14,x13) | %%% | | | virus(x5) | | theme(x6,x0) | | proposition(x11) | | cancer(x15) | %%% | event(x4) | | for(x6,x7) | | event(x10) | | | %%% | theme(x4,x3) | | | | event(x8) | | | | | %%% | by(x4,x5) | | agent(x8,x1) | | |----------| | %%% | | | agent(x10,x9) | | | | x15 = x3 | | %%% | theme(x10,x11) | | | | | %%% | to(x8,x9) | | cause(x16) | %%% | | | virus(x17) | %%% | | x12 | | | event(x16) | %%% | x11:|---------------| | | theme(x16,x15) | %%% | | prevent(x12) | | | by(x16,x17) | %%% | | event(x12) | | | for(x14,x15) | %%% | | agent(x12,x9) | | | event(x14) | %%% | | theme(x12,x2) | | | | %%% | | | | %%% | | Attempted: 3.
+Completed: 3 (100.00%).
+(Is that reality?).
+(1) context prob.
+By (1) decomposing the context probability of ADJA.Pos.Nom.Sg.Neut into a product of attribute probabilities p(ADJA | 2:ART, 2:ART.Def, 2:ART.Nom, 2:ART.Sg, 2:ART.Neut, 1:PART, 1:PART.Zu) ∗ p(Pos| 2:ART, 2:ART.Def, 2:ART.Nom, 2:ART.Sg, 2:ART.Neut, 1:PART, 1:PART.Zu, 0:ADJA) ∗ p(Nom | 2:ART, 2:ART.Def, 2:ART.Nom, 2:ART.Sg, 2:ART.Neut, 1:PART, 1:PART.Zu, 0:ADJA, 0:ADJA.Pos) ∗ p(Sg | 2:ART, 2:ART.Def, 2:ART.Nom, 2:ART.Sg, 2:ART.Neut, 1:PART, 1:PART.Zu, 0:ADJA, 0:ADJA.Pos, 0:ADJA.Nom) ∗ p(Neut | 2:ART, 2:ART.Def, 2:ART.Nom, 2:ART.Sg, 2:ART.Neut, 1:PART, 1:PART.Zu, 0:ADJA, 0:ADJA.Pos, 0:ADJA.Nom, 0:ADJA.Sg) and (2) selecting the relevant context attributes for the prediction of each attribute, we obtain the ∗ p(Sg | 2:ART.Sg, 1:PART.Zu, 0:ADJA) ∗ p(Neut | 2:ART.Neut, 1:PART.Zu, 0:ADJA) The conditional probability of each attribute is 1.
+p(ADJA | ART, PART.Zu) ∗ p(Pos | 2:ART, 1:PART, 0:ADJA) ∗ p(Nom | 2:ART.Nom, 1:PART.Zu, 0:ADJA) creases the uncertainty about the class.
+a threshold of 1.
+de fa ult refined ref.+lexicon T n T S T T S T n T Ti g e r 1 0 t a g s 9 7.
+2 8 9 7.
+1 7 97.26 97.51 9 7.
+4 5 84.11 89.14 8 5.
+∏ P(tc tc∈C ( c ) | T (C (e)))q (tc ) For our task, the query is C (c) , the context Term tc is a Chinese word.
+We use the Pml (tc | Tc (C (e))) = dT (C (e )) (tc ) ∑dT (C ( e )) (t ) expect ation maxi mizati on (EM) algorit hm to genera te mappi ng proba bilitie s from pinyin syl c t∈Tc (C ( e )) lables to English letter sequences.
+P(e | c)directly, in (i.e., Chinese in our task).
+For transliteration, we estimate P(e | c) as follows: P(e | c) = P(e | pinyin) = ∑ P(e, a | pinyin) a For the Chinese corpus, we used the Linguistic Data Consortium (LDC) Chinese Gigaword Corpus from Jan 1995 to Dec 1995.
+Table 1.
+Table 3.
+‘Cont.
+com §Cambridge, UK Email: nc201@eng.cam.ac.uk © 1996 Association for Computational Linguistics (a) B ) ( , : & ; ? ' H o w d o y o u s a y o c t o p u s i n J a p a n e s e ? ' (b) P l a u s i b l e S e g m e n t a t i o n I B X I I 1 : & I 0 0 r i 4 w e n 2 z h a n g l y u 2 z e n 3 m e 0 s h u o l ' J a p a n e s e ' ' o c t o p u s ' ' h o w ' ' s a y ' (c) Figure 1 I m p l a u s i b l e S e g m e n t a t i o n [§] lxI 1:&I ri4 wen2 zhangl yu2zen3 me0 shuol 'Japan' 'essay' 'fish' 'how' 'say' A Chinese sentence in (a) illustrating the lack of word boundaries.
+3.
+4.
+2.
+'Malaysia.'
+2.
+3.
+(a) IDictionary D I D:d/0.000 B:b/0.000 B:b/0.000 ( b ) ( c ) ( d ) I B e s t P a t h ( I d ( I ) o D * ) I cps:nd4.!l(l() Figure 2 An abstract example illustrating the segmentation algorithm.
+£ : _ADV: 5.88 If:!
+:zhong1 : 0.0 tjl :huo2 :0.0 (R:spub:/ic of Ch:ina) + .,_,...I : jlong4 :0.0 (mUifaty genG181) 0 £: _NC: 40.0 Figure 3 Partial Chinese Lexicon (NC = noun; NP = proper noun).c=- - I •=- :il: .;ss:;zhangt • '-:.
+!!:\ :yu2 e:_nc [::!!:zen3 l!f :moO t:_adv il!:shuot ,:_vb i i i 1 • 10.03 13...
+and f,.
+J:j:l :zhongl :0.0 ;m,Jlong4 :0.0 (mHHaryg9tltHBI) £: _ADV: 5.98 ¥ :hua2:o.o E :_NC: 4.41 :mln2:o.o mm : guo2 : 0.0 (RopubllcofChlna) .....,.
+wo rd => na m e 2.
+0 X u} "' o; .2 X X><X X XX X X X X X X x X X X X X x X V X X X X .;t'*- XXX:OX X X X X X X 9 x X X XX XX X X X X X X X XXX:< X X>O<XX>!KXX XI<>< »C X X XX :X: X X "' X X XX >OO<X>D<XIK X X X X X X --XX»: XXX X X»C X X«X...C:XXX X Xll< X X ><XX>IIC:liiC:oiiiiCI--8!X:liiOC!I!S8K X X X 10 100 1000 10000 log(F)_base: R"2=0.20 (p < 0.005) X 100000 Figure 6 Plot of log frequency of base noun, against log frequency of plural nouns.
+ .
+JA DE G O L D G R AS S SI C K NE SS DE AT H R A T 14.
+2.
+3.
+2.
+"c' 0 + 0 "0 ' • + a n t i g r e e d y x g r e e d y < > c u r r e n t m e t h o d o d i e t . o n l y • Taiwan 0 ·;; 0 c CD E i5 0"' 9 9 • Mainland • • • • -0.30.20.1 0.0 0.1 0.2 Dimension 1 (62%) Figure 7 Classical metric multidimensional scaling of distance matrix, showing the two most significant dimensions.
+ .
+An example is in (i), where the system fails to group t;,f;?"$?t!: lin2yang2gang3 as a name, because all three hanzi can in principle be separate words (t;,f; lin2 'wood';?"$ yang2 'ocean'; ?t!; gang3 'harbor').
+Two sets of examples from Gan are given in (1) and (2) (:::::: Gan's Appendix B, exx.
+(a) ;IE shi4 'be' => ;IE;IE shi4bu2-shi4 (be-not-be) 'is it?'
+gaolxing4 'happy' => F.i'JF.i'J Jl!
+gaolbu4-gaolxing4 (hap-not-happy) 'happy?'
+(b) F.i'JJI!
+a classifier.
+Citizen-Of”.
+1 5 7 . 1 6 2 . 1Based In 8 5 3 9 1 0 79.
+6 4 5 . 9 5 8 . 2 Locate d 2 4 1 1 3 2 1 2 0 52.
+4 5 4 . 8 5 3 . 5 Reside nce 6 6 1 9 9 67.
+9 2 8 . 8 4 0 . 4 N EA R 3 5 8 1 88.
+9 2 2 . 9 3 6 . 4 Relative Locati on 3 5 8 1 88.
+9 2 2 . 9 3 6 . 4 P A R T 1 6 4 1 0 6 3 9 73.
+1 6 4 . 6 6 8 . 6Part Of 1 3 6 7 6 3 2 70.
+4 5 5 . 9 6 2 . 3 Subsid iary 2 7 1 4 2 3 37.
+8 5 1 . 9 4 3 . 8 R O LE 6 9 9 4 4 3 8 2 84.
+4 6 3 . 4 7 2 . 4 Citize n-Of 3 6 2 5 8 75.
+8 6 9 . 4 7 2 . 6 General Staff 2 0 1 1 0 8 4 6 71.
+1 5 3 . 7 6 2 . 3 Manag ement 1 6 5 1 0 6 7 2 59.
+6 6 4 . 2 6 1 . 8 Memb er 2 2 4 1 0 4 3 6 74.
+3 4 6 . 4 5 7 . 1 S O CI A L 9 5 6 0 2 1 74.
+1 6 3 . 2 6 8 . 5Other Profes sional 2 9 1 6 3 2 33.
+1 4 9.
+5 4 5.
+ .
+ .
+ .
+1.
+2.
+3.
+4.
+5.
+For example, the node Y(G3/<o c g>) will be modified to be the unification result of G 1/<a c g> (or G1/<b d>) and G2/<b d> when the feature path <b d> will be treated.
+node2 = Dereferencelnode2).
+(sharedst, shareds2) = SharedArcs(nodel.arcs, node2.arcs).
+complements1 = ComplementArcs(node|.arcs, node2.arcs).
+complements2 = ComplementArcs(node2.arcs, nodel.arcs).
+IF Equal?(arcnode, Bottom) ]HEN Return(Bottom).
+AddArc(outnode, complement.label, newnode).
+Return(outnode).
+5 due to a change of node Y G3/<a c g>).
+6).
+ELSE node.copy-dependency = node.copy-dependency U {Cons(ancestor, arc)}.
+Return(Nil_).
+newarcs = {newarc} U newarcs.
+1.
+67 8 0.
+70 0 0.
+78 3 0.
+71 0 0.
+60 7 0.
+68 2 0.
+77 5 0.
+67 4 0.
+95 2 0.
+9 4 3 0.
+96 4 0.
+95 0 O u r s 0.
+95 1 0.
+9 5 1 0.
+97 1 0.
+P(rule) =count(LHS root(rule)) 3.1 Hiero.
+ .
+, ein, which are the 10-best translations according to each of: h(e) · w B(e) + h(e) · w −B(e) + h(e) · w • For each i, select an oracle translation: (1) 4.1 Target-side.
+e∗ = arg max (B(e) + h(e) · w) (2) e Let ∆hi j = h(e∗) − h(ei j).
+For Sy st e m Training Fe at ur es # Tu ne Test Hi er o MERT M I R A b a s el in e 1 1 s y nt a x, di st o rt io n 5 6 s y nt a x, di st or ti o n, di s c o u n t 6 1 al l s o ur ce si d e, di s c o u n t 1 0 9 9 0 35 .4 36.1 35 .9 36.9∗ 36.
+4 37.6∗∗ Sy nt ax MERT M I R A b a s el in e 2 5 b a s el in e 2 5 o v e rl a p 1 3 2 n o d e c o u n t 1 3 6 al l ta rg et si d e, di s c o u n t 2 8 3 38 .6 39.5 38 .5 39.8∗ 38 .7 39.9∗ 38.
+ .
+6 Analysis.
+MIRA: . . .
+3 MERT: . . .
+MIRA: . . .
+4 MERT: another thing is . . .
+6 MERT: . . .
+MIRA: . . .
+7 MERT: . . .
+MIRA: . . .
+ ).
+ ).
+4.
+7.
+The resulting algorithm has a complexity of O(n!).
+The following auxiliary quantity is defined: Qe0 (e; C; j) := probability of the best partial hypothesis (ei 1; bi 1), where C = fbkjk = 1; ; ig, bi = j, ei = e and ei􀀀1 = e0.
+A modified language model probability pÆ(eje0; e00) is defined as follows: pÆ(eje0; e00) =  1:0 if Æ = 0 p(eje0; e00) if Æ = 1 : We associate a distribution p(Æ) with the two cases Æ = 0 and Æ = 1 and set p(Æ = 1) = 0:7.
+2.
+diesem 3.
+4.
+mein 5.
+6.
+besuchen 9.
+= p(fj je) max Æ;e00 j02Cnfjg np(jjj0; J) p(Æ) pÆ(eje0; e00) Qe00 (e0;C n fjg; j 0 )o: The DP equation is evaluated recursively for each hypothesis (e0; e; C; j).
+(f1; ;mg ; l) 2 (f1; ;mg n fl; l1g ; l0) !
+(f1; ;mg n fl1g ; l) 3 (f1; ;mg n fl; l1; l2g ; l0) !
+(f1; ;mg n fl1; l2g ; l) 4 (f1; ;m 􀀀 1g n fl1; l2; l3g ; l0) !
+2.
+The search starts in the hypothesis (I; f;g; 0).
+The following recursive equation is evaluated: Qe0 (e; S; C; j) = (2) = p(fj je) max Æ;e00 np(jjj0; J) p(Æ) pÆ(eje0; e00) max (S0;j0) (S0 ;Cnfjg;j0)!(S;C;j) j02Cnfjg Qe00 (e0; S0;C n fjg; j0)o: The search ends in the hypotheses (I; f1; ; Jg; j).
+The search starts in hypothesis (f;g; 0) and ends in the hypotheses (f1; ; Jg; j), with j 2 f1; ; Jg.
+of t r a i n i n g t e s t c a s e s c a s e s M os t Baseline f r e q u e n t w o r d w h et h e r, w e at h er 3 3 1 2 4 5 I, m e 61 2.
+5 84 0 its , it' s 19 .5 1 3.
+, c_ 1, c1, ...
+We then ignore a context word c if: L m; < Tmin or L (Af;- m;) < Tmin l i n l5i n where m; and A{ are defined as above.
+Going back to the {desert, dessert} example, a collocation that would imply desert might be: PREP the C on fu si on se t B a s e l i n e C w or ds Cwords Cwords Cwords ± 3 ± 6 ± 1 2 ± 2 4 w he th er I i t s p a s t t h a n b e i n g e f f e c t y o u r n u m b e r c o u n c i l r i s e b e t w e e n l e d e x c e p t p e a c e t h e r e pr in ci pl e si gh t 0 . 9 2 2 0 . 8 8 6 0 . 8 6 3 0 . 8 6 1 0 . 8 0 7 0 . 7 8 0 0 . 7 4 1 0 . 7 2 6 0 . 6 2 7 0 . 6 1 4 0 . . 5 7 5 0 . 5 3 8 0 . 5 3 0 0 . 4 4 2 0 . 3 9 3 0 . 3 0 6 0 . 2 9 0 0 . 1 1 4 0 . 9 0 2 0.922 0.927 0.922 0 . 9 1 0 . 8 6 2 0.795 0.743 0.702 0 . 8 6 1 0.849 0.801 0.743 0 . 9 3 1 0.901 0.896 0.855 0 . 7 9 1 0.795 0.793 0.755 0 . 7 4 7 0.741 0.759 0.716 0 . 8 1 6 0.783 0.774 0.736 0 . 6 4 6 0.622 0.636 0.639 0 . 6 3 9 0.614 0.602 0.614 0 ..
+5 7 5 0.575 0.585 0.498 0 . 7 5 9 0.697 0.671 0.586 0 . 5 3 0 0.530 0.521 0.557 0 . 6 9 5 0.526 0.516 0.558 0 . 7 5 4 0.705 0..574 0.574 0 . 7 2 6 0.623 0.557 0.466 0 . 2 9 0 0.290 0.290 0.435 0 . 4 5 5 0.2.50 0.364 0.318 A vg no.
+P r u n e f e a t u r e s t h a t h a v e i n s u f f i c i e n t d a t a . o r a r e u n i n f o r m a t i v e d i s c r i m i n a t o r s . S o r t t h e r e m a i n i n g f e a t u r e s i n o r d e r o f d e c r e a s i n g s t r e n g t h . Store the list of features (and their associat ed statistics ) for use at run time.
+Then reliability'(!)
+47 C o nf us io n se t B a s e l i n e C o H oe s CoHoes CoHoes : : : ; 1 : S 2 : S 3 w he th er I i t s p a s t t h a n b e i n g e f f e c t y o u r n u m b e r c o u n c i l r i s e b e t w e e n l e d e x c e p t p e a c e t h e r e p r i n c i p l e s i g h t 0 . 9 2 2 0 . 8 8 6 0 . 8 6 3 0 . 8 6 1 0 . 8 0 7 0 . 7 8 0 0 . 7 4 1 0 . 7 2 6 0 . 6 2 7 0 . 6 1 4 0 . 5 7 . 5 0 . 5 3 8 0 . . 5 3 0 0 . 4 4 2 0 . : 3 9 3 0 . 3 0 6 0 . 2 9 0 0 . 1 1 4 0 . 9 3 9 0.931 0.931 0 . 9 7 9 0.981 0.980 0 . 9 4 3 0.945 0.950 0 . 9 1 9 0.909 0.909 0 . 9 6 6 0.965 0.966 0 . 8 5 3 0.853 0.842 0 . 8 2 1 0.821 0.821 0 . 8 7 7 0.887 0.887 0 . 6 4 6 0.646 0.681 0 . 6 6 3 0.639 0.639 0 . 8 0 7 0.807 0.807 0 . 6 9 9 0.730 0.733 0 . 8 4 9 0.840 0.863 0 . 8 0 0 0.789 0.789 0 . 8 6 9 0.869 0.852 0 . 9 1 1 0.932 0.932 0 . 8 4 1 0.812 0.812 0 . 3 4 1 0.318 0.318 A vg no.
+U(xiy) measures how much additional information we get about the presence of the feature by knowing the choice of word in the confusion set.6 U(xiy) is calculated as follows: U(xiy) H(x) H(xiy) H ( x ) H ( x i y ) H ( x )-p(f)lnp(f)- p( .J)lnp(-.J) - Lp(w;) (p(flw;)lnp(flw;) + p( .Jiw;)lnp(•flw;)) The probabilities are ca.lculated for the population consisting of all occurrences in the training corpus of any w;.
+50 C on fu si on se t Ba sel in e Cwords Collocs ± 3 2 Dl ist Dlist R el y U(xiy) w he th er I i t s p a s t t h a n b e i n g e f f e c t y o u r n u m b e r c o u n c i l n s e b e t w e e n l e d e x c e p t p e a c e t h e r e p r i n c i p l e s i g h t 0 . 9 2 2 0.902 0.931 0 . 8 8 6 0.914.
+0.981 0 . 8 6 3 0.862 0.945 0 . 8 6 1 0.861 0.909 0 . 8 0 7 0.931 0.965 0 . 7 8 0 0.791 0.853 0 . 7 4 1 0.747 0.821 0 . 7 2 6 0.816 0.887 0 . 6 2 7 0.646 0.646 0 . 6 1 4 0.639 0.639 0 . 5 7 . 5 0..575 0.807 0 . 5 3 8 0.759 0.730 0 . 5 3 0 0.530 0.840 0 . 4 4 2 0.695 0.789 0 . 3 9 3 0.754 0.869 0 . 3 0 6 0.726 0.932 0 . 2 9 0 0.290 0.812 0 . 1 1 4 0.455 0.318 0.
+93 5 0.829 0.
+98 0 0.808 0.
+93 1 0.805 0.
+93 2 0.892 0.
+96 7 0.961 0.
+84 2 0.933 0.
+82 1 0.654 0.
+86 8 0.896 0.
+62 9 0.667 0.
+62 7 0.651 0.
+0.
+65 9 0.800 0.
+84 0 0.840 0.
+78 9 0.726 0.
+85 2 0.836 0.
+91 4 0.906 0.
+81 2 0.841 0.
+51 C on fu si on se t B as eli 11 e C w or ds Collocs Dlist Bayes ± 3 : : ; 2 R e l y R e l y Trigra ms w he th er I i t s p a s t t h a n b e i n g e f f e c t y o u r n u m b e r c o u n c i l n s e b e t w e e n l e d e x c e p t p e a c e t h e r e p r i n c i p l e s i g h t 0 . 9 2 2 0 . 8 8 6 0 . 8 6 3 0 . 8 6 1 0 . 8 0 7 0 . 7 8 0 0 . 7 4 1 0 . 7 2 6 0 . 6 2 7 0 . 6 1 4 0 . 5 7 5 0 ..
+5 3 8 0 ..
+5 3 0 0 . 4 4 2 0 . 3 9 3 0 . : 3 0 6 0 . 2 9 0 0 . 1 1 4 0 . 9 0 2 0.931 0.93.5 0.935 0 . 9 1 4 0.981 0.980 0.985 0 . 8 6 2 0.945 0.931 0.942 0 . 8 6 1 0.909 0.932 0.924 0 . 9 3 1 0.96.5 0.967 0.973 0 . 7 9 1 0.853 0.842 0.869 0 . 7 4 7 0.821 0.821 0.827 0 . 8 1 6 0.887 0.868 0.901 0 . 6 4 6 0.646 0.629 0.662 0 . 6 : 3 9 0.639 0.627 0.639 0 ..
+5 7 . 0 . 7 . 5 9 0.730 0.6.59 0.786 0 ..
+5 3 0 0.840 0.840 0.840 O . G 9.
+4 Evaluation.
+ .
+W  .
+1.
+We define two vertices s (source) and t (sink),.
+2.
+3.
+90 Si milar to 6, 88 7 1, 61 4 0.
+76 Al so se e 1, 03 7 33 7 0.
+81 Do m ai n 4, 38 7 89 2 0.
+83 Do m ain m e m be r 4, 38 7 89 2 0.
+Wiebe&Mihalcea’s dataset.
+2.
+1998).
+j hu.
+I. 14.
+1, 26.
+1, 13.
+2 3 5 A m us e 31.
+1 1 3 4 Ru n 51.
+2 5 6 C he at 10.
+6 2 9 St ea l an d Re m ov e 10.
+5, 10.
+1 4 5 Wi pe 10.
+1– 4 1 6 9 O bj ec t Dr op 26.
+1, 26.
+3, 26.
+113, |)-721174Tfilfi,,ge,, (ler- ma.ny, {rig,King} g'~sfs.n phil.uni-I uebingen.de.
+A disjunctive I"CI{.
+(31:it i:leserw.;s i:erl;a.in (lmrhal)S other) fea,1;llres wil.h Vi, l.[ll(~S o[ certain (perha.ps other) khi,<ls lo::I exa~]nple, the following F(',|/.
+[uluitively; the l, ypes fornla.lize I;lie notion ol" kinds +,j" objecl, t g: t,' ill' ca.oh oil|eel, of tyl>e t' i~<i Mso of l;Ylle L, il, ll(] Approp(l, f) = lI ill' (!;i('[I object oF type t deserves [eaA.urt~ f wil.]i :i. Vi./.]lle or type ft. ~@'e call S/IC]I it.
+[Ol'tll;liiSlll i-i, ii ;I,])l)l"Opl']al, olio,~/ fOl'lllil]i~;lll.
+(',iLl'- peliLel",s AI,F, and (,erdeliia.
+i ;ill(| (i(~t,z's Troll are ex:-t.niples o| illilllenienl.a.Lions o| a,pF, ro]) ria, Loliess |or illa.[iSlil,s. l low an a.i)ln'oprhi.teness [orniaJisnl enco<les a conjunctive I:(',R is ob\.'i<>us~ bll(.
+[(!a.[./ll'(!S f 'and .q, I)oth with boolea.I/ wdues a.ll(I ['lll'l,[lel'lllOF(~ that the va.hies of f aild g iil/lSl al~r(!e, [> is the disjunct]w! I"(111.
+SUl)tyl)e ['()l' ea,ch disjuuct iu the cousequenl, of'p.
+o| p wilhoul, the a.i[-Ol'-liot;hilig c(m(til.ion.
+Furl.her|note> a ['eal, urt~ strut(tire is >l'lds exanll)h: I:(JR is, for eXlmsil.ory l)nrl)oses, quilt simph'.
+As noted I)y Copcstakc.
+ct al. [4], it.
+for the type l, I.he path (fg) lakes a vahie subsuuied I)y .% one nlust tirst hll, ro ducc the chaiu Approp(/, f) = .,, Approp('a, g) = .~.
+Silch ilil.crlllCdialc I.'~'l)lts COllid ll(!
+hll.rodllced a.<-; part o[ a (onilli[al.iou sl.age..
+4 Nob: I.hal.
+Ihesc cl,>s<,d world assulnplions art' explicitly made in Pollard ,t,.
+T$ is satisfial~le if[' 7~(F) 7 ~ (7).
+4In fa.ct., it ~:~rl~ I)~ SI~OW ~ that if t" a.nd 1'" 6 fS then "R ( F) tJ 1"(1"') = "R ( F tO F').
+(!rty a.llows a. disjultctivo fesolv(,d featur(, structti re to I)e r(;l)rosetd,(~d more et[icieutly a,s ~t sitlgle untyl)(~d l'eatur(' st.l'll(:l.llfe plus a, sel; of d(;pondlmt node la.h(~liugs, which ca.n be further (;oml)a,(:t(~d using mi, Nie(l dis.
+junction a.s in (',(~rdemann [(i], I)i'~['re t(: Fo]' exanH)le , SUl)l)OS(~ \v(~ I,,yl)(~ r(~solvc the [ea, l, urc st, ructure t[,f ; bool,fl; bool] using our encoding of p.
+()he can (rosily see tha.t this fea.tur(~ strut:fur(, has only two I'e solwl, nts, which ca, n I)e colla.ps(~d iuto one fea,1;ure strlll:ttlro with llallV2d d]sjunci.ion a,s shown below: f:k , : :> f: (I t -) II'll;1} ["'"' ] 0:t-LU: J ,u: (I t ) We now ha,vo a, [;(mSolml)ly COml)a(:l l'q)-resentaJ;ion hi which t.ho l"(il{, ha.s lie(Hi tl';tllsl;I,t(~([ iul,o a. Ila, ill(!(I ([iS.]llll(:l.ioli.
+Ih,w O,V(H'> (Hie should note tha, t fills dis.iun(: l;ion is only l)l'eSeUl; b(~(:aats(~ the ['oaJ, tli'O~i .f a,]l(l g ha>l)l)en 1:o I)o Fir(~s(HIt.
+Tilt!S(!
+I(,a tures would .eed l;o Im l)res(mt il w(~ wtwe enforchl<ej (Jaxpcnl,(H"s [:7] lcil, al w(ql i.yl)iug r(xluiroti]oilt ~ whhth ,qa,y's 1.1ial [(!al:ilr('s I. lial a,l:e a.llowed ilillSt 1)o pres,.ml., lllil.
+Iol.a[ well I.yping is, hi fax:t> incoinl)a.lib]e ;villi lype resolul, ioli~ since I;hore lilil$' w(ql I)o all inli llit;(~ seL of tota, lly w(,ll iyl)od I'esolvalil.s of ;1 l'(;a, Lllr(J st]'llcttir('~, For (~xa.llipi(~, a.ll illi(lei'.- Sl)ocifiod list stl'u('tlir(' couhl be iT(~S()/v0(I 1.o ;~ list of length (L a. list of h:ngl.h 1, el.c, ,qhlce I, ota.I well I,yliin g is liOt i'(!quir(!([, we lm~y i~s well a.ctiwqy un[il[ r0(lulid;lnt ['0a, tlires, 5 ill this (!Xalli[)l(!> i[ t, li(' f ail(l (7 fo.a, tllrOS ;~l'e reliiovod, we a,lO lell wil, h lh(, simple, disjunction {if,/'~}: which is (!quiv- a,lent, to l;]le or(lillaJ'y l,Yl)(' l.(; Thus, iu lliis ca, so> ]lO (lisjtulcl, ion a.t all ix rc!(llliro(l 10 (!11" force the I"CIL All th',tt is requirc(I is tim ~qntuil, ively, [eat, ui'cs arc rodundaui it Ilwir val llCS art'.
+eul,h'cl 5 predictaldc fl'oui ihc approluiaic .ross Sl>eCificatim,..%'c GStz [1)], (',cr,lemam, [7] k,r ;I. IIlOl;('.
+[HXX:iHCforUllllalioii.
+[n this casc, il.
+/Snforl, unai,e, ly, llmvcvcr, this i~; l.>i ;ihvay~.
+the (:asc, as C;lll |)(!
+S(!t'II in the [ollowiug (!Xalll])lC: t{j: +] :> {C/: +]} ~ ~'.
+asSUml)tion tha.t t will only be ext(mded I)y unil'ying il with a.lmther (t;Oml)a.ct(~d) m(mll)(!r o[' "l)']?.Jr,_c,.
+It would not lmve I)('en i)os sihle to relnov(' tim fea.tur('s f ~tll(I g if thest~ 17,atu['es had I)oen involved iu re(m-tranci(+s of i[' tlt(,se lim.tures ha.d ha.d t:om- i)h+x va.lu('s, lu gt+tlera.I, howover, our eXl)e- ri(!ll(:(~ ha,s I)(~(ql that, eV(;l! wil, li very (:()tit pl('x type hi(~ra, rchi(~s a.nd |'(m, tur(; SLI'UC-l, lll'eS [()1" liPS(i, very i'ow named (lisjunc-lions a, re introdu('e(l. 7 q'hus~ uuilica.1;ion is e;(merally uo more (~xp(msive tha.n unifica.- li,:)H with unlylmd l(mt.ur(~ sl.fu(:l.ur('s.
+\% havc~ sh,:Y, vu in this i~al),:~r tha.t the kind of consl raints ,:~Xl)r.t~ssihlo Ity api)Vol)rh~,l;or.~ss c~mdit.ions call he imlflemc'.nted iN a i.'actical .,.D, sle]n e,ul)loyinK typ,M featu r,:'~ st.ru(:t.uf(,s and utdlica.Lion a.s I.he I:,ritna.ry Ol)(U'a,t, ic:,n on t(>;t,l, ur<+ ,'-;t, ruct, ure~.
+Of IIlOl'(' COIII[)I(~N l;yp(~ CC'IIH|,F.~LilI|,,q it~v'.)l',.' h~y; r(~enl;ram:ies': [ntro(IL~ciug reeJH.ra.ncies illl.
+(;lea['ly the re ~olv;-~nl.~, o[ such a. recursiv(~ l.yl)(', could Not I)(~ l,reCOmlfiled a.s r,.~quiI'oxl in Troll.
+Oue might, uew'rtholoss, considm' a l- [OWil]l[ f('(Hl(, f a, ll('y- ('OIls t f a hI| S oll llollrecursiv(qy defiltcd l.ypcs.
+A ])ro/)leul still arises; nantcly, il lhe l'eSo[va.itts of a Frail, till't1 .qll'tlCI411"(~ ill(:ludcd sonic with a pa.rticu lar r(~onll'all(:y a.nd s()Tn(~ \viLh(',ul, then the (:,.)mliti()ll iliad, a.II resc)lva.uts ha.v(~ th,:~ same shal)(~ would m)lon~e[' hold.
+()ue v.,ottkl l.her(q'or,.~ no(~(l i.o eml)loy a moue COml)l(,x vorsion .r ,a.med (lis.it, f,t:tio, (Ill], [12], tit)I).
+ig (i,.L(~sti,.malfl(~ wh('thef such a.d ditional (:()mpl(~xit.y would I)e justified to 'Our CXl)ericl~(:c is derived l,'imarily flora test-i.I" Ihc 'l'loll system (m a tat, her lar<e,e e, ramul;G for (',(!l>lll;lll imfiial vcrh I>lHases, which was wiit-t('n I)y I'hhard Ilillrichs a.d Tsum:ko Na, kazawa aud iinl)lclncut,cd by I)clmar McuH_:J's.
+For example, one can either say: ContainsX = Σ* X Σ*; MyWords = {cat}|{dog}|{mouse}; MyRule = n -> m || p; ShortWords = [MyLex1]1 ∩ Σˆ<6; or: Proceedings of the EACL 2009 Demonstrations Session, pages 29–32, Athens, Greece, 3 April 2009.
+Qc 2009 Association for Computational Linguistics Operators Compatibility variant Function [ ] () [ ] () grouping parentheses, optionality ∀ ∃ N/A quantifiers \ ‘ term negation, substitution/homomorphism : : cross-product + ∗ + ∗ Kleene closures ˆ<n ˆ>n ˆ{m,n} ˆ<n ˆ>n ˆ{m,n} iterations 1 2 .1 .2 .u .l domain & range .f N/A eliminate all unification flags $ $.
+˜ $ $.
+void check_word(char *s) { 2.
+fsm_t *network; 3.
+fsm_match_result *result; 4.
+result = fsm_match(fsm, s); 7.
+if (result->num_matches > 0) 8.
+Qc 2009 ACL and AFNLP Σ, T Trans : Σ ∪ {NULL} → 2T s = (s0 , . . .
+, sn ) ∈ Σn t = (t1 , . . .
+, tm ) ∈ Tm τs : {1, . . .
+, n} → {0, . . .
+, n} τt : {1, . . .
+, m} → {0, . . .
+, m} a : {1, . . .
+2.
+(Table 1 explains notation.)
+That is, p(t, τt, a | s, τs) = exp{θTg(s, τs, a, t, τt)} plest are word-to-word features, estimated as the conditional probabilities p(t | s) and p(s | t) for s ∈ Σ and t ∈ T. Phrase-to-phrase features generalize these, estimated as p(tl | sl) and p(sl | tl) where sl (respectively, tl) is a substring of s (t).
+ ; they can overlap.5 Additionally, since phrase features can be any func g (s, a, t) = Pm i∈a(j) f lex (si , tj ) (3) tion of words and alignments, we permit features + P f (slast (i,j) , tj ) that consider phrase pairs in which a target word g (t) = P i,j:1≤i<j≤m Pm+1 phr first (i,j) i j lm N ∈{2,3} j=1 f N (tj−N +1 ) (4) outside the target phrase aligns to a source word inside the source phrase, as well as phrase pairs with gaps (Chiang, 2005; Ittycheriah and Roukos, gsyn (t, τt ) = Pm j τ (j) , τt (j)) val t (j)) (5) 2007).
+g (s, τs , a, t, τt ) = Pm m P i∈a(j) f dist (i, j) (6) Lexical translation features factor as in Eq. 3 (Tab.
+2).
+xj ) in sequence x = (x1 , . . .).
+the target phrase; if k:i≤k≤j a(k) = ∅, no phrase i first (i, j) = mink:i≤k≤j (min(a(k))) and last (i, j) = feature fires for tj . maxk:i≤k≤j (max(a(k))).
+2).
+2).
+Eq. 6 (Tab.
+Grammars A quasi-synchronous dependency grammar   specifies a conditional model p(t, τt, a | s, τs).
+(t∗, τ ∗ ∗ T s t t,τt ,aa Formally, for a parent-child pair (tτt (j), tj ) in τt, we consider the relationship between a(τt(j)) and a(j), the source-side words to which tτt (j) and tj align.
+(“a(τt(j)) = τs(a(j))” corresponds to their “parent-child” configuration; see Fig.
+2).
+, m} → {0, . . .
+p(t | s), marginalizing out senting possible translations.
+übersetzen: ?:?
+• A counter of uncovered source words: of the source sentence during translation: all parts f sunc (a) = �n δ(|a−1(i)|, 0).
+form (t (i) , τ (i), s (i) , τ (i)), for i = 1, ..., T , max The solution is to introduce a set of coverageimum likelihood estimation for this model con 9 features gcov (a).
+3).
+ .
+sag, 1975): p(t, τt | s, τs) ≈ p(t | τt, s, τs) × p(τt | t, s, τs) Plugging this into Eq. 9, we arrive at Eq. 10 (Tab.
+3).
+For reordering, we use a single absolute distortion feature f dist (i, j) that returns |i−j| whenever a(j) = i and i, j > 0.
+2.
+Step 2.
+Figure 3 Figure 1.
+Step 3.
+Step 4.
+and “H” represents “Hanson Plc”.
+Step 1.
+Step 2.
+Step 3.
+Step 4.
+buy - acquire (5) buy - agree (2) buy - purchase (5) buy - acquisition (7) buy - pay (2)* buy - buyout (3) buy - bid (2) acquire - purchase (2) acquire - acquisition (2) acquire - pay (2)* purchase - acquisition (4) purchase - stake (2)* acquisition - stake (2)* unit - subsidiary (2) unit - parent (5) It is clear that these links form two clusters which are mostly correct.
+D o m ai n # of ph ras es t o t a l p h r a s e s ac cu ra cy C C 7 o r m o r e 1 0 5 8 7 . 6 % 6 o r l e s s 1 0 6 6 7 . 0 % P C 7 o r m o r e 3 5 9 9 9 . 2 % 6 o r l e s s 2 5 5 6 5 . 1 % Table 1.
+D o m ai n Li n k ac cu ra cy W N c o v e r a g e C C 7 3 . 3 % 2 / 1 1 P C 8 8 . 9 % 2 / 8 Table 2.
+3.
+7 % 31.
+, J and i = 1, 2, . . .
+, 2I + 1.
+, fJ and a f J , we have "£I φi + φǫ = J . target sentence eI 1 = e1, e2, . . .
+−1 aligns with one ofP (f J |e2I +1) = "£ J P (aJ , f J |e2I +1).
+The sum of the fer (I λ(ǫ))φǫ e−(I λ(ǫ)) φǫ!
+Now P (φI , φǫ, aJ , f J |e2I +1) can be decomposed 1 (2I + 1)J n P (fj | j=1 eaj ) (1) 1 1 1 1 in the following way: P (φI , φǫ, aJ , f J |e2I +1) In the fertility HMM, we assume that the distor tion probability depends only on the previous alignment and the length of the target sentence, and that 1 1 1 1 = P (φI |e2I +1)P (φǫ|φI , e2I +1) × 1 1 1 1 J the lexical probability depends only on the aligned target word: n P (aj , fj |f j−1, aj−1, e2I +1, φI , φǫ) j=1 1 1 1 1 P (φI , φǫ, aJ , f J |e2I +1) = n λ(ei) e−λ(ei ) 1 1 1 I φ 1 λ(e ) φi! × = n λ(ei) i e− i i=1 (I λ(ǫ))φǫ e−I λ(ǫ) φǫ!
+× φ i=1 (I λ(ǫ))φǫ ! × e−(I λ(ǫ)) J n P (aj |f j−1, aj−1, e2I +1 I φǫ!
+× J j=1 1 1 1 , φ1 , φǫ) × n P (aj | j=1 aj−1 , I )P (fj | eaj ) (2) P (fj |f j−1, aj , e2I +1, φI , φǫ)l 1 1 1 1 Superficially, we only try to model the length 1 |e2I +1probability more accurately.
+Any fertility value P (f J |e2I +1) = P (aJ , f J |e2I +1) has a nonzero probability, but fertility values that 1 1 1 1 1 J 1 where P (aJ , f J |e2I +1) auxiliar y functio n is: L(P (f |e), P (a|a ), λ(e), ξ1(e) , ξ2(a )) 1 1 1 = P (φI , φǫ, aJ , f J |e2I +1) = P˜ ′ aJ e 2I +1, f J ) log ′ P (aJ , f J | e2I +1) 1 1 ,φǫ 1 1 1 1 1 1 J 1 1 1 1 ≈ P (φI , φǫ, aJ , f J |e2I +1) × − ξ1(e)( P (f |e) − 1) 1 1 1 1 I  J  e f n δ  i=1 j=1 δ(aj , i), φi × − ξ2(a′)( a′ a P (a|a′) − 1)  2I +1 J  Because P (aJ , f J |e2I +1) is in the exponential 1 1 1 δ  i=I +1 j=1 δ(aj , i), φǫ (3) family, we get a closed form for the parameters from expected counts: In the last two lines of Equation 3, φǫ and each P (f |e) = "£s c (f |e; f (s), e(s)) (4) φi are not free variables, but are determined by f s c(f |e; f (s), e(s))the alignments.
+Because we only sum over fer tilities that are consistent with the alignments, we P (a|a′) = "£s c (a|a′; f (s), e(s)) (5)have "£f J P (f J |e2I +1) < 1, and our model is de "£ "£ a s c(a|a′; f (s), e(s)) 1 1 1 "£ (s) (s) ficient, similar to IBM Models 3 and 4  .
+Replacing 1 with a1 φǫ ! J i ! φǫ ! J i !
+(2I +1)J δ(fj , f )δ(ei, e) J ! , we have: c(a|a′; f J , e2I +1) = j P˜(aJ |f J , e2I +1) × P (φI , φǫ, aJ , f J |e2I +1) 1 1 1 1 1 J 1 1 1 1 a1 I = n λ(ei)φi e−λ(ei ) × i=1 (I λ(ǫ))φǫ e−(I λ(ǫ)) × c(φ|e; f1 , e1 ) = δ(aj , a)δ(aj−1, a′) j P˜(a1 |f1 , e1 ) × J 2I +1 J J 2I +1 J n P (fj |ea ) J 1 φ δ(e , e) J ! j i i j=1 i c(k|e; f J , e2I +1) = k(ei)δ(ei, e) In our experiments, we did not find a noticeable 1 1 change in terms of alignment accuracy by removing the deficiency.
+, J ) is O(tI J ).
+Al ig n m en t M o d e l P R A E R e n → c n I B M 1 I B M 1 F H M M H M M F 1 H M M F 5 H M MF 3 0 I B M 4 49 .6 55 .4 62 .6 65 .4 66 .8 67 .8 66 .8 55 .3 57 .1 59 .5 59 .1 60 .8 62 .3 64 .1 4 7.
+8 4 3.
+8 3 9.
+0 3 7.
+9 3 6.
+2 3 4.
+9 3 4.
+5 c n → e n I B M 1 I B M 1 F H M M H M M F 1 H M M F 5 H M MF 3 0 I B M 4 52 .6 55 .9 66 .1 68 .6 71 .1 71 .1 69 .3 53 .7 56 .4 62 .1 60 .2 62 .2 62 .7 68 .5 4 6.
+9 4 3.
+9 3 5.
+9 3 5.
+7 3 3.
+5 3 3.
+2 3 1.
+We smooth all parameters (λ(e), P (a|a′) and P (f |e)) by adding a small value (10−8).
+1.
+2.
+Se ma nti c (a) filters candidate if its semantic tags d o n ’ t i n t e r s e c t w i t h t h o s e o f t h e a n a p h o r .
+6 Conclusions.
+7 Acknowledgements.
+0 10 220 30 41) 50 60 7(1 80 91) Recall I(X) Figure 4.
+1.
+& Puris.
+(BBN system) Table 5.
+2.
+3.
