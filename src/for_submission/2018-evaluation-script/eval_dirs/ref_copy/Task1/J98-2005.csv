@@ -1,0 +1,5 @@
+Citance Number,Reference Article,Citing Article,Citation Marker Offset,Citation Marker,Citation Offset,Citation Text,Citation Text Clean,Reference Offset,Reference Text,Discourse Facet
+1,J98-2005,J01-2004,['72'],1998,['72'],dummy,dummy,['17'],"<S sid =""17"" ssid = ""17"">We will show that in both cases the estimated probability is tight.</S>",['aimcitation']
+2,J98-2005,N03-1027,['56'],1998,['56'],dummy,dummy,['45'],"<S sid =""45"" ssid = ""9"">(8~fl)ea ~(B --~/3) = ~=lf(B --~/3;cai) (3) c~ s.t. H &lt;B-~)e~ ~i=lf(B ---+o4cai) The maximum-likelihood estimator is the natural, &quot;relative frequency,&quot; estimator.</S>",['methodcitation']
+3,J98-2005,P01-1017,['79'],5,['79'],dummy,dummy,['17'],"<S sid =""17"" ssid = ""17"">We will show that in both cases the estimated probability is tight.</S>",['aimcitation']
+6,J98-2005,P13-1102,['23'],1998,['23'],dummy,dummy,"['16', '17']","<S sid =""16"" ssid = ""16"">If the corpus is unparsed then there is an iterative approach to maximum-likelihood estimation (the EM or Baum-Welsh algorithm--again, see Section 2) and the same question arises",['aimcitation']

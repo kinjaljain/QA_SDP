@@ -1,3 +1,4 @@
+import json
 import pickle
 import re
 import tqdm
@@ -9,7 +10,7 @@ from rake_nltk import Rake
 from summa import summarizer
 # from similarity_metrics.ir import rakey
 
-root_path = "/Users/kinjal/Desktop/Spring2020/11797/QA_SDP/src/task_2/"
+root_path = "./"
 
 Datum = namedtuple('Datum', 'cite_num ref cite offsets author is_test facet year')
 Offsets = namedtuple('Offsets', 'marker cite ref')
@@ -101,6 +102,8 @@ def get_best_cites(ref_article, complete_citing_sentence):
 # with open("%s-data-2018-clean.pkl" % root_path, 'rb') as f:
 #     dataset = pickle.load(f)
 
+
+best_ids_cached = {}
 with open("%sprocessed-data-2018-clean.pkl" % root_path, 'rb') as f:
     dataset = pickle.load(f)
 # all_results = {}
@@ -117,14 +120,13 @@ for data in tqdm.tqdm(dataset):
     facets = data.facet
     ref_article = data.ref
     ref_id = data.ref.id
-    if ref_id in dev_ids:
-        continue
     offsets = data.offsets
     citing_sentence_ids = offsets.cite
     full_citing_sentence = " ".join([citing_article.sentences[citing_sentence_id] for citing_sentence_id in citing_sentence_ids])
     # ref_sentence_ids = offsets.ref
     ref_sentences_to_score_map = get_best_cites(ref_article, full_citing_sentence)
     ref_sentence_ids = [x for x in ref_sentences_to_score_map.keys()]
+    best_ids_cached[(ref_id, full_citing_sentence)] = ref_sentence_ids
     ref_section = ref_article.sections[ref_sentence_ids[0]].lower()
     all_ref_sections.add(ref_section)
     new_ids = [x for x in citing_sentence_ids]
@@ -164,6 +166,8 @@ for facet in facet_map:
         for section_name in sorted_section_names:
             full_facet_to_ref_section_names_freq_count[facet][section_name] /= sum_for_facet
 
+with open("full_facet_whatever.json", "w") as f:
+    json.dump(full_facet_to_ref_section_names_freq_count, f)
 
 facet_word_freq = {}
 facet_word_count = {}
@@ -187,7 +191,11 @@ for facet in facet_word_freq:
         facet_word_freq[facet][word] /= facet_word_count[facet]
     sorted_facet_words = sorted(facet_word_freq[facet].items(), key=lambda x: x[1], reverse=True)
 
-with open("%straindata.csv" % root_path, "w") as f:
+
+with open("facet_word_freq.json", "w") as f:
+    json.dump(facet_word_freq, f)
+
+with open("%strainalldata.csv" % root_path, "w") as f:
     writer = csv.writer(f)
     for data in tqdm.tqdm(dataset):
         cite_num = data.cite_num
@@ -196,11 +204,15 @@ with open("%straindata.csv" % root_path, "w") as f:
         facets = data.facet
         ref_article = data.ref
         ref_id = data.ref.id
-        if ref_id in dev_ids:
-            continue
         offsets = data.offsets
         citing_sentence_ids = offsets.cite
-        ref_sentence_ids = offsets.ref
+        #ref_sentence_ids = offsets.ref
+        full_citing_sentence = " ".join(
+            [citing_article.sentences[citing_sentence_id] for citing_sentence_id in citing_sentence_ids])
+        # ref_sentence_ids = offsets.ref
+
+        ref_sentence_ids = best_ids_cached[(ref_id, full_citing_sentence)]
+        ref_sentence_text = [ref_article.sentences[x] for x in ref_sentence_ids]
         section = citing_article.sections[citing_sentence_ids[0]]
         ref_sections = set([ref_article.sections[id].lower() for id in ref_sentence_ids])
         new_ids = [x for x in citing_sentence_ids]
@@ -209,7 +221,8 @@ with open("%straindata.csv" % root_path, "w") as f:
         facet_y = {k: 0 for k in facet_word_freq.keys()}
         for facet in facets:
             facet_y[facet] = 1
-
+        if sum(facet_y.values()) > 1:
+            print("more than 1")
         isPercentPresent = False
         isFloatingPointPresent = False
 
@@ -253,7 +266,7 @@ with open("%straindata.csv" % root_path, "w") as f:
               facet_section_prob["aimcitation"], facet_section_prob["hypothesiscitation"],
               facet_section_prob["implicationcitation"], facet_section_prob["methodcitation"],
               facet_section_prob["resultcitation"], facet_y["aimcitation"], facet_y["hypothesiscitation"],
-              facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"])
+              facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"], ref_sentence_text)
         writer.writerow([cite_num, cite_id, ref_id, str(cite_line_ratio), str(ref_line_ratio), str(isPercentPresent),
                          str(isFloatingPointPresent), facet_prob["aimcitation"],
                          facet_prob["hypothesiscitation"], facet_prob["implicationcitation"],
@@ -261,5 +274,5 @@ with open("%straindata.csv" % root_path, "w") as f:
                          facet_section_prob["aimcitation"], facet_section_prob["hypothesiscitation"],
                          facet_section_prob["implicationcitation"], facet_section_prob["methodcitation"],
                          facet_section_prob["resultcitation"], facet_y["aimcitation"], facet_y["hypothesiscitation"],
-                         facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"]])
+                         facet_y["implicationcitation"], facet_y["methodcitation"], facet_y["resultcitation"], ref_sentence_text])
 print("ok")
